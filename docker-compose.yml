@@ -1,9 +1,14 @@
 services:
   mq:
-    image: emqx/emqx:5.1.6
+    build: mq
     ports:
       - 1883:1883
       - 8083:8083
       - 8084:8084
       - 8883:8883
       - 18083:18083
+  log:
+    build: log
+    depends_on:
+      mq:
+        condition: service_healthy
