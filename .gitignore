@@ -965,3 +965,6 @@ Cargo.lock
 # MSVC Windows builds of rustc generate these, which store debugging information
 
 # End of https://www.toptal.com/developers/gitignore/api/python,csharp,c,c++,ruby,rust,go,objective-c,java,node,git
+
+/built-protos
+/d

@@ -1,6 +1,8 @@
 services:
+  protos:
+    build: ./protos
   mq:
-    build: mq
+    build: ./mq
     ports:
       - 1883:1883
       - 8083:8083
@@ -8,7 +10,11 @@ services:
       - 8883:8883
       - 18083:18083
   log:
-    build: log
+    build:
+      context: .
+      dockerfile: ./log/Dockerfile
+    volumes:
+      - ./d/log:/d
     depends_on:
       mq:
         condition: service_healthy
