@@ -1,7 +1,7 @@
 #!/bin/sh
 
 docker-compose build protos
-docker create --name tc clippy_protos
+docker create --name tc docker-mqtt_protos
 rm -rf built-protos
 mkdir -p built-protos
 docker cp tc:/out ./built-protos
