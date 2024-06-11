@@ -1,0 +1,9 @@
+records {
+  timestamp {
+    seconds: 1718060443
+    nanos: 689487000
+  }
+  key: "test"
+  value: "{\n  msg: \"yeehaw-3\"\n}"
+}
+
