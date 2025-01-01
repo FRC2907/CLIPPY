@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package CLIPPY.control;
+
+import "control/Urgency.proto";
+import "google/protobuf/timestamp.proto";
+
+enum WaypointType {
+    // We don't know anything about this waypoint's moral value.
+    UNKNOWN = 0;
+    // We could not care less what's here.
+    NEUTRAL = 1;
+    // The way is shut.
+    OBSTACLE = 2;
+    // This place has been emptied of whatever was there.
+    FREE = 3;
+    // LEROOOOOOY JENKIIIIIIIINS
+    TARGET = 4;
+    // You are here.
+    SELF = 5;
+}
+
+message Waypoint {
+    google.protobuf.Timestamp timestamp = 1;
+    WaypointType waypoint_type = 2;
+    Urgency urgency = 3;
+
+    // XYZ coordinates of the waypoint
+    double x = 7;
+    double y = 8;
+    double z = 9;
+    // Rotation angles of the waypoint, in radians
+    // Consider a quaternion?
+    double t_xy = 10;
+    //double t_xz = 11;
+    //double t_yz = 12;
+
+    // Width of margin of error on each axis
+    double dx = 13;
+    double dy = 14;
+    double dz = 15;
+    double dt_xy = 16;
+}

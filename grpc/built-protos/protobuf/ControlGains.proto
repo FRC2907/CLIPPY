@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package CLIPPY.control;
+
+message ControlGains {
+    string system_id = 1; // recall that all fields are optional
+    double kP = 7;
+    double kI = 8;
+    double kD = 9;
+    double kF_static = 10; // kS for vel ctl
+    double kF_linear = 11; // kV for vel ctl
+    double kF_square = 12; // kA for vel ctl
+    double kF_cosine = 13; // kG for arm pos ctl
+}

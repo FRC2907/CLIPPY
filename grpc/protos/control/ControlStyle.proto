@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package CLIPPY.control;
+
+import "google/protobuf/timestamp.proto";
+
+enum ControlStyleEnum {
+    // Go crazy go stupid
+    NO_CONTROL = 0;
+    // Fall back to traditional FRC controls
+    MANUAL_DS = 1;
+    // Use control targets sent via gRPC directly from driver
+    MANUAL = 2;
+    // Listen for control targets from the motion planner
+    PLANNER = 3;
+}
+
+message ControlStyle {
+    google.protobuf.Timestamp timestamp = 1;
+    ControlStyleEnum control_style = 2;
+}

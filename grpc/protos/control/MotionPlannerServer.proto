@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package CLIPPY.control;
+
+import "control/Waypoint.proto";
+import "control/ControlGains.proto";
+import "control/ControlTarget.proto";
+import "google/protobuf/empty.proto";
+
+service MotionPlannerServer {
+    rpc SubmitWaypoint(Waypoint) returns (google.protobuf.Empty) {}
+    rpc SubmitControlTarget(ControlTarget) returns (google.protobuf.Empty) {}
+}

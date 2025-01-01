@@ -966,5 +966,5 @@ Cargo.lock
 
 # End of https://www.toptal.com/developers/gitignore/api/python,csharp,c,c++,ruby,rust,go,objective-c,java,node,git
 
-/built-protos
+**/built-protos
 /d

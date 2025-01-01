@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package CLIPPY.control;
+
+message ControlGains {
+    string system_id = 1; // recall that all fields are optional
+    double kP = 2;
+    double kI = 3;
+    double kD = 4;
+    double kF_static = 5; // kS for vel ctl
+    double kF_linear = 6; // kV for vel ctl
+    double kF_square = 7; // kA for vel ctl
+    double kF_cosine = 8; // kG for arm pos ctl
+    double kU = 9; // "ultimate gain" for ziegler-nichols
+}

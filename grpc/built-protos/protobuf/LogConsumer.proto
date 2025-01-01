@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package CLIPPY.log;
+
+import "LogRecord.proto";
+import "google/protobuf/empty.proto";
+
+service LogConsumer {
+  rpc SubmitLogRecord(LogRecord) returns (google.protobuf.Empty) {}
+}

@@ -1,0 +1,15 @@
+services:
+  turtlesim:
+    image: rosh
+    command: ros2 run turtlesim turtlesim_node
+    environment:
+      - DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev/dri:/dev/dri
+    networks:
+      - clippy_ros
+
+networks:
+  clippy_ros:
+    external: true

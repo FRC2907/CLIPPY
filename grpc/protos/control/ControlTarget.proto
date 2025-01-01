@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package CLIPPY.control;
+
+import "control/Urgency.proto";
+import "google/protobuf/timestamp.proto";
+
+message ControlTarget {
+    // Timestamp at which this target takes effect (empty for "now")
+    google.protobuf.Timestamp timestamp = 1;
+    string system_id = 2;
+    Urgency urgency = 3;
+    
+    oneof target {
+        double voltage = 7;
+        double current = 8;
+        double position = 9;
+        double velocity = 10;
+        double acceleration = 11;
+        bool active = 12; // for solenoids
+    }
+}
+
+message MultiSystemControlTarget {
+    // Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
+    // Not the timestamp at which they should all take effect---those are specified by each individual target
+    google.protobuf.Timestamp timestamp = 1;
+    Urgency urgency = 2;
+    repeated ControlTarget targets = 3;
+}
