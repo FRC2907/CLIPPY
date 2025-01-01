@@ -23,18 +23,17 @@ _sym_db = _symbol_database.Default()
 
 
 import Waypoint_pb2 as Waypoint__pb2
-import ControlGains_pb2 as ControlGains__pb2
 import ControlTarget_pb2 as ControlTarget__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19MotionPlannerServer.proto\x12\x0e\x43LIPPY.control\x1a\x0eWaypoint.proto\x1a\x12\x43ontrolGains.proto\x1a\x13\x43ontrolTarget.proto\x1a\x1bgoogle/protobuf/empty.proto2\xab\x01\n\x13MotionPlannerServer\x12\x44\n\x0eSubmitWaypoint\x12\x18.CLIPPY.control.Waypoint\x1a\x16.google.protobuf.Empty\"\x00\x12N\n\x13SubmitControlTarget\x12\x1d.CLIPPY.control.ControlTarget\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19MotionPlannerServer.proto\x12\x0e\x43LIPPY.control\x1a\x0eWaypoint.proto\x1a\x13\x43ontrolTarget.proto\x1a\x1bgoogle/protobuf/empty.proto2\xab\x01\n\x13MotionPlannerServer\x12\x44\n\x0eSubmitWaypoint\x12\x18.CLIPPY.control.Waypoint\x1a\x16.google.protobuf.Empty\"\x00\x12N\n\x13SubmitControlTarget\x12\x1d.CLIPPY.control.ControlTarget\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'MotionPlannerServer_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_MOTIONPLANNERSERVER']._serialized_start=132
-  _globals['_MOTIONPLANNERSERVER']._serialized_end=303
+  _globals['_MOTIONPLANNERSERVER']._serialized_start=112
+  _globals['_MOTIONPLANNERSERVER']._serialized_end=283
 # @@protoc_insertion_point(module_scope)

@@ -49,13 +49,14 @@ GPB_FINAL @interface ControlGainsRoot : GPBRootObject
 
 typedef GPB_ENUM(ControlGains_FieldNumber) {
   ControlGains_FieldNumber_SystemId = 1,
-  ControlGains_FieldNumber_KP = 7,
-  ControlGains_FieldNumber_KI = 8,
-  ControlGains_FieldNumber_KD = 9,
-  ControlGains_FieldNumber_KFStatic = 10,
-  ControlGains_FieldNumber_KFLinear = 11,
-  ControlGains_FieldNumber_KFSquare = 12,
-  ControlGains_FieldNumber_KFCosine = 13,
+  ControlGains_FieldNumber_KP = 2,
+  ControlGains_FieldNumber_KI = 3,
+  ControlGains_FieldNumber_KD = 4,
+  ControlGains_FieldNumber_KFStatic = 5,
+  ControlGains_FieldNumber_KFLinear = 6,
+  ControlGains_FieldNumber_KFSquare = 7,
+  ControlGains_FieldNumber_KFCosine = 8,
+  ControlGains_FieldNumber_KU = 9,
 };
 
 GPB_FINAL @interface ControlGains : GPBMessage
@@ -80,6 +81,9 @@ GPB_FINAL @interface ControlGains : GPBMessage
 
 /** kG for arm pos ctl */
 @property(nonatomic, readwrite) double kFCosine;
+
+/** "ultimate gain" for ziegler-nichols */
+@property(nonatomic, readwrite) double kU;
 
 @end
 

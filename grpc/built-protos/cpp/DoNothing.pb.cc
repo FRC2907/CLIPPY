@@ -21,8 +21,8 @@ namespace _pb = ::google::protobuf;
 namespace _pbi = ::google::protobuf::internal;
 namespace _fl = ::google::protobuf::internal::field_layout;
 namespace CLIPPY {
-namespace null {
-}  // namespace null
+namespace nada {
+}  // namespace nada
 }  // namespace CLIPPY
 static constexpr const ::_pb::EnumDescriptor**
     file_level_enum_descriptors_DoNothing_2eproto = nullptr;
@@ -32,14 +32,14 @@ const ::uint32_t TableStruct_DoNothing_2eproto::offsets[1] = {};
 static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
 static constexpr ::_pb::Message* const* file_default_instances = nullptr;
 const char descriptor_table_protodef_DoNothing_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\017DoNothing.proto\022\013CLIPPY.null\032\nNull.pro"
+    "\n\017DoNothing.proto\022\013CLIPPY.nada\032\nNada.pro"
     "to\032\033google/protobuf/empty.proto2\?\n\tDoNot"
-    "hing\0222\n\003Nop\022\021.CLIPPY.null.Null\032\026.google."
+    "hing\0222\n\003Nop\022\021.CLIPPY.nada.Nada\032\026.google."
     "protobuf.Empty\"\000b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_DoNothing_2eproto_deps[2] =
     {
-        &::descriptor_table_Null_2eproto,
+        &::descriptor_table_Nada_2eproto,
         &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
 };
 static ::absl::once_flag descriptor_table_DoNothing_2eproto_once;
@@ -79,9 +79,9 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_DoNothin
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_DoNothing_2eproto(&descriptor_table_DoNothing_2eproto);
 namespace CLIPPY {
-namespace null {
+namespace nada {
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace null
+}  // namespace nada
 }  // namespace CLIPPY
 namespace google {
 namespace protobuf {

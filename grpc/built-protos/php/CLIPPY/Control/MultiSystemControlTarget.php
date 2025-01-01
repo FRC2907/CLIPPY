@@ -14,7 +14,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class MultiSystemControlTarget extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Timestamp at which this collection of ControlTargets should be processed
+     * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
      * Not the timestamp at which they should all take effect---those are specified by each individual target
      *
      * Generated from protobuf field <code>.google.protobuf.Timestamp timestamp = 1;</code>
@@ -36,7 +36,7 @@ class MultiSystemControlTarget extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type \Google\Protobuf\Timestamp $timestamp
-     *           Timestamp at which this collection of ControlTargets should be processed
+     *           Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
      *           Not the timestamp at which they should all take effect---those are specified by each individual target
      *     @type int $urgency
      *     @type array<\CLIPPY\Control\ControlTarget>|\Google\Protobuf\Internal\RepeatedField $targets
@@ -48,7 +48,7 @@ class MultiSystemControlTarget extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Timestamp at which this collection of ControlTargets should be processed
+     * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
      * Not the timestamp at which they should all take effect---those are specified by each individual target
      *
      * Generated from protobuf field <code>.google.protobuf.Timestamp timestamp = 1;</code>
@@ -70,7 +70,7 @@ class MultiSystemControlTarget extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Timestamp at which this collection of ControlTargets should be processed
+     * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
      * Not the timestamp at which they should all take effect---those are specified by each individual target
      *
      * Generated from protobuf field <code>.google.protobuf.Timestamp timestamp = 1;</code>

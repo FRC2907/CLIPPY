@@ -8,7 +8,7 @@ sys.path.append("./protos")
 from concurrent import futures
 
 import grpc
-import protos.Null_pb2
+import protos.Nada_pb2
 import protos.DoNothing_pb2
 import protos.DoNothing_pb2_grpc
 import google.protobuf.empty_pb2

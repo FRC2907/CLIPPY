@@ -1,11 +1,33 @@
 plugins {
     id "java"
-    id "edu.wpi.first.GradleRIO" version "2024.1.1"
+    id "edu.wpi.first.GradleRIO" version "2024.3.2"
+    id "com.google.protobuf" version "0.9.4"
 }
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.25.0'
+    }
+    plugins {
+        grpc_java {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.4.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.builtins {
+            java {}
+        }
+        all()*.plugins {
+            grpc_java {
+                outputSubDir = 'java'
+            }
+        }
+    }
 }
 
 def ROBOT_MAIN_CLASS = "frc.robot.Main"
@@ -69,6 +91,12 @@ dependencies {
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation 'com.google.protobuf:protobuf-java:3.25.0'
+    runtimeOnly 'io.grpc:grpc-netty-shaded:1.61.0'
+    implementation 'io.grpc:grpc-protobuf:1.61.0'
+    implementation 'io.grpc:grpc-stub:1.61.0'
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
 }
 
 test {

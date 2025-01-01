@@ -22,11 +22,11 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
-import Null_pb2 as Null__pb2
+import Nada_pb2 as Nada__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0f\x44oNothing.proto\x12\x0b\x43LIPPY.null\x1a\nNull.proto\x1a\x1bgoogle/protobuf/empty.proto2?\n\tDoNothing\x12\x32\n\x03Nop\x12\x11.CLIPPY.null.Null\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0f\x44oNothing.proto\x12\x0b\x43LIPPY.nada\x1a\nNada.proto\x1a\x1bgoogle/protobuf/empty.proto2?\n\tDoNothing\x12\x32\n\x03Nop\x12\x11.CLIPPY.nada.Nada\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)

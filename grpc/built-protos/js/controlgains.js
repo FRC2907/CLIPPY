@@ -71,13 +71,14 @@ proto.CLIPPY.control.ControlGains.prototype.toObject = function(opt_includeInsta
 proto.CLIPPY.control.ControlGains.toObject = function(includeInstance, msg) {
   var f, obj = {
 systemId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-kp: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
-ki: jspb.Message.getFloatingPointFieldWithDefault(msg, 8, 0.0),
-kd: jspb.Message.getFloatingPointFieldWithDefault(msg, 9, 0.0),
-kfStatic: jspb.Message.getFloatingPointFieldWithDefault(msg, 10, 0.0),
-kfLinear: jspb.Message.getFloatingPointFieldWithDefault(msg, 11, 0.0),
-kfSquare: jspb.Message.getFloatingPointFieldWithDefault(msg, 12, 0.0),
-kfCosine: jspb.Message.getFloatingPointFieldWithDefault(msg, 13, 0.0)
+kp: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
+ki: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
+kd: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
+kfStatic: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
+kfLinear: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
+kfSquare: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
+kfCosine: jspb.Message.getFloatingPointFieldWithDefault(msg, 8, 0.0),
+ku: jspb.Message.getFloatingPointFieldWithDefault(msg, 9, 0.0)
   };
 
   if (includeInstance) {
@@ -118,33 +119,37 @@ proto.CLIPPY.control.ControlGains.deserializeBinaryFromReader = function(msg, re
       var value = /** @type {string} */ (reader.readString());
       msg.setSystemId(value);
       break;
-    case 7:
+    case 2:
       var value = /** @type {number} */ (reader.readDouble());
       msg.setKp(value);
       break;
-    case 8:
+    case 3:
       var value = /** @type {number} */ (reader.readDouble());
       msg.setKi(value);
       break;
-    case 9:
+    case 4:
       var value = /** @type {number} */ (reader.readDouble());
       msg.setKd(value);
       break;
-    case 10:
+    case 5:
       var value = /** @type {number} */ (reader.readDouble());
       msg.setKfStatic(value);
       break;
-    case 11:
+    case 6:
       var value = /** @type {number} */ (reader.readDouble());
       msg.setKfLinear(value);
       break;
-    case 12:
+    case 7:
       var value = /** @type {number} */ (reader.readDouble());
       msg.setKfSquare(value);
       break;
-    case 13:
+    case 8:
       var value = /** @type {number} */ (reader.readDouble());
       msg.setKfCosine(value);
+      break;
+    case 9:
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.setKu(value);
       break;
     default:
       reader.skipField();
@@ -185,49 +190,56 @@ proto.CLIPPY.control.ControlGains.serializeBinaryToWriter = function(message, wr
   f = message.getKp();
   if (f !== 0.0) {
     writer.writeDouble(
-      7,
+      2,
       f
     );
   }
   f = message.getKi();
   if (f !== 0.0) {
     writer.writeDouble(
-      8,
+      3,
       f
     );
   }
   f = message.getKd();
   if (f !== 0.0) {
     writer.writeDouble(
-      9,
+      4,
       f
     );
   }
   f = message.getKfStatic();
   if (f !== 0.0) {
     writer.writeDouble(
-      10,
+      5,
       f
     );
   }
   f = message.getKfLinear();
   if (f !== 0.0) {
     writer.writeDouble(
-      11,
+      6,
       f
     );
   }
   f = message.getKfSquare();
   if (f !== 0.0) {
     writer.writeDouble(
-      12,
+      7,
       f
     );
   }
   f = message.getKfCosine();
   if (f !== 0.0) {
     writer.writeDouble(
-      13,
+      8,
+      f
+    );
+  }
+  f = message.getKu();
+  if (f !== 0.0) {
+    writer.writeDouble(
+      9,
       f
     );
   }
@@ -253,11 +265,11 @@ proto.CLIPPY.control.ControlGains.prototype.setSystemId = function(value) {
 
 
 /**
- * optional double kP = 7;
+ * optional double kP = 2;
  * @return {number}
  */
 proto.CLIPPY.control.ControlGains.prototype.getKp = function() {
-  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 7, 0.0));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 2, 0.0));
 };
 
 
@@ -266,16 +278,16 @@ proto.CLIPPY.control.ControlGains.prototype.getKp = function() {
  * @return {!proto.CLIPPY.control.ControlGains} returns this
  */
 proto.CLIPPY.control.ControlGains.prototype.setKp = function(value) {
-  return jspb.Message.setProto3FloatField(this, 7, value);
+  return jspb.Message.setProto3FloatField(this, 2, value);
 };
 
 
 /**
- * optional double kI = 8;
+ * optional double kI = 3;
  * @return {number}
  */
 proto.CLIPPY.control.ControlGains.prototype.getKi = function() {
-  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 8, 0.0));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 3, 0.0));
 };
 
 
@@ -284,16 +296,16 @@ proto.CLIPPY.control.ControlGains.prototype.getKi = function() {
  * @return {!proto.CLIPPY.control.ControlGains} returns this
  */
 proto.CLIPPY.control.ControlGains.prototype.setKi = function(value) {
-  return jspb.Message.setProto3FloatField(this, 8, value);
+  return jspb.Message.setProto3FloatField(this, 3, value);
 };
 
 
 /**
- * optional double kD = 9;
+ * optional double kD = 4;
  * @return {number}
  */
 proto.CLIPPY.control.ControlGains.prototype.getKd = function() {
-  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 9, 0.0));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 4, 0.0));
 };
 
 
@@ -302,16 +314,16 @@ proto.CLIPPY.control.ControlGains.prototype.getKd = function() {
  * @return {!proto.CLIPPY.control.ControlGains} returns this
  */
 proto.CLIPPY.control.ControlGains.prototype.setKd = function(value) {
-  return jspb.Message.setProto3FloatField(this, 9, value);
+  return jspb.Message.setProto3FloatField(this, 4, value);
 };
 
 
 /**
- * optional double kF_static = 10;
+ * optional double kF_static = 5;
  * @return {number}
  */
 proto.CLIPPY.control.ControlGains.prototype.getKfStatic = function() {
-  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 10, 0.0));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 5, 0.0));
 };
 
 
@@ -320,16 +332,16 @@ proto.CLIPPY.control.ControlGains.prototype.getKfStatic = function() {
  * @return {!proto.CLIPPY.control.ControlGains} returns this
  */
 proto.CLIPPY.control.ControlGains.prototype.setKfStatic = function(value) {
-  return jspb.Message.setProto3FloatField(this, 10, value);
+  return jspb.Message.setProto3FloatField(this, 5, value);
 };
 
 
 /**
- * optional double kF_linear = 11;
+ * optional double kF_linear = 6;
  * @return {number}
  */
 proto.CLIPPY.control.ControlGains.prototype.getKfLinear = function() {
-  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 11, 0.0));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 6, 0.0));
 };
 
 
@@ -338,16 +350,16 @@ proto.CLIPPY.control.ControlGains.prototype.getKfLinear = function() {
  * @return {!proto.CLIPPY.control.ControlGains} returns this
  */
 proto.CLIPPY.control.ControlGains.prototype.setKfLinear = function(value) {
-  return jspb.Message.setProto3FloatField(this, 11, value);
+  return jspb.Message.setProto3FloatField(this, 6, value);
 };
 
 
 /**
- * optional double kF_square = 12;
+ * optional double kF_square = 7;
  * @return {number}
  */
 proto.CLIPPY.control.ControlGains.prototype.getKfSquare = function() {
-  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 12, 0.0));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 7, 0.0));
 };
 
 
@@ -356,16 +368,16 @@ proto.CLIPPY.control.ControlGains.prototype.getKfSquare = function() {
  * @return {!proto.CLIPPY.control.ControlGains} returns this
  */
 proto.CLIPPY.control.ControlGains.prototype.setKfSquare = function(value) {
-  return jspb.Message.setProto3FloatField(this, 12, value);
+  return jspb.Message.setProto3FloatField(this, 7, value);
 };
 
 
 /**
- * optional double kF_cosine = 13;
+ * optional double kF_cosine = 8;
  * @return {number}
  */
 proto.CLIPPY.control.ControlGains.prototype.getKfCosine = function() {
-  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 13, 0.0));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 8, 0.0));
 };
 
 
@@ -374,7 +386,25 @@ proto.CLIPPY.control.ControlGains.prototype.getKfCosine = function() {
  * @return {!proto.CLIPPY.control.ControlGains} returns this
  */
 proto.CLIPPY.control.ControlGains.prototype.setKfCosine = function(value) {
-  return jspb.Message.setProto3FloatField(this, 13, value);
+  return jspb.Message.setProto3FloatField(this, 8, value);
+};
+
+
+/**
+ * optional double kU = 9;
+ * @return {number}
+ */
+proto.CLIPPY.control.ControlGains.prototype.getKu = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 9, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.CLIPPY.control.ControlGains} returns this
+ */
+proto.CLIPPY.control.ControlGains.prototype.setKu = function(value) {
+  return jspb.Message.setProto3FloatField(this, 9, value);
 };
 
 

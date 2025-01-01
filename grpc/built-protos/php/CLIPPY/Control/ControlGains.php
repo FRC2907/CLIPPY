@@ -20,41 +20,47 @@ class ControlGains extends \Google\Protobuf\Internal\Message
      */
     protected $system_id = '';
     /**
-     * Generated from protobuf field <code>double kP = 7;</code>
+     * Generated from protobuf field <code>double kP = 2;</code>
      */
     protected $kP = 0.0;
     /**
-     * Generated from protobuf field <code>double kI = 8;</code>
+     * Generated from protobuf field <code>double kI = 3;</code>
      */
     protected $kI = 0.0;
     /**
-     * Generated from protobuf field <code>double kD = 9;</code>
+     * Generated from protobuf field <code>double kD = 4;</code>
      */
     protected $kD = 0.0;
     /**
      * kS for vel ctl
      *
-     * Generated from protobuf field <code>double kF_static = 10;</code>
+     * Generated from protobuf field <code>double kF_static = 5;</code>
      */
     protected $kF_static = 0.0;
     /**
      * kV for vel ctl
      *
-     * Generated from protobuf field <code>double kF_linear = 11;</code>
+     * Generated from protobuf field <code>double kF_linear = 6;</code>
      */
     protected $kF_linear = 0.0;
     /**
      * kA for vel ctl
      *
-     * Generated from protobuf field <code>double kF_square = 12;</code>
+     * Generated from protobuf field <code>double kF_square = 7;</code>
      */
     protected $kF_square = 0.0;
     /**
      * kG for arm pos ctl
      *
-     * Generated from protobuf field <code>double kF_cosine = 13;</code>
+     * Generated from protobuf field <code>double kF_cosine = 8;</code>
      */
     protected $kF_cosine = 0.0;
+    /**
+     * "ultimate gain" for ziegler-nichols
+     *
+     * Generated from protobuf field <code>double kU = 9;</code>
+     */
+    protected $kU = 0.0;
 
     /**
      * Constructor.
@@ -75,6 +81,8 @@ class ControlGains extends \Google\Protobuf\Internal\Message
      *           kA for vel ctl
      *     @type float $kF_cosine
      *           kG for arm pos ctl
+     *     @type float $kU
+     *           "ultimate gain" for ziegler-nichols
      * }
      */
     public function __construct($data = NULL) {
@@ -109,7 +117,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>double kP = 7;</code>
+     * Generated from protobuf field <code>double kP = 2;</code>
      * @return float
      */
     public function getKP()
@@ -118,7 +126,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>double kP = 7;</code>
+     * Generated from protobuf field <code>double kP = 2;</code>
      * @param float $var
      * @return $this
      */
@@ -131,7 +139,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>double kI = 8;</code>
+     * Generated from protobuf field <code>double kI = 3;</code>
      * @return float
      */
     public function getKI()
@@ -140,7 +148,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>double kI = 8;</code>
+     * Generated from protobuf field <code>double kI = 3;</code>
      * @param float $var
      * @return $this
      */
@@ -153,7 +161,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>double kD = 9;</code>
+     * Generated from protobuf field <code>double kD = 4;</code>
      * @return float
      */
     public function getKD()
@@ -162,7 +170,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>double kD = 9;</code>
+     * Generated from protobuf field <code>double kD = 4;</code>
      * @param float $var
      * @return $this
      */
@@ -177,7 +185,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     /**
      * kS for vel ctl
      *
-     * Generated from protobuf field <code>double kF_static = 10;</code>
+     * Generated from protobuf field <code>double kF_static = 5;</code>
      * @return float
      */
     public function getKFStatic()
@@ -188,7 +196,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     /**
      * kS for vel ctl
      *
-     * Generated from protobuf field <code>double kF_static = 10;</code>
+     * Generated from protobuf field <code>double kF_static = 5;</code>
      * @param float $var
      * @return $this
      */
@@ -203,7 +211,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     /**
      * kV for vel ctl
      *
-     * Generated from protobuf field <code>double kF_linear = 11;</code>
+     * Generated from protobuf field <code>double kF_linear = 6;</code>
      * @return float
      */
     public function getKFLinear()
@@ -214,7 +222,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     /**
      * kV for vel ctl
      *
-     * Generated from protobuf field <code>double kF_linear = 11;</code>
+     * Generated from protobuf field <code>double kF_linear = 6;</code>
      * @param float $var
      * @return $this
      */
@@ -229,7 +237,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     /**
      * kA for vel ctl
      *
-     * Generated from protobuf field <code>double kF_square = 12;</code>
+     * Generated from protobuf field <code>double kF_square = 7;</code>
      * @return float
      */
     public function getKFSquare()
@@ -240,7 +248,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     /**
      * kA for vel ctl
      *
-     * Generated from protobuf field <code>double kF_square = 12;</code>
+     * Generated from protobuf field <code>double kF_square = 7;</code>
      * @param float $var
      * @return $this
      */
@@ -255,7 +263,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     /**
      * kG for arm pos ctl
      *
-     * Generated from protobuf field <code>double kF_cosine = 13;</code>
+     * Generated from protobuf field <code>double kF_cosine = 8;</code>
      * @return float
      */
     public function getKFCosine()
@@ -266,7 +274,7 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     /**
      * kG for arm pos ctl
      *
-     * Generated from protobuf field <code>double kF_cosine = 13;</code>
+     * Generated from protobuf field <code>double kF_cosine = 8;</code>
      * @param float $var
      * @return $this
      */
@@ -274,6 +282,32 @@ class ControlGains extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkDouble($var);
         $this->kF_cosine = $var;
+
+        return $this;
+    }
+
+    /**
+     * "ultimate gain" for ziegler-nichols
+     *
+     * Generated from protobuf field <code>double kU = 9;</code>
+     * @return float
+     */
+    public function getKU()
+    {
+        return $this->kU;
+    }
+
+    /**
+     * "ultimate gain" for ziegler-nichols
+     *
+     * Generated from protobuf field <code>double kU = 9;</code>
+     * @param float $var
+     * @return $this
+     */
+    public function setKU($var)
+    {
+        GPBUtil::checkDouble($var);
+        $this->kU = $var;
 
         return $this;
     }

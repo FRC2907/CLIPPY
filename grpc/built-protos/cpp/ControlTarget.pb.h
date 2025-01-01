@@ -129,14 +129,14 @@ class ControlTarget final :
   static const ControlTarget& default_instance() {
     return *internal_default_instance();
   }
-  enum OutputCase {
+  enum TargetCase {
     kVoltage = 7,
     kCurrent = 8,
     kPosition = 9,
     kVelocity = 10,
     kAcceleration = 11,
     kActive = 12,
-    OUTPUT_NOT_SET = 0,
+    TARGET_NOT_SET = 0,
   };
 
   static inline const ControlTarget* internal_default_instance() {
@@ -333,8 +333,8 @@ class ControlTarget final :
   void _internal_set_active(bool value);
 
   public:
-  void clear_output();
-  OutputCase output_case() const;
+  void clear_target();
+  TargetCase target_case() const;
   // @@protoc_insertion_point(class_scope:CLIPPY.control.ControlTarget)
  private:
   class _Internal;
@@ -345,8 +345,8 @@ class ControlTarget final :
   void set_has_acceleration();
   void set_has_active();
 
-  inline bool has_output() const;
-  inline void clear_has_output();
+  inline bool has_target() const;
+  inline void clear_has_target();
 
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 9, 1, 54, 2> _table_;
@@ -359,8 +359,8 @@ class ControlTarget final :
     ::google::protobuf::internal::ArenaStringPtr system_id_;
     ::google::protobuf::Timestamp* timestamp_;
     int urgency_;
-    union OutputUnion {
-      constexpr OutputUnion() : _constinit_{} {}
+    union TargetUnion {
+      constexpr TargetUnion() : _constinit_{} {}
         ::google::protobuf::internal::ConstantInitialized _constinit_;
       double voltage_;
       double current_;
@@ -368,7 +368,7 @@ class ControlTarget final :
       double velocity_;
       double acceleration_;
       bool active_;
-    } output_;
+    } target_;
     ::uint32_t _oneof_case_[1];
 
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -756,15 +756,15 @@ inline void ControlTarget::_internal_set_urgency(::CLIPPY::control::Urgency valu
 
 // double voltage = 7;
 inline bool ControlTarget::has_voltage() const {
-  return output_case() == kVoltage;
+  return target_case() == kVoltage;
 }
 inline void ControlTarget::set_has_voltage() {
   _impl_._oneof_case_[0] = kVoltage;
 }
 inline void ControlTarget::clear_voltage() {
-  if (output_case() == kVoltage) {
-    _impl_.output_.voltage_ = 0;
-    clear_has_output();
+  if (target_case() == kVoltage) {
+    _impl_.target_.voltage_ = 0;
+    clear_has_target();
   }
 }
 inline double ControlTarget::voltage() const {
@@ -776,30 +776,30 @@ inline void ControlTarget::set_voltage(double value) {
   // @@protoc_insertion_point(field_set:CLIPPY.control.ControlTarget.voltage)
 }
 inline double ControlTarget::_internal_voltage() const {
-  if (output_case() == kVoltage) {
-    return _impl_.output_.voltage_;
+  if (target_case() == kVoltage) {
+    return _impl_.target_.voltage_;
   }
   return 0;
 }
 inline void ControlTarget::_internal_set_voltage(double value) {
-  if (output_case() != kVoltage) {
-    clear_output();
+  if (target_case() != kVoltage) {
+    clear_target();
     set_has_voltage();
   }
-  _impl_.output_.voltage_ = value;
+  _impl_.target_.voltage_ = value;
 }
 
 // double current = 8;
 inline bool ControlTarget::has_current() const {
-  return output_case() == kCurrent;
+  return target_case() == kCurrent;
 }
 inline void ControlTarget::set_has_current() {
   _impl_._oneof_case_[0] = kCurrent;
 }
 inline void ControlTarget::clear_current() {
-  if (output_case() == kCurrent) {
-    _impl_.output_.current_ = 0;
-    clear_has_output();
+  if (target_case() == kCurrent) {
+    _impl_.target_.current_ = 0;
+    clear_has_target();
   }
 }
 inline double ControlTarget::current() const {
@@ -811,30 +811,30 @@ inline void ControlTarget::set_current(double value) {
   // @@protoc_insertion_point(field_set:CLIPPY.control.ControlTarget.current)
 }
 inline double ControlTarget::_internal_current() const {
-  if (output_case() == kCurrent) {
-    return _impl_.output_.current_;
+  if (target_case() == kCurrent) {
+    return _impl_.target_.current_;
   }
   return 0;
 }
 inline void ControlTarget::_internal_set_current(double value) {
-  if (output_case() != kCurrent) {
-    clear_output();
+  if (target_case() != kCurrent) {
+    clear_target();
     set_has_current();
   }
-  _impl_.output_.current_ = value;
+  _impl_.target_.current_ = value;
 }
 
 // double position = 9;
 inline bool ControlTarget::has_position() const {
-  return output_case() == kPosition;
+  return target_case() == kPosition;
 }
 inline void ControlTarget::set_has_position() {
   _impl_._oneof_case_[0] = kPosition;
 }
 inline void ControlTarget::clear_position() {
-  if (output_case() == kPosition) {
-    _impl_.output_.position_ = 0;
-    clear_has_output();
+  if (target_case() == kPosition) {
+    _impl_.target_.position_ = 0;
+    clear_has_target();
   }
 }
 inline double ControlTarget::position() const {
@@ -846,30 +846,30 @@ inline void ControlTarget::set_position(double value) {
   // @@protoc_insertion_point(field_set:CLIPPY.control.ControlTarget.position)
 }
 inline double ControlTarget::_internal_position() const {
-  if (output_case() == kPosition) {
-    return _impl_.output_.position_;
+  if (target_case() == kPosition) {
+    return _impl_.target_.position_;
   }
   return 0;
 }
 inline void ControlTarget::_internal_set_position(double value) {
-  if (output_case() != kPosition) {
-    clear_output();
+  if (target_case() != kPosition) {
+    clear_target();
     set_has_position();
   }
-  _impl_.output_.position_ = value;
+  _impl_.target_.position_ = value;
 }
 
 // double velocity = 10;
 inline bool ControlTarget::has_velocity() const {
-  return output_case() == kVelocity;
+  return target_case() == kVelocity;
 }
 inline void ControlTarget::set_has_velocity() {
   _impl_._oneof_case_[0] = kVelocity;
 }
 inline void ControlTarget::clear_velocity() {
-  if (output_case() == kVelocity) {
-    _impl_.output_.velocity_ = 0;
-    clear_has_output();
+  if (target_case() == kVelocity) {
+    _impl_.target_.velocity_ = 0;
+    clear_has_target();
   }
 }
 inline double ControlTarget::velocity() const {
@@ -881,30 +881,30 @@ inline void ControlTarget::set_velocity(double value) {
   // @@protoc_insertion_point(field_set:CLIPPY.control.ControlTarget.velocity)
 }
 inline double ControlTarget::_internal_velocity() const {
-  if (output_case() == kVelocity) {
-    return _impl_.output_.velocity_;
+  if (target_case() == kVelocity) {
+    return _impl_.target_.velocity_;
   }
   return 0;
 }
 inline void ControlTarget::_internal_set_velocity(double value) {
-  if (output_case() != kVelocity) {
-    clear_output();
+  if (target_case() != kVelocity) {
+    clear_target();
     set_has_velocity();
   }
-  _impl_.output_.velocity_ = value;
+  _impl_.target_.velocity_ = value;
 }
 
 // double acceleration = 11;
 inline bool ControlTarget::has_acceleration() const {
-  return output_case() == kAcceleration;
+  return target_case() == kAcceleration;
 }
 inline void ControlTarget::set_has_acceleration() {
   _impl_._oneof_case_[0] = kAcceleration;
 }
 inline void ControlTarget::clear_acceleration() {
-  if (output_case() == kAcceleration) {
-    _impl_.output_.acceleration_ = 0;
-    clear_has_output();
+  if (target_case() == kAcceleration) {
+    _impl_.target_.acceleration_ = 0;
+    clear_has_target();
   }
 }
 inline double ControlTarget::acceleration() const {
@@ -916,30 +916,30 @@ inline void ControlTarget::set_acceleration(double value) {
   // @@protoc_insertion_point(field_set:CLIPPY.control.ControlTarget.acceleration)
 }
 inline double ControlTarget::_internal_acceleration() const {
-  if (output_case() == kAcceleration) {
-    return _impl_.output_.acceleration_;
+  if (target_case() == kAcceleration) {
+    return _impl_.target_.acceleration_;
   }
   return 0;
 }
 inline void ControlTarget::_internal_set_acceleration(double value) {
-  if (output_case() != kAcceleration) {
-    clear_output();
+  if (target_case() != kAcceleration) {
+    clear_target();
     set_has_acceleration();
   }
-  _impl_.output_.acceleration_ = value;
+  _impl_.target_.acceleration_ = value;
 }
 
 // bool active = 12;
 inline bool ControlTarget::has_active() const {
-  return output_case() == kActive;
+  return target_case() == kActive;
 }
 inline void ControlTarget::set_has_active() {
   _impl_._oneof_case_[0] = kActive;
 }
 inline void ControlTarget::clear_active() {
-  if (output_case() == kActive) {
-    _impl_.output_.active_ = false;
-    clear_has_output();
+  if (target_case() == kActive) {
+    _impl_.target_.active_ = false;
+    clear_has_target();
   }
 }
 inline bool ControlTarget::active() const {
@@ -951,27 +951,27 @@ inline void ControlTarget::set_active(bool value) {
   // @@protoc_insertion_point(field_set:CLIPPY.control.ControlTarget.active)
 }
 inline bool ControlTarget::_internal_active() const {
-  if (output_case() == kActive) {
-    return _impl_.output_.active_;
+  if (target_case() == kActive) {
+    return _impl_.target_.active_;
   }
   return false;
 }
 inline void ControlTarget::_internal_set_active(bool value) {
-  if (output_case() != kActive) {
-    clear_output();
+  if (target_case() != kActive) {
+    clear_target();
     set_has_active();
   }
-  _impl_.output_.active_ = value;
+  _impl_.target_.active_ = value;
 }
 
-inline bool ControlTarget::has_output() const {
-  return output_case() != OUTPUT_NOT_SET;
+inline bool ControlTarget::has_target() const {
+  return target_case() != TARGET_NOT_SET;
 }
-inline void ControlTarget::clear_has_output() {
-  _impl_._oneof_case_[0] = OUTPUT_NOT_SET;
+inline void ControlTarget::clear_has_target() {
+  _impl_._oneof_case_[0] = TARGET_NOT_SET;
 }
-inline ControlTarget::OutputCase ControlTarget::output_case() const {
-  return ControlTarget::OutputCase(_impl_._oneof_case_[0]);
+inline ControlTarget::TargetCase ControlTarget::target_case() const {
+  return ControlTarget::TargetCase(_impl_._oneof_case_[0]);
 }
 // -------------------------------------------------------------------
 

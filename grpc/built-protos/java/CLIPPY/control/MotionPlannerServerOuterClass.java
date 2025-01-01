@@ -24,24 +24,22 @@ public final class MotionPlannerServerOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\031MotionPlannerServer.proto\022\016CLIPPY.cont" +
-      "rol\032\016Waypoint.proto\032\022ControlGains.proto\032" +
-      "\023ControlTarget.proto\032\033google/protobuf/em" +
-      "pty.proto2\253\001\n\023MotionPlannerServer\022D\n\016Sub" +
-      "mitWaypoint\022\030.CLIPPY.control.Waypoint\032\026." +
-      "google.protobuf.Empty\"\000\022N\n\023SubmitControl" +
-      "Target\022\035.CLIPPY.control.ControlTarget\032\026." +
-      "google.protobuf.Empty\"\000b\006proto3"
+      "rol\032\016Waypoint.proto\032\023ControlTarget.proto" +
+      "\032\033google/protobuf/empty.proto2\253\001\n\023Motion" +
+      "PlannerServer\022D\n\016SubmitWaypoint\022\030.CLIPPY" +
+      ".control.Waypoint\032\026.google.protobuf.Empt" +
+      "y\"\000\022N\n\023SubmitControlTarget\022\035.CLIPPY.cont" +
+      "rol.ControlTarget\032\026.google.protobuf.Empt" +
+      "y\"\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           CLIPPY.control.WaypointOuterClass.getDescriptor(),
-          CLIPPY.control.ControlGainsOuterClass.getDescriptor(),
           CLIPPY.control.ControlTargetOuterClass.getDescriptor(),
           com.google.protobuf.EmptyProto.getDescriptor(),
         });
     CLIPPY.control.WaypointOuterClass.getDescriptor();
-    CLIPPY.control.ControlGainsOuterClass.getDescriptor();
     CLIPPY.control.ControlTargetOuterClass.getDescriptor();
     com.google.protobuf.EmptyProto.getDescriptor();
   }

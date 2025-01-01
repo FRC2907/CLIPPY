@@ -39,19 +39,19 @@ public final class ControlGainsOuterClass {
         getSystemIdBytes();
 
     /**
-     * <code>double kP = 7;</code>
+     * <code>double kP = 2;</code>
      * @return The kP.
      */
     double getKP();
 
     /**
-     * <code>double kI = 8;</code>
+     * <code>double kI = 3;</code>
      * @return The kI.
      */
     double getKI();
 
     /**
-     * <code>double kD = 9;</code>
+     * <code>double kD = 4;</code>
      * @return The kD.
      */
     double getKD();
@@ -61,7 +61,7 @@ public final class ControlGainsOuterClass {
      * kS for vel ctl
      * </pre>
      *
-     * <code>double kF_static = 10;</code>
+     * <code>double kF_static = 5;</code>
      * @return The kFStatic.
      */
     double getKFStatic();
@@ -71,7 +71,7 @@ public final class ControlGainsOuterClass {
      * kV for vel ctl
      * </pre>
      *
-     * <code>double kF_linear = 11;</code>
+     * <code>double kF_linear = 6;</code>
      * @return The kFLinear.
      */
     double getKFLinear();
@@ -81,7 +81,7 @@ public final class ControlGainsOuterClass {
      * kA for vel ctl
      * </pre>
      *
-     * <code>double kF_square = 12;</code>
+     * <code>double kF_square = 7;</code>
      * @return The kFSquare.
      */
     double getKFSquare();
@@ -91,10 +91,20 @@ public final class ControlGainsOuterClass {
      * kG for arm pos ctl
      * </pre>
      *
-     * <code>double kF_cosine = 13;</code>
+     * <code>double kF_cosine = 8;</code>
      * @return The kFCosine.
      */
     double getKFCosine();
+
+    /**
+     * <pre>
+     * "ultimate gain" for ziegler-nichols
+     * </pre>
+     *
+     * <code>double kU = 9;</code>
+     * @return The kU.
+     */
+    double getKU();
   }
   /**
    * Protobuf type {@code CLIPPY.control.ControlGains}
@@ -179,10 +189,10 @@ public final class ControlGainsOuterClass {
       }
     }
 
-    public static final int KP_FIELD_NUMBER = 7;
+    public static final int KP_FIELD_NUMBER = 2;
     private double kP_ = 0D;
     /**
-     * <code>double kP = 7;</code>
+     * <code>double kP = 2;</code>
      * @return The kP.
      */
     @java.lang.Override
@@ -190,10 +200,10 @@ public final class ControlGainsOuterClass {
       return kP_;
     }
 
-    public static final int KI_FIELD_NUMBER = 8;
+    public static final int KI_FIELD_NUMBER = 3;
     private double kI_ = 0D;
     /**
-     * <code>double kI = 8;</code>
+     * <code>double kI = 3;</code>
      * @return The kI.
      */
     @java.lang.Override
@@ -201,10 +211,10 @@ public final class ControlGainsOuterClass {
       return kI_;
     }
 
-    public static final int KD_FIELD_NUMBER = 9;
+    public static final int KD_FIELD_NUMBER = 4;
     private double kD_ = 0D;
     /**
-     * <code>double kD = 9;</code>
+     * <code>double kD = 4;</code>
      * @return The kD.
      */
     @java.lang.Override
@@ -212,14 +222,14 @@ public final class ControlGainsOuterClass {
       return kD_;
     }
 
-    public static final int KF_STATIC_FIELD_NUMBER = 10;
+    public static final int KF_STATIC_FIELD_NUMBER = 5;
     private double kFStatic_ = 0D;
     /**
      * <pre>
      * kS for vel ctl
      * </pre>
      *
-     * <code>double kF_static = 10;</code>
+     * <code>double kF_static = 5;</code>
      * @return The kFStatic.
      */
     @java.lang.Override
@@ -227,14 +237,14 @@ public final class ControlGainsOuterClass {
       return kFStatic_;
     }
 
-    public static final int KF_LINEAR_FIELD_NUMBER = 11;
+    public static final int KF_LINEAR_FIELD_NUMBER = 6;
     private double kFLinear_ = 0D;
     /**
      * <pre>
      * kV for vel ctl
      * </pre>
      *
-     * <code>double kF_linear = 11;</code>
+     * <code>double kF_linear = 6;</code>
      * @return The kFLinear.
      */
     @java.lang.Override
@@ -242,14 +252,14 @@ public final class ControlGainsOuterClass {
       return kFLinear_;
     }
 
-    public static final int KF_SQUARE_FIELD_NUMBER = 12;
+    public static final int KF_SQUARE_FIELD_NUMBER = 7;
     private double kFSquare_ = 0D;
     /**
      * <pre>
      * kA for vel ctl
      * </pre>
      *
-     * <code>double kF_square = 12;</code>
+     * <code>double kF_square = 7;</code>
      * @return The kFSquare.
      */
     @java.lang.Override
@@ -257,19 +267,34 @@ public final class ControlGainsOuterClass {
       return kFSquare_;
     }
 
-    public static final int KF_COSINE_FIELD_NUMBER = 13;
+    public static final int KF_COSINE_FIELD_NUMBER = 8;
     private double kFCosine_ = 0D;
     /**
      * <pre>
      * kG for arm pos ctl
      * </pre>
      *
-     * <code>double kF_cosine = 13;</code>
+     * <code>double kF_cosine = 8;</code>
      * @return The kFCosine.
      */
     @java.lang.Override
     public double getKFCosine() {
       return kFCosine_;
+    }
+
+    public static final int KU_FIELD_NUMBER = 9;
+    private double kU_ = 0D;
+    /**
+     * <pre>
+     * "ultimate gain" for ziegler-nichols
+     * </pre>
+     *
+     * <code>double kU = 9;</code>
+     * @return The kU.
+     */
+    @java.lang.Override
+    public double getKU() {
+      return kU_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -290,25 +315,28 @@ public final class ControlGainsOuterClass {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, systemId_);
       }
       if (java.lang.Double.doubleToRawLongBits(kP_) != 0) {
-        output.writeDouble(7, kP_);
+        output.writeDouble(2, kP_);
       }
       if (java.lang.Double.doubleToRawLongBits(kI_) != 0) {
-        output.writeDouble(8, kI_);
+        output.writeDouble(3, kI_);
       }
       if (java.lang.Double.doubleToRawLongBits(kD_) != 0) {
-        output.writeDouble(9, kD_);
+        output.writeDouble(4, kD_);
       }
       if (java.lang.Double.doubleToRawLongBits(kFStatic_) != 0) {
-        output.writeDouble(10, kFStatic_);
+        output.writeDouble(5, kFStatic_);
       }
       if (java.lang.Double.doubleToRawLongBits(kFLinear_) != 0) {
-        output.writeDouble(11, kFLinear_);
+        output.writeDouble(6, kFLinear_);
       }
       if (java.lang.Double.doubleToRawLongBits(kFSquare_) != 0) {
-        output.writeDouble(12, kFSquare_);
+        output.writeDouble(7, kFSquare_);
       }
       if (java.lang.Double.doubleToRawLongBits(kFCosine_) != 0) {
-        output.writeDouble(13, kFCosine_);
+        output.writeDouble(8, kFCosine_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(kU_) != 0) {
+        output.writeDouble(9, kU_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -324,31 +352,35 @@ public final class ControlGainsOuterClass {
       }
       if (java.lang.Double.doubleToRawLongBits(kP_) != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(7, kP_);
+          .computeDoubleSize(2, kP_);
       }
       if (java.lang.Double.doubleToRawLongBits(kI_) != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(8, kI_);
+          .computeDoubleSize(3, kI_);
       }
       if (java.lang.Double.doubleToRawLongBits(kD_) != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(9, kD_);
+          .computeDoubleSize(4, kD_);
       }
       if (java.lang.Double.doubleToRawLongBits(kFStatic_) != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(10, kFStatic_);
+          .computeDoubleSize(5, kFStatic_);
       }
       if (java.lang.Double.doubleToRawLongBits(kFLinear_) != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(11, kFLinear_);
+          .computeDoubleSize(6, kFLinear_);
       }
       if (java.lang.Double.doubleToRawLongBits(kFSquare_) != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(12, kFSquare_);
+          .computeDoubleSize(7, kFSquare_);
       }
       if (java.lang.Double.doubleToRawLongBits(kFCosine_) != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(13, kFCosine_);
+          .computeDoubleSize(8, kFCosine_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(kU_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(9, kU_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -388,6 +420,9 @@ public final class ControlGainsOuterClass {
       if (java.lang.Double.doubleToLongBits(getKFCosine())
           != java.lang.Double.doubleToLongBits(
               other.getKFCosine())) return false;
+      if (java.lang.Double.doubleToLongBits(getKU())
+          != java.lang.Double.doubleToLongBits(
+              other.getKU())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -422,6 +457,9 @@ public final class ControlGainsOuterClass {
       hash = (37 * hash) + KF_COSINE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           java.lang.Double.doubleToLongBits(getKFCosine()));
+      hash = (37 * hash) + KU_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getKU()));
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -561,6 +599,7 @@ public final class ControlGainsOuterClass {
         kFLinear_ = 0D;
         kFSquare_ = 0D;
         kFCosine_ = 0D;
+        kU_ = 0D;
         return this;
       }
 
@@ -617,6 +656,9 @@ public final class ControlGainsOuterClass {
         }
         if (((from_bitField0_ & 0x00000080) != 0)) {
           result.kFCosine_ = kFCosine_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.kU_ = kU_;
         }
       }
 
@@ -690,6 +732,9 @@ public final class ControlGainsOuterClass {
         if (other.getKFCosine() != 0D) {
           setKFCosine(other.getKFCosine());
         }
+        if (other.getKU() != 0D) {
+          setKU(other.getKU());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -721,41 +766,46 @@ public final class ControlGainsOuterClass {
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
-              case 57: {
+              case 17: {
                 kP_ = input.readDouble();
                 bitField0_ |= 0x00000002;
                 break;
-              } // case 57
-              case 65: {
+              } // case 17
+              case 25: {
                 kI_ = input.readDouble();
                 bitField0_ |= 0x00000004;
                 break;
-              } // case 65
-              case 73: {
+              } // case 25
+              case 33: {
                 kD_ = input.readDouble();
                 bitField0_ |= 0x00000008;
                 break;
-              } // case 73
-              case 81: {
+              } // case 33
+              case 41: {
                 kFStatic_ = input.readDouble();
                 bitField0_ |= 0x00000010;
                 break;
-              } // case 81
-              case 89: {
+              } // case 41
+              case 49: {
                 kFLinear_ = input.readDouble();
                 bitField0_ |= 0x00000020;
                 break;
-              } // case 89
-              case 97: {
+              } // case 49
+              case 57: {
                 kFSquare_ = input.readDouble();
                 bitField0_ |= 0x00000040;
                 break;
-              } // case 97
-              case 105: {
+              } // case 57
+              case 65: {
                 kFCosine_ = input.readDouble();
                 bitField0_ |= 0x00000080;
                 break;
-              } // case 105
+              } // case 65
+              case 73: {
+                kU_ = input.readDouble();
+                bitField0_ |= 0x00000100;
+                break;
+              } // case 73
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -867,7 +917,7 @@ public final class ControlGainsOuterClass {
 
       private double kP_ ;
       /**
-       * <code>double kP = 7;</code>
+       * <code>double kP = 2;</code>
        * @return The kP.
        */
       @java.lang.Override
@@ -875,7 +925,7 @@ public final class ControlGainsOuterClass {
         return kP_;
       }
       /**
-       * <code>double kP = 7;</code>
+       * <code>double kP = 2;</code>
        * @param value The kP to set.
        * @return This builder for chaining.
        */
@@ -887,7 +937,7 @@ public final class ControlGainsOuterClass {
         return this;
       }
       /**
-       * <code>double kP = 7;</code>
+       * <code>double kP = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearKP() {
@@ -899,7 +949,7 @@ public final class ControlGainsOuterClass {
 
       private double kI_ ;
       /**
-       * <code>double kI = 8;</code>
+       * <code>double kI = 3;</code>
        * @return The kI.
        */
       @java.lang.Override
@@ -907,7 +957,7 @@ public final class ControlGainsOuterClass {
         return kI_;
       }
       /**
-       * <code>double kI = 8;</code>
+       * <code>double kI = 3;</code>
        * @param value The kI to set.
        * @return This builder for chaining.
        */
@@ -919,7 +969,7 @@ public final class ControlGainsOuterClass {
         return this;
       }
       /**
-       * <code>double kI = 8;</code>
+       * <code>double kI = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearKI() {
@@ -931,7 +981,7 @@ public final class ControlGainsOuterClass {
 
       private double kD_ ;
       /**
-       * <code>double kD = 9;</code>
+       * <code>double kD = 4;</code>
        * @return The kD.
        */
       @java.lang.Override
@@ -939,7 +989,7 @@ public final class ControlGainsOuterClass {
         return kD_;
       }
       /**
-       * <code>double kD = 9;</code>
+       * <code>double kD = 4;</code>
        * @param value The kD to set.
        * @return This builder for chaining.
        */
@@ -951,7 +1001,7 @@ public final class ControlGainsOuterClass {
         return this;
       }
       /**
-       * <code>double kD = 9;</code>
+       * <code>double kD = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearKD() {
@@ -967,7 +1017,7 @@ public final class ControlGainsOuterClass {
        * kS for vel ctl
        * </pre>
        *
-       * <code>double kF_static = 10;</code>
+       * <code>double kF_static = 5;</code>
        * @return The kFStatic.
        */
       @java.lang.Override
@@ -979,7 +1029,7 @@ public final class ControlGainsOuterClass {
        * kS for vel ctl
        * </pre>
        *
-       * <code>double kF_static = 10;</code>
+       * <code>double kF_static = 5;</code>
        * @param value The kFStatic to set.
        * @return This builder for chaining.
        */
@@ -995,7 +1045,7 @@ public final class ControlGainsOuterClass {
        * kS for vel ctl
        * </pre>
        *
-       * <code>double kF_static = 10;</code>
+       * <code>double kF_static = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearKFStatic() {
@@ -1011,7 +1061,7 @@ public final class ControlGainsOuterClass {
        * kV for vel ctl
        * </pre>
        *
-       * <code>double kF_linear = 11;</code>
+       * <code>double kF_linear = 6;</code>
        * @return The kFLinear.
        */
       @java.lang.Override
@@ -1023,7 +1073,7 @@ public final class ControlGainsOuterClass {
        * kV for vel ctl
        * </pre>
        *
-       * <code>double kF_linear = 11;</code>
+       * <code>double kF_linear = 6;</code>
        * @param value The kFLinear to set.
        * @return This builder for chaining.
        */
@@ -1039,7 +1089,7 @@ public final class ControlGainsOuterClass {
        * kV for vel ctl
        * </pre>
        *
-       * <code>double kF_linear = 11;</code>
+       * <code>double kF_linear = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearKFLinear() {
@@ -1055,7 +1105,7 @@ public final class ControlGainsOuterClass {
        * kA for vel ctl
        * </pre>
        *
-       * <code>double kF_square = 12;</code>
+       * <code>double kF_square = 7;</code>
        * @return The kFSquare.
        */
       @java.lang.Override
@@ -1067,7 +1117,7 @@ public final class ControlGainsOuterClass {
        * kA for vel ctl
        * </pre>
        *
-       * <code>double kF_square = 12;</code>
+       * <code>double kF_square = 7;</code>
        * @param value The kFSquare to set.
        * @return This builder for chaining.
        */
@@ -1083,7 +1133,7 @@ public final class ControlGainsOuterClass {
        * kA for vel ctl
        * </pre>
        *
-       * <code>double kF_square = 12;</code>
+       * <code>double kF_square = 7;</code>
        * @return This builder for chaining.
        */
       public Builder clearKFSquare() {
@@ -1099,7 +1149,7 @@ public final class ControlGainsOuterClass {
        * kG for arm pos ctl
        * </pre>
        *
-       * <code>double kF_cosine = 13;</code>
+       * <code>double kF_cosine = 8;</code>
        * @return The kFCosine.
        */
       @java.lang.Override
@@ -1111,7 +1161,7 @@ public final class ControlGainsOuterClass {
        * kG for arm pos ctl
        * </pre>
        *
-       * <code>double kF_cosine = 13;</code>
+       * <code>double kF_cosine = 8;</code>
        * @param value The kFCosine to set.
        * @return This builder for chaining.
        */
@@ -1127,12 +1177,56 @@ public final class ControlGainsOuterClass {
        * kG for arm pos ctl
        * </pre>
        *
-       * <code>double kF_cosine = 13;</code>
+       * <code>double kF_cosine = 8;</code>
        * @return This builder for chaining.
        */
       public Builder clearKFCosine() {
         bitField0_ = (bitField0_ & ~0x00000080);
         kFCosine_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double kU_ ;
+      /**
+       * <pre>
+       * "ultimate gain" for ziegler-nichols
+       * </pre>
+       *
+       * <code>double kU = 9;</code>
+       * @return The kU.
+       */
+      @java.lang.Override
+      public double getKU() {
+        return kU_;
+      }
+      /**
+       * <pre>
+       * "ultimate gain" for ziegler-nichols
+       * </pre>
+       *
+       * <code>double kU = 9;</code>
+       * @param value The kU to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKU(double value) {
+
+        kU_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * "ultimate gain" for ziegler-nichols
+       * </pre>
+       *
+       * <code>double kU = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearKU() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        kU_ = 0D;
         onChanged();
         return this;
       }
@@ -1214,11 +1308,12 @@ public final class ControlGainsOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\022ControlGains.proto\022\016CLIPPY.control\"\221\001\n" +
-      "\014ControlGains\022\021\n\tsystem_id\030\001 \001(\t\022\n\n\002kP\030\007" +
-      " \001(\001\022\n\n\002kI\030\010 \001(\001\022\n\n\002kD\030\t \001(\001\022\021\n\tkF_stati" +
-      "c\030\n \001(\001\022\021\n\tkF_linear\030\013 \001(\001\022\021\n\tkF_square\030" +
-      "\014 \001(\001\022\021\n\tkF_cosine\030\r \001(\001b\006proto3"
+      "\n\022ControlGains.proto\022\016CLIPPY.control\"\235\001\n" +
+      "\014ControlGains\022\021\n\tsystem_id\030\001 \001(\t\022\n\n\002kP\030\002" +
+      " \001(\001\022\n\n\002kI\030\003 \001(\001\022\n\n\002kD\030\004 \001(\001\022\021\n\tkF_stati" +
+      "c\030\005 \001(\001\022\021\n\tkF_linear\030\006 \001(\001\022\021\n\tkF_square\030" +
+      "\007 \001(\001\022\021\n\tkF_cosine\030\010 \001(\001\022\n\n\002kU\030\t \001(\001b\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1229,7 +1324,7 @@ public final class ControlGainsOuterClass {
     internal_static_CLIPPY_control_ControlGains_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CLIPPY_control_ControlGains_descriptor,
-        new java.lang.String[] { "SystemId", "KP", "KI", "KD", "KFStatic", "KFLinear", "KFSquare", "KFCosine", });
+        new java.lang.String[] { "SystemId", "KP", "KI", "KD", "KFStatic", "KFLinear", "KFSquare", "KFCosine", "KU", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

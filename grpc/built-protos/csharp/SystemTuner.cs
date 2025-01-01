@@ -24,9 +24,12 @@ namespace CLIPPY.Control {
     static SystemTunerReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFTeXN0ZW1UdW5lci5wcm90bxIOQ0xJUFBZLmNvbnRyb2xiBnByb3RvMw=="));
+            "ChFTeXN0ZW1UdW5lci5wcm90bxIOQ0xJUFBZLmNvbnRyb2waG2dvb2dsZS9w",
+            "cm90b2J1Zi9lbXB0eS5wcm90bxoRU3lzdGVtU3RhdGUucHJvdG8yVwoLU3lz",
+            "dGVtVHVuZXISSAoPSW5nZXN0U3RhdGVEYXRhEhsuQ0xJUFBZLmNvbnRyb2wu",
+            "U3lzdGVtU3RhdGUaFi5nb29nbGUucHJvdG9idWYuRW1wdHkiAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::CLIPPY.Control.SystemStateReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, null));
     }
     #endregion

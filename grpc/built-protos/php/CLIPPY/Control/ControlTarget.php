@@ -27,7 +27,7 @@ class ControlTarget extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.CLIPPY.control.Urgency urgency = 3;</code>
      */
     protected $urgency = 0;
-    protected $output;
+    protected $target;
 
     /**
      * Constructor.
@@ -302,9 +302,9 @@ class ControlTarget extends \Google\Protobuf\Internal\Message
     /**
      * @return string
      */
-    public function getOutput()
+    public function getTarget()
     {
-        return $this->whichOneof("output");
+        return $this->whichOneof("target");
     }
 
 }

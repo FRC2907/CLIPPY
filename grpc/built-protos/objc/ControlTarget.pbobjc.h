@@ -62,14 +62,14 @@ typedef GPB_ENUM(ControlTarget_FieldNumber) {
   ControlTarget_FieldNumber_Active = 12,
 };
 
-typedef GPB_ENUM(ControlTarget_Output_OneOfCase) {
-  ControlTarget_Output_OneOfCase_GPBUnsetOneOfCase = 0,
-  ControlTarget_Output_OneOfCase_Voltage = 7,
-  ControlTarget_Output_OneOfCase_Current = 8,
-  ControlTarget_Output_OneOfCase_Position = 9,
-  ControlTarget_Output_OneOfCase_Velocity = 10,
-  ControlTarget_Output_OneOfCase_Acceleration = 11,
-  ControlTarget_Output_OneOfCase_Active = 12,
+typedef GPB_ENUM(ControlTarget_Target_OneOfCase) {
+  ControlTarget_Target_OneOfCase_GPBUnsetOneOfCase = 0,
+  ControlTarget_Target_OneOfCase_Voltage = 7,
+  ControlTarget_Target_OneOfCase_Current = 8,
+  ControlTarget_Target_OneOfCase_Position = 9,
+  ControlTarget_Target_OneOfCase_Velocity = 10,
+  ControlTarget_Target_OneOfCase_Acceleration = 11,
+  ControlTarget_Target_OneOfCase_Active = 12,
 };
 
 GPB_FINAL @interface ControlTarget : GPBMessage
@@ -83,7 +83,7 @@ GPB_FINAL @interface ControlTarget : GPBMessage
 
 @property(nonatomic, readwrite) enum Urgency urgency;
 
-@property(nonatomic, readonly) ControlTarget_Output_OneOfCase outputOneOfCase;
+@property(nonatomic, readonly) ControlTarget_Target_OneOfCase targetOneOfCase;
 
 @property(nonatomic, readwrite) double voltage;
 
@@ -113,9 +113,9 @@ int32_t ControlTarget_Urgency_RawValue(ControlTarget *message);
 void SetControlTarget_Urgency_RawValue(ControlTarget *message, int32_t value);
 
 /**
- * Clears whatever value was set for the oneof 'output'.
+ * Clears whatever value was set for the oneof 'target'.
  **/
-void ControlTarget_ClearOutputOneOfCase(ControlTarget *message);
+void ControlTarget_ClearTargetOneOfCase(ControlTarget *message);
 
 #pragma mark - MultiSystemControlTarget
 
@@ -128,7 +128,7 @@ typedef GPB_ENUM(MultiSystemControlTarget_FieldNumber) {
 GPB_FINAL @interface MultiSystemControlTarget : GPBMessage
 
 /**
- * Timestamp at which this collection of ControlTargets should be processed
+ * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
  * Not the timestamp at which they should all take effect---those are specified by each individual target
  **/
 @property(nonatomic, readwrite, strong, null_resettable) GPBTimestamp *timestamp;

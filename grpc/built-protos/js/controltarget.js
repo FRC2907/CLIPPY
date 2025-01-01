@@ -12,7 +12,7 @@
 // @ts-nocheck
 
 goog.provide('proto.CLIPPY.control.ControlTarget');
-goog.provide('proto.CLIPPY.control.ControlTarget.OutputCase');
+goog.provide('proto.CLIPPY.control.ControlTarget.TargetCase');
 
 goog.require('jspb.BinaryReader');
 goog.require('jspb.BinaryWriter');
@@ -55,8 +55,8 @@ proto.CLIPPY.control.ControlTarget.oneofGroups_ = [[7,8,9,10,11,12]];
 /**
  * @enum {number}
  */
-proto.CLIPPY.control.ControlTarget.OutputCase = {
-  OUTPUT_NOT_SET: 0,
+proto.CLIPPY.control.ControlTarget.TargetCase = {
+  TARGET_NOT_SET: 0,
   VOLTAGE: 7,
   CURRENT: 8,
   POSITION: 9,
@@ -66,10 +66,10 @@ proto.CLIPPY.control.ControlTarget.OutputCase = {
 };
 
 /**
- * @return {proto.CLIPPY.control.ControlTarget.OutputCase}
+ * @return {proto.CLIPPY.control.ControlTarget.TargetCase}
  */
-proto.CLIPPY.control.ControlTarget.prototype.getOutputCase = function() {
-  return /** @type {proto.CLIPPY.control.ControlTarget.OutputCase} */(jspb.Message.computeOneofCase(this, proto.CLIPPY.control.ControlTarget.oneofGroups_[0]));
+proto.CLIPPY.control.ControlTarget.prototype.getTargetCase = function() {
+  return /** @type {proto.CLIPPY.control.ControlTarget.TargetCase} */(jspb.Message.computeOneofCase(this, proto.CLIPPY.control.ControlTarget.oneofGroups_[0]));
 };
 
 

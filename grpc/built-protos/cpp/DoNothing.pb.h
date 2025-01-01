@@ -30,7 +30,7 @@
 #include "google/protobuf/generated_message_reflection.h"
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
-#include "Null.pb.h"
+#include "Nada.pb.h"
 #include "google/protobuf/empty.pb.h"
 // @@protoc_insertion_point(includes)
 
@@ -59,7 +59,7 @@ namespace protobuf {
 }  // namespace google
 
 namespace CLIPPY {
-namespace null {
+namespace nada {
 
 // ===================================================================
 
@@ -82,7 +82,7 @@ namespace null {
 #endif  // __GNUC__
 
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace null
+}  // namespace nada
 }  // namespace CLIPPY
 
 

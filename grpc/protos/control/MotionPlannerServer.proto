@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package CLIPPY.control;
 
-import "control/Waypoint.proto";
-import "control/ControlGains.proto";
-import "control/ControlTarget.proto";
+import "Waypoint.proto";
+//import "ControlGains.proto";
+import "ControlTarget.proto";
 import "google/protobuf/empty.proto";
 
 service MotionPlannerServer {

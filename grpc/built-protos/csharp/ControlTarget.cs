@@ -31,7 +31,7 @@ namespace CLIPPY.Control {
             "GAMgASgOMhcuQ0xJUFBZLmNvbnRyb2wuVXJnZW5jeRIRCgd2b2x0YWdlGAcg",
             "ASgBSAASEQoHY3VycmVudBgIIAEoAUgAEhIKCHBvc2l0aW9uGAkgASgBSAAS",
             "EgoIdmVsb2NpdHkYCiABKAFIABIWCgxhY2NlbGVyYXRpb24YCyABKAFIABIQ",
-            "CgZhY3RpdmUYDCABKAhIAEIICgZvdXRwdXQiowEKGE11bHRpU3lzdGVtQ29u",
+            "CgZhY3RpdmUYDCABKAhIAEIICgZ0YXJnZXQiowEKGE11bHRpU3lzdGVtQ29u",
             "dHJvbFRhcmdldBItCgl0aW1lc3RhbXAYASABKAsyGi5nb29nbGUucHJvdG9i",
             "dWYuVGltZXN0YW1wEigKB3VyZ2VuY3kYAiABKA4yFy5DTElQUFkuY29udHJv",
             "bC5VcmdlbmN5Ei4KB3RhcmdldHMYAyADKAsyHS5DTElQUFkuY29udHJvbC5D",
@@ -39,7 +39,7 @@ namespace CLIPPY.Control {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::CLIPPY.Control.UrgencyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CLIPPY.Control.ControlTarget), global::CLIPPY.Control.ControlTarget.Parser, new[]{ "Timestamp", "SystemId", "Urgency", "Voltage", "Current", "Position", "Velocity", "Acceleration", "Active" }, new[]{ "Output" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::CLIPPY.Control.ControlTarget), global::CLIPPY.Control.ControlTarget.Parser, new[]{ "Timestamp", "SystemId", "Urgency", "Voltage", "Current", "Position", "Velocity", "Acceleration", "Active" }, new[]{ "Target" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::CLIPPY.Control.MultiSystemControlTarget), global::CLIPPY.Control.MultiSystemControlTarget.Parser, new[]{ "Timestamp", "Urgency", "Targets" }, null, null, null, null)
           }));
     }
@@ -84,23 +84,23 @@ namespace CLIPPY.Control {
       timestamp_ = other.timestamp_ != null ? other.timestamp_.Clone() : null;
       systemId_ = other.systemId_;
       urgency_ = other.urgency_;
-      switch (other.OutputCase) {
-        case OutputOneofCase.Voltage:
+      switch (other.TargetCase) {
+        case TargetOneofCase.Voltage:
           Voltage = other.Voltage;
           break;
-        case OutputOneofCase.Current:
+        case TargetOneofCase.Current:
           Current = other.Current;
           break;
-        case OutputOneofCase.Position:
+        case TargetOneofCase.Position:
           Position = other.Position;
           break;
-        case OutputOneofCase.Velocity:
+        case TargetOneofCase.Velocity:
           Velocity = other.Velocity;
           break;
-        case OutputOneofCase.Acceleration:
+        case TargetOneofCase.Acceleration:
           Acceleration = other.Acceleration;
           break;
-        case OutputOneofCase.Active:
+        case TargetOneofCase.Active:
           Active = other.Active;
           break;
       }
@@ -158,24 +158,24 @@ namespace CLIPPY.Control {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double Voltage {
-      get { return HasVoltage ? (double) output_ : 0D; }
+      get { return HasVoltage ? (double) target_ : 0D; }
       set {
-        output_ = value;
-        outputCase_ = OutputOneofCase.Voltage;
+        target_ = value;
+        targetCase_ = TargetOneofCase.Voltage;
       }
     }
     /// <summary>Gets whether the "voltage" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasVoltage {
-      get { return outputCase_ == OutputOneofCase.Voltage; }
+      get { return targetCase_ == TargetOneofCase.Voltage; }
     }
     /// <summary> Clears the value of the oneof if it's currently set to "voltage" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearVoltage() {
       if (HasVoltage) {
-        ClearOutput();
+        ClearTarget();
       }
     }
 
@@ -184,24 +184,24 @@ namespace CLIPPY.Control {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double Current {
-      get { return HasCurrent ? (double) output_ : 0D; }
+      get { return HasCurrent ? (double) target_ : 0D; }
       set {
-        output_ = value;
-        outputCase_ = OutputOneofCase.Current;
+        target_ = value;
+        targetCase_ = TargetOneofCase.Current;
       }
     }
     /// <summary>Gets whether the "current" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasCurrent {
-      get { return outputCase_ == OutputOneofCase.Current; }
+      get { return targetCase_ == TargetOneofCase.Current; }
     }
     /// <summary> Clears the value of the oneof if it's currently set to "current" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearCurrent() {
       if (HasCurrent) {
-        ClearOutput();
+        ClearTarget();
       }
     }
 
@@ -210,24 +210,24 @@ namespace CLIPPY.Control {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double Position {
-      get { return HasPosition ? (double) output_ : 0D; }
+      get { return HasPosition ? (double) target_ : 0D; }
       set {
-        output_ = value;
-        outputCase_ = OutputOneofCase.Position;
+        target_ = value;
+        targetCase_ = TargetOneofCase.Position;
       }
     }
     /// <summary>Gets whether the "position" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasPosition {
-      get { return outputCase_ == OutputOneofCase.Position; }
+      get { return targetCase_ == TargetOneofCase.Position; }
     }
     /// <summary> Clears the value of the oneof if it's currently set to "position" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearPosition() {
       if (HasPosition) {
-        ClearOutput();
+        ClearTarget();
       }
     }
 
@@ -236,24 +236,24 @@ namespace CLIPPY.Control {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double Velocity {
-      get { return HasVelocity ? (double) output_ : 0D; }
+      get { return HasVelocity ? (double) target_ : 0D; }
       set {
-        output_ = value;
-        outputCase_ = OutputOneofCase.Velocity;
+        target_ = value;
+        targetCase_ = TargetOneofCase.Velocity;
       }
     }
     /// <summary>Gets whether the "velocity" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasVelocity {
-      get { return outputCase_ == OutputOneofCase.Velocity; }
+      get { return targetCase_ == TargetOneofCase.Velocity; }
     }
     /// <summary> Clears the value of the oneof if it's currently set to "velocity" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearVelocity() {
       if (HasVelocity) {
-        ClearOutput();
+        ClearTarget();
       }
     }
 
@@ -262,24 +262,24 @@ namespace CLIPPY.Control {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double Acceleration {
-      get { return HasAcceleration ? (double) output_ : 0D; }
+      get { return HasAcceleration ? (double) target_ : 0D; }
       set {
-        output_ = value;
-        outputCase_ = OutputOneofCase.Acceleration;
+        target_ = value;
+        targetCase_ = TargetOneofCase.Acceleration;
       }
     }
     /// <summary>Gets whether the "acceleration" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasAcceleration {
-      get { return outputCase_ == OutputOneofCase.Acceleration; }
+      get { return targetCase_ == TargetOneofCase.Acceleration; }
     }
     /// <summary> Clears the value of the oneof if it's currently set to "acceleration" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearAcceleration() {
       if (HasAcceleration) {
-        ClearOutput();
+        ClearTarget();
       }
     }
 
@@ -291,30 +291,30 @@ namespace CLIPPY.Control {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Active {
-      get { return HasActive ? (bool) output_ : false; }
+      get { return HasActive ? (bool) target_ : false; }
       set {
-        output_ = value;
-        outputCase_ = OutputOneofCase.Active;
+        target_ = value;
+        targetCase_ = TargetOneofCase.Active;
       }
     }
     /// <summary>Gets whether the "active" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasActive {
-      get { return outputCase_ == OutputOneofCase.Active; }
+      get { return targetCase_ == TargetOneofCase.Active; }
     }
     /// <summary> Clears the value of the oneof if it's currently set to "active" </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearActive() {
       if (HasActive) {
-        ClearOutput();
+        ClearTarget();
       }
     }
 
-    private object output_;
-    /// <summary>Enum of possible cases for the "output" oneof.</summary>
-    public enum OutputOneofCase {
+    private object target_;
+    /// <summary>Enum of possible cases for the "target" oneof.</summary>
+    public enum TargetOneofCase {
       None = 0,
       Voltage = 7,
       Current = 8,
@@ -323,18 +323,18 @@ namespace CLIPPY.Control {
       Acceleration = 11,
       Active = 12,
     }
-    private OutputOneofCase outputCase_ = OutputOneofCase.None;
+    private TargetOneofCase targetCase_ = TargetOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public OutputOneofCase OutputCase {
-      get { return outputCase_; }
+    public TargetOneofCase TargetCase {
+      get { return targetCase_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearOutput() {
-      outputCase_ = OutputOneofCase.None;
-      output_ = null;
+    public void ClearTarget() {
+      targetCase_ = TargetOneofCase.None;
+      target_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -361,7 +361,7 @@ namespace CLIPPY.Control {
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Velocity, other.Velocity)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Acceleration, other.Acceleration)) return false;
       if (Active != other.Active) return false;
-      if (OutputCase != other.OutputCase) return false;
+      if (TargetCase != other.TargetCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -378,7 +378,7 @@ namespace CLIPPY.Control {
       if (HasVelocity) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Velocity);
       if (HasAcceleration) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Acceleration);
       if (HasActive) hash ^= Active.GetHashCode();
-      hash ^= (int) outputCase_;
+      hash ^= (int) targetCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -540,23 +540,23 @@ namespace CLIPPY.Control {
       if (other.Urgency != global::CLIPPY.Control.Urgency.Unassigned) {
         Urgency = other.Urgency;
       }
-      switch (other.OutputCase) {
-        case OutputOneofCase.Voltage:
+      switch (other.TargetCase) {
+        case TargetOneofCase.Voltage:
           Voltage = other.Voltage;
           break;
-        case OutputOneofCase.Current:
+        case TargetOneofCase.Current:
           Current = other.Current;
           break;
-        case OutputOneofCase.Position:
+        case TargetOneofCase.Position:
           Position = other.Position;
           break;
-        case OutputOneofCase.Velocity:
+        case TargetOneofCase.Velocity:
           Velocity = other.Velocity;
           break;
-        case OutputOneofCase.Acceleration:
+        case TargetOneofCase.Acceleration:
           Acceleration = other.Acceleration;
           break;
-        case OutputOneofCase.Active:
+        case TargetOneofCase.Active:
           Active = other.Active;
           break;
       }
@@ -726,7 +726,7 @@ namespace CLIPPY.Control {
     public const int TimestampFieldNumber = 1;
     private global::Google.Protobuf.WellKnownTypes.Timestamp timestamp_;
     /// <summary>
-    /// Timestamp at which this collection of ControlTargets should be processed
+    /// Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
     /// Not the timestamp at which they should all take effect---those are specified by each individual target
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

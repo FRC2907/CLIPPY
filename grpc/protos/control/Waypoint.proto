@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package CLIPPY.control;
 
-import "control/Urgency.proto";
+import "Urgency.proto";
 import "google/protobuf/timestamp.proto";
 
 enum WaypointType {

@@ -23,7 +23,6 @@
 
 #import "MotionPlannerServer.pbobjc.h"
 #import "Waypoint.pbobjc.h"
-#import "ControlGains.pbobjc.h"
 #import "ControlTarget.pbobjc.h"
 // @@protoc_insertion_point(imports)
 

@@ -32,19 +32,27 @@ const ::uint32_t TableStruct_SystemTuner_2eproto::offsets[1] = {};
 static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
 static constexpr ::_pb::Message* const* file_default_instances = nullptr;
 const char descriptor_table_protodef_SystemTuner_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\021SystemTuner.proto\022\016CLIPPY.controlb\006pro"
-    "to3"
+    "\n\021SystemTuner.proto\022\016CLIPPY.control\032\033goo"
+    "gle/protobuf/empty.proto\032\021SystemState.pr"
+    "oto2W\n\013SystemTuner\022H\n\017IngestStateData\022\033."
+    "CLIPPY.control.SystemState\032\026.google.prot"
+    "obuf.Empty\"\000b\006proto3"
+};
+static const ::_pbi::DescriptorTable* const descriptor_table_SystemTuner_2eproto_deps[2] =
+    {
+        &::descriptor_table_SystemState_2eproto,
+        &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
 };
 static ::absl::once_flag descriptor_table_SystemTuner_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_SystemTuner_2eproto = {
     false,
     false,
-    43,
+    180,
     descriptor_table_protodef_SystemTuner_2eproto,
     "SystemTuner.proto",
     &descriptor_table_SystemTuner_2eproto_once,
-    nullptr,
-    0,
+    descriptor_table_SystemTuner_2eproto_deps,
+    2,
     0,
     schemas,
     file_default_instances,

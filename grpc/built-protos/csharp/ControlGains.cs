@@ -24,15 +24,15 @@ namespace CLIPPY.Control {
     static ControlGainsReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJDb250cm9sR2FpbnMucHJvdG8SDkNMSVBQWS5jb250cm9sIpEBCgxDb250",
-            "cm9sR2FpbnMSEQoJc3lzdGVtX2lkGAEgASgJEgoKAmtQGAcgASgBEgoKAmtJ",
-            "GAggASgBEgoKAmtEGAkgASgBEhEKCWtGX3N0YXRpYxgKIAEoARIRCglrRl9s",
-            "aW5lYXIYCyABKAESEQoJa0Zfc3F1YXJlGAwgASgBEhEKCWtGX2Nvc2luZRgN",
-            "IAEoAWIGcHJvdG8z"));
+            "ChJDb250cm9sR2FpbnMucHJvdG8SDkNMSVBQWS5jb250cm9sIp0BCgxDb250",
+            "cm9sR2FpbnMSEQoJc3lzdGVtX2lkGAEgASgJEgoKAmtQGAIgASgBEgoKAmtJ",
+            "GAMgASgBEgoKAmtEGAQgASgBEhEKCWtGX3N0YXRpYxgFIAEoARIRCglrRl9s",
+            "aW5lYXIYBiABKAESEQoJa0Zfc3F1YXJlGAcgASgBEhEKCWtGX2Nvc2luZRgI",
+            "IAEoARIKCgJrVRgJIAEoAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::CLIPPY.Control.ControlGains), global::CLIPPY.Control.ControlGains.Parser, new[]{ "SystemId", "KP", "KI", "KD", "KFStatic", "KFLinear", "KFSquare", "KFCosine" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::CLIPPY.Control.ControlGains), global::CLIPPY.Control.ControlGains.Parser, new[]{ "SystemId", "KP", "KI", "KD", "KFStatic", "KFLinear", "KFSquare", "KFCosine", "KU" }, null, null, null, null)
           }));
     }
     #endregion
@@ -81,6 +81,7 @@ namespace CLIPPY.Control {
       kFLinear_ = other.kFLinear_;
       kFSquare_ = other.kFSquare_;
       kFCosine_ = other.kFCosine_;
+      kU_ = other.kU_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -106,7 +107,7 @@ namespace CLIPPY.Control {
     }
 
     /// <summary>Field number for the "kP" field.</summary>
-    public const int KPFieldNumber = 7;
+    public const int KPFieldNumber = 2;
     private double kP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,7 +119,7 @@ namespace CLIPPY.Control {
     }
 
     /// <summary>Field number for the "kI" field.</summary>
-    public const int KIFieldNumber = 8;
+    public const int KIFieldNumber = 3;
     private double kI_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -130,7 +131,7 @@ namespace CLIPPY.Control {
     }
 
     /// <summary>Field number for the "kD" field.</summary>
-    public const int KDFieldNumber = 9;
+    public const int KDFieldNumber = 4;
     private double kD_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -142,7 +143,7 @@ namespace CLIPPY.Control {
     }
 
     /// <summary>Field number for the "kF_static" field.</summary>
-    public const int KFStaticFieldNumber = 10;
+    public const int KFStaticFieldNumber = 5;
     private double kFStatic_;
     /// <summary>
     /// kS for vel ctl
@@ -157,7 +158,7 @@ namespace CLIPPY.Control {
     }
 
     /// <summary>Field number for the "kF_linear" field.</summary>
-    public const int KFLinearFieldNumber = 11;
+    public const int KFLinearFieldNumber = 6;
     private double kFLinear_;
     /// <summary>
     /// kV for vel ctl
@@ -172,7 +173,7 @@ namespace CLIPPY.Control {
     }
 
     /// <summary>Field number for the "kF_square" field.</summary>
-    public const int KFSquareFieldNumber = 12;
+    public const int KFSquareFieldNumber = 7;
     private double kFSquare_;
     /// <summary>
     /// kA for vel ctl
@@ -187,7 +188,7 @@ namespace CLIPPY.Control {
     }
 
     /// <summary>Field number for the "kF_cosine" field.</summary>
-    public const int KFCosineFieldNumber = 13;
+    public const int KFCosineFieldNumber = 8;
     private double kFCosine_;
     /// <summary>
     /// kG for arm pos ctl
@@ -198,6 +199,21 @@ namespace CLIPPY.Control {
       get { return kFCosine_; }
       set {
         kFCosine_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "kU" field.</summary>
+    public const int KUFieldNumber = 9;
+    private double kU_;
+    /// <summary>
+    /// "ultimate gain" for ziegler-nichols
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double KU {
+      get { return kU_; }
+      set {
+        kU_ = value;
       }
     }
 
@@ -224,6 +240,7 @@ namespace CLIPPY.Control {
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(KFLinear, other.KFLinear)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(KFSquare, other.KFSquare)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(KFCosine, other.KFCosine)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(KU, other.KU)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -239,6 +256,7 @@ namespace CLIPPY.Control {
       if (KFLinear != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(KFLinear);
       if (KFSquare != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(KFSquare);
       if (KFCosine != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(KFCosine);
+      if (KU != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(KU);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -262,32 +280,36 @@ namespace CLIPPY.Control {
         output.WriteString(SystemId);
       }
       if (KP != 0D) {
-        output.WriteRawTag(57);
+        output.WriteRawTag(17);
         output.WriteDouble(KP);
       }
       if (KI != 0D) {
-        output.WriteRawTag(65);
+        output.WriteRawTag(25);
         output.WriteDouble(KI);
       }
       if (KD != 0D) {
-        output.WriteRawTag(73);
+        output.WriteRawTag(33);
         output.WriteDouble(KD);
       }
       if (KFStatic != 0D) {
-        output.WriteRawTag(81);
+        output.WriteRawTag(41);
         output.WriteDouble(KFStatic);
       }
       if (KFLinear != 0D) {
-        output.WriteRawTag(89);
+        output.WriteRawTag(49);
         output.WriteDouble(KFLinear);
       }
       if (KFSquare != 0D) {
-        output.WriteRawTag(97);
+        output.WriteRawTag(57);
         output.WriteDouble(KFSquare);
       }
       if (KFCosine != 0D) {
-        output.WriteRawTag(105);
+        output.WriteRawTag(65);
         output.WriteDouble(KFCosine);
+      }
+      if (KU != 0D) {
+        output.WriteRawTag(73);
+        output.WriteDouble(KU);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -304,32 +326,36 @@ namespace CLIPPY.Control {
         output.WriteString(SystemId);
       }
       if (KP != 0D) {
-        output.WriteRawTag(57);
+        output.WriteRawTag(17);
         output.WriteDouble(KP);
       }
       if (KI != 0D) {
-        output.WriteRawTag(65);
+        output.WriteRawTag(25);
         output.WriteDouble(KI);
       }
       if (KD != 0D) {
-        output.WriteRawTag(73);
+        output.WriteRawTag(33);
         output.WriteDouble(KD);
       }
       if (KFStatic != 0D) {
-        output.WriteRawTag(81);
+        output.WriteRawTag(41);
         output.WriteDouble(KFStatic);
       }
       if (KFLinear != 0D) {
-        output.WriteRawTag(89);
+        output.WriteRawTag(49);
         output.WriteDouble(KFLinear);
       }
       if (KFSquare != 0D) {
-        output.WriteRawTag(97);
+        output.WriteRawTag(57);
         output.WriteDouble(KFSquare);
       }
       if (KFCosine != 0D) {
-        output.WriteRawTag(105);
+        output.WriteRawTag(65);
         output.WriteDouble(KFCosine);
+      }
+      if (KU != 0D) {
+        output.WriteRawTag(73);
+        output.WriteDouble(KU);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -363,6 +389,9 @@ namespace CLIPPY.Control {
         size += 1 + 8;
       }
       if (KFCosine != 0D) {
+        size += 1 + 8;
+      }
+      if (KU != 0D) {
         size += 1 + 8;
       }
       if (_unknownFields != null) {
@@ -401,6 +430,9 @@ namespace CLIPPY.Control {
       if (other.KFCosine != 0D) {
         KFCosine = other.KFCosine;
       }
+      if (other.KU != 0D) {
+        KU = other.KU;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -420,32 +452,36 @@ namespace CLIPPY.Control {
             SystemId = input.ReadString();
             break;
           }
-          case 57: {
+          case 17: {
             KP = input.ReadDouble();
             break;
           }
-          case 65: {
+          case 25: {
             KI = input.ReadDouble();
             break;
           }
-          case 73: {
+          case 33: {
             KD = input.ReadDouble();
             break;
           }
-          case 81: {
+          case 41: {
             KFStatic = input.ReadDouble();
             break;
           }
-          case 89: {
+          case 49: {
             KFLinear = input.ReadDouble();
             break;
           }
-          case 97: {
+          case 57: {
             KFSquare = input.ReadDouble();
             break;
           }
-          case 105: {
+          case 65: {
             KFCosine = input.ReadDouble();
+            break;
+          }
+          case 73: {
+            KU = input.ReadDouble();
             break;
           }
         }
@@ -467,32 +503,36 @@ namespace CLIPPY.Control {
             SystemId = input.ReadString();
             break;
           }
-          case 57: {
+          case 17: {
             KP = input.ReadDouble();
             break;
           }
-          case 65: {
+          case 25: {
             KI = input.ReadDouble();
             break;
           }
-          case 73: {
+          case 33: {
             KD = input.ReadDouble();
             break;
           }
-          case 81: {
+          case 41: {
             KFStatic = input.ReadDouble();
             break;
           }
-          case 89: {
+          case 49: {
             KFLinear = input.ReadDouble();
             break;
           }
-          case 97: {
+          case 57: {
             KFSquare = input.ReadDouble();
             break;
           }
-          case 105: {
+          case 65: {
             KFCosine = input.ReadDouble();
+            break;
+          }
+          case 73: {
+            KU = input.ReadDouble();
             break;
           }
         }

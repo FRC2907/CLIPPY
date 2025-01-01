@@ -4,8 +4,11 @@
 
 require 'google/protobuf'
 
+require 'google/protobuf/empty_pb'
+require 'SystemState_pb'
 
-descriptor_data = "\n\x11SystemTuner.proto\x12\x0e\x43LIPPY.controlb\x06proto3"
+
+descriptor_data = "\n\x11SystemTuner.proto\x12\x0e\x43LIPPY.control\x1a\x1bgoogle/protobuf/empty.proto\x1a\x11SystemState.proto2W\n\x0bSystemTuner\x12H\n\x0fIngestStateData\x12\x1b.CLIPPY.control.SystemState\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

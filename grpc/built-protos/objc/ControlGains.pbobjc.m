@@ -61,6 +61,7 @@ static GPBFileDescription ControlGainsRoot_FileDescription = {
 @dynamic kFLinear;
 @dynamic kFSquare;
 @dynamic kFCosine;
+@dynamic kU;
 
 typedef struct ControlGains__storage_ {
   uint32_t _has_storage_[1];
@@ -72,6 +73,7 @@ typedef struct ControlGains__storage_ {
   double kFLinear;
   double kFSquare;
   double kFCosine;
+  double kU;
 } ControlGains__storage_;
 
 // This method is threadsafe because it is initially called
@@ -153,6 +155,15 @@ typedef struct ControlGains__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom | GPBFieldClearHasIvarOnZero),
         .dataType = GPBDataTypeDouble,
       },
+      {
+        .name = "kU",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ControlGains_FieldNumber_KU,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(ControlGains__storage_, kU),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeDouble,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:GPBObjCClass(ControlGains)
@@ -164,7 +175,7 @@ typedef struct ControlGains__storage_ {
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
     #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
       static const char *extraTextFormatInfo =
-        "\007\007\002\000\010\002\000\t\002\000\n\002\246\000\013\002\246\000\014\002\246\000\r\002\246\000";
+        "\010\002\002\000\003\002\000\004\002\000\005\002\246\000\006\002\246\000\007\002\246\000\010\002\246\000\t\002\000";
       [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
     #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG

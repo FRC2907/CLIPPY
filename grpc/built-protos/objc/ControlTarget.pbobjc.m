@@ -57,7 +57,7 @@ static GPBFileDescription ControlTargetRoot_FileDescription = {
 
 @implementation ControlTarget
 
-@dynamic outputOneOfCase;
+@dynamic targetOneOfCase;
 @dynamic hasTimestamp, timestamp;
 @dynamic systemId;
 @dynamic urgency;
@@ -178,7 +178,7 @@ typedef struct ControlTarget__storage_ {
                                    storageSize:sizeof(ControlTarget__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown | GPBDescriptorInitializationFlag_ClosedEnumSupportKnown)];
     static const char *oneofs[] = {
-      "output",
+      "target",
     };
     [localDescriptor setupOneofs:oneofs
                            count:(uint32_t)(sizeof(oneofs) / sizeof(char*))
@@ -205,7 +205,7 @@ void SetControlTarget_Urgency_RawValue(ControlTarget *message, int32_t value) {
   GPBSetMessageRawEnumField(message, field, value);
 }
 
-void ControlTarget_ClearOutputOneOfCase(ControlTarget *message) {
+void ControlTarget_ClearTargetOneOfCase(ControlTarget *message) {
   GPBDescriptor *descriptor = [ControlTarget descriptor];
   GPBOneofDescriptor *oneof = [descriptor.oneofs objectAtIndex:0];
   GPBClearOneof(message, oneof);

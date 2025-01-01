@@ -142,7 +142,7 @@ public final class ControlTargetOuterClass {
      */
     boolean getActive();
 
-    CLIPPY.control.ControlTargetOuterClass.ControlTarget.OutputCase getOutputCase();
+    CLIPPY.control.ControlTargetOuterClass.ControlTarget.TargetCase getTargetCase();
   }
   /**
    * Protobuf type {@code CLIPPY.control.ControlTarget}
@@ -182,10 +182,10 @@ public final class ControlTargetOuterClass {
     }
 
     private int bitField0_;
-    private int outputCase_ = 0;
+    private int targetCase_ = 0;
     @SuppressWarnings("serial")
-    private java.lang.Object output_;
-    public enum OutputCase
+    private java.lang.Object target_;
+    public enum TargetCase
         implements com.google.protobuf.Internal.EnumLite,
             com.google.protobuf.AbstractMessage.InternalOneOfEnum {
       VOLTAGE(7),
@@ -194,9 +194,9 @@ public final class ControlTargetOuterClass {
       VELOCITY(10),
       ACCELERATION(11),
       ACTIVE(12),
-      OUTPUT_NOT_SET(0);
+      TARGET_NOT_SET(0);
       private final int value;
-      private OutputCase(int value) {
+      private TargetCase(int value) {
         this.value = value;
       }
       /**
@@ -205,11 +205,11 @@ public final class ControlTargetOuterClass {
        * @deprecated Use {@link #forNumber(int)} instead.
        */
       @java.lang.Deprecated
-      public static OutputCase valueOf(int value) {
+      public static TargetCase valueOf(int value) {
         return forNumber(value);
       }
 
-      public static OutputCase forNumber(int value) {
+      public static TargetCase forNumber(int value) {
         switch (value) {
           case 7: return VOLTAGE;
           case 8: return CURRENT;
@@ -217,7 +217,7 @@ public final class ControlTargetOuterClass {
           case 10: return VELOCITY;
           case 11: return ACCELERATION;
           case 12: return ACTIVE;
-          case 0: return OUTPUT_NOT_SET;
+          case 0: return TARGET_NOT_SET;
           default: return null;
         }
       }
@@ -226,10 +226,10 @@ public final class ControlTargetOuterClass {
       }
     };
 
-    public OutputCase
-    getOutputCase() {
-      return OutputCase.forNumber(
-          outputCase_);
+    public TargetCase
+    getTargetCase() {
+      return TargetCase.forNumber(
+          targetCase_);
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 1;
@@ -334,7 +334,7 @@ public final class ControlTargetOuterClass {
      */
     @java.lang.Override
     public boolean hasVoltage() {
-      return outputCase_ == 7;
+      return targetCase_ == 7;
     }
     /**
      * <code>double voltage = 7;</code>
@@ -342,8 +342,8 @@ public final class ControlTargetOuterClass {
      */
     @java.lang.Override
     public double getVoltage() {
-      if (outputCase_ == 7) {
-        return (java.lang.Double) output_;
+      if (targetCase_ == 7) {
+        return (java.lang.Double) target_;
       }
       return 0D;
     }
@@ -355,7 +355,7 @@ public final class ControlTargetOuterClass {
      */
     @java.lang.Override
     public boolean hasCurrent() {
-      return outputCase_ == 8;
+      return targetCase_ == 8;
     }
     /**
      * <code>double current = 8;</code>
@@ -363,8 +363,8 @@ public final class ControlTargetOuterClass {
      */
     @java.lang.Override
     public double getCurrent() {
-      if (outputCase_ == 8) {
-        return (java.lang.Double) output_;
+      if (targetCase_ == 8) {
+        return (java.lang.Double) target_;
       }
       return 0D;
     }
@@ -376,7 +376,7 @@ public final class ControlTargetOuterClass {
      */
     @java.lang.Override
     public boolean hasPosition() {
-      return outputCase_ == 9;
+      return targetCase_ == 9;
     }
     /**
      * <code>double position = 9;</code>
@@ -384,8 +384,8 @@ public final class ControlTargetOuterClass {
      */
     @java.lang.Override
     public double getPosition() {
-      if (outputCase_ == 9) {
-        return (java.lang.Double) output_;
+      if (targetCase_ == 9) {
+        return (java.lang.Double) target_;
       }
       return 0D;
     }
@@ -397,7 +397,7 @@ public final class ControlTargetOuterClass {
      */
     @java.lang.Override
     public boolean hasVelocity() {
-      return outputCase_ == 10;
+      return targetCase_ == 10;
     }
     /**
      * <code>double velocity = 10;</code>
@@ -405,8 +405,8 @@ public final class ControlTargetOuterClass {
      */
     @java.lang.Override
     public double getVelocity() {
-      if (outputCase_ == 10) {
-        return (java.lang.Double) output_;
+      if (targetCase_ == 10) {
+        return (java.lang.Double) target_;
       }
       return 0D;
     }
@@ -418,7 +418,7 @@ public final class ControlTargetOuterClass {
      */
     @java.lang.Override
     public boolean hasAcceleration() {
-      return outputCase_ == 11;
+      return targetCase_ == 11;
     }
     /**
      * <code>double acceleration = 11;</code>
@@ -426,8 +426,8 @@ public final class ControlTargetOuterClass {
      */
     @java.lang.Override
     public double getAcceleration() {
-      if (outputCase_ == 11) {
-        return (java.lang.Double) output_;
+      if (targetCase_ == 11) {
+        return (java.lang.Double) target_;
       }
       return 0D;
     }
@@ -443,7 +443,7 @@ public final class ControlTargetOuterClass {
      */
     @java.lang.Override
     public boolean hasActive() {
-      return outputCase_ == 12;
+      return targetCase_ == 12;
     }
     /**
      * <pre>
@@ -455,8 +455,8 @@ public final class ControlTargetOuterClass {
      */
     @java.lang.Override
     public boolean getActive() {
-      if (outputCase_ == 12) {
-        return (java.lang.Boolean) output_;
+      if (targetCase_ == 12) {
+        return (java.lang.Boolean) target_;
       }
       return false;
     }
@@ -484,29 +484,29 @@ public final class ControlTargetOuterClass {
       if (urgency_ != CLIPPY.control.UrgencyOuterClass.Urgency.UNASSIGNED.getNumber()) {
         output.writeEnum(3, urgency_);
       }
-      if (outputCase_ == 7) {
+      if (targetCase_ == 7) {
         output.writeDouble(
-            7, (double)((java.lang.Double) output_));
+            7, (double)((java.lang.Double) target_));
       }
-      if (outputCase_ == 8) {
+      if (targetCase_ == 8) {
         output.writeDouble(
-            8, (double)((java.lang.Double) output_));
+            8, (double)((java.lang.Double) target_));
       }
-      if (outputCase_ == 9) {
+      if (targetCase_ == 9) {
         output.writeDouble(
-            9, (double)((java.lang.Double) output_));
+            9, (double)((java.lang.Double) target_));
       }
-      if (outputCase_ == 10) {
+      if (targetCase_ == 10) {
         output.writeDouble(
-            10, (double)((java.lang.Double) output_));
+            10, (double)((java.lang.Double) target_));
       }
-      if (outputCase_ == 11) {
+      if (targetCase_ == 11) {
         output.writeDouble(
-            11, (double)((java.lang.Double) output_));
+            11, (double)((java.lang.Double) target_));
       }
-      if (outputCase_ == 12) {
+      if (targetCase_ == 12) {
         output.writeBool(
-            12, (boolean)((java.lang.Boolean) output_));
+            12, (boolean)((java.lang.Boolean) target_));
       }
       getUnknownFields().writeTo(output);
     }
@@ -528,35 +528,35 @@ public final class ControlTargetOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, urgency_);
       }
-      if (outputCase_ == 7) {
+      if (targetCase_ == 7) {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(
-              7, (double)((java.lang.Double) output_));
+              7, (double)((java.lang.Double) target_));
       }
-      if (outputCase_ == 8) {
+      if (targetCase_ == 8) {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(
-              8, (double)((java.lang.Double) output_));
+              8, (double)((java.lang.Double) target_));
       }
-      if (outputCase_ == 9) {
+      if (targetCase_ == 9) {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(
-              9, (double)((java.lang.Double) output_));
+              9, (double)((java.lang.Double) target_));
       }
-      if (outputCase_ == 10) {
+      if (targetCase_ == 10) {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(
-              10, (double)((java.lang.Double) output_));
+              10, (double)((java.lang.Double) target_));
       }
-      if (outputCase_ == 11) {
+      if (targetCase_ == 11) {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(
-              11, (double)((java.lang.Double) output_));
+              11, (double)((java.lang.Double) target_));
       }
-      if (outputCase_ == 12) {
+      if (targetCase_ == 12) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(
-              12, (boolean)((java.lang.Boolean) output_));
+              12, (boolean)((java.lang.Boolean) target_));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -581,8 +581,8 @@ public final class ControlTargetOuterClass {
       if (!getSystemId()
           .equals(other.getSystemId())) return false;
       if (urgency_ != other.urgency_) return false;
-      if (!getOutputCase().equals(other.getOutputCase())) return false;
-      switch (outputCase_) {
+      if (!getTargetCase().equals(other.getTargetCase())) return false;
+      switch (targetCase_) {
         case 7:
           if (java.lang.Double.doubleToLongBits(getVoltage())
               != java.lang.Double.doubleToLongBits(
@@ -634,7 +634,7 @@ public final class ControlTargetOuterClass {
       hash = (53 * hash) + getSystemId().hashCode();
       hash = (37 * hash) + URGENCY_FIELD_NUMBER;
       hash = (53 * hash) + urgency_;
-      switch (outputCase_) {
+      switch (targetCase_) {
         case 7:
           hash = (37 * hash) + VOLTAGE_FIELD_NUMBER;
           hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
@@ -812,8 +812,8 @@ public final class ControlTargetOuterClass {
         }
         systemId_ = "";
         urgency_ = 0;
-        outputCase_ = 0;
-        output_ = null;
+        targetCase_ = 0;
+        target_ = null;
         return this;
       }
 
@@ -865,8 +865,8 @@ public final class ControlTargetOuterClass {
       }
 
       private void buildPartialOneofs(CLIPPY.control.ControlTargetOuterClass.ControlTarget result) {
-        result.outputCase_ = outputCase_;
-        result.output_ = this.output_;
+        result.targetCase_ = targetCase_;
+        result.target_ = this.target_;
       }
 
       @java.lang.Override
@@ -924,7 +924,7 @@ public final class ControlTargetOuterClass {
         if (other.urgency_ != 0) {
           setUrgencyValue(other.getUrgencyValue());
         }
-        switch (other.getOutputCase()) {
+        switch (other.getTargetCase()) {
           case VOLTAGE: {
             setVoltage(other.getVoltage());
             break;
@@ -949,7 +949,7 @@ public final class ControlTargetOuterClass {
             setActive(other.getActive());
             break;
           }
-          case OUTPUT_NOT_SET: {
+          case TARGET_NOT_SET: {
             break;
           }
         }
@@ -997,33 +997,33 @@ public final class ControlTargetOuterClass {
                 break;
               } // case 24
               case 57: {
-                output_ = input.readDouble();
-                outputCase_ = 7;
+                target_ = input.readDouble();
+                targetCase_ = 7;
                 break;
               } // case 57
               case 65: {
-                output_ = input.readDouble();
-                outputCase_ = 8;
+                target_ = input.readDouble();
+                targetCase_ = 8;
                 break;
               } // case 65
               case 73: {
-                output_ = input.readDouble();
-                outputCase_ = 9;
+                target_ = input.readDouble();
+                targetCase_ = 9;
                 break;
               } // case 73
               case 81: {
-                output_ = input.readDouble();
-                outputCase_ = 10;
+                target_ = input.readDouble();
+                targetCase_ = 10;
                 break;
               } // case 81
               case 89: {
-                output_ = input.readDouble();
-                outputCase_ = 11;
+                target_ = input.readDouble();
+                targetCase_ = 11;
                 break;
               } // case 89
               case 96: {
-                output_ = input.readBool();
-                outputCase_ = 12;
+                target_ = input.readBool();
+                targetCase_ = 12;
                 break;
               } // case 96
               default: {
@@ -1041,17 +1041,17 @@ public final class ControlTargetOuterClass {
         } // finally
         return this;
       }
-      private int outputCase_ = 0;
-      private java.lang.Object output_;
-      public OutputCase
-          getOutputCase() {
-        return OutputCase.forNumber(
-            outputCase_);
+      private int targetCase_ = 0;
+      private java.lang.Object target_;
+      public TargetCase
+          getTargetCase() {
+        return TargetCase.forNumber(
+            targetCase_);
       }
 
-      public Builder clearOutput() {
-        outputCase_ = 0;
-        output_ = null;
+      public Builder clearTarget() {
+        targetCase_ = 0;
+        target_ = null;
         onChanged();
         return this;
       }
@@ -1345,15 +1345,15 @@ public final class ControlTargetOuterClass {
        * @return Whether the voltage field is set.
        */
       public boolean hasVoltage() {
-        return outputCase_ == 7;
+        return targetCase_ == 7;
       }
       /**
        * <code>double voltage = 7;</code>
        * @return The voltage.
        */
       public double getVoltage() {
-        if (outputCase_ == 7) {
-          return (java.lang.Double) output_;
+        if (targetCase_ == 7) {
+          return (java.lang.Double) target_;
         }
         return 0D;
       }
@@ -1364,8 +1364,8 @@ public final class ControlTargetOuterClass {
        */
       public Builder setVoltage(double value) {
 
-        outputCase_ = 7;
-        output_ = value;
+        targetCase_ = 7;
+        target_ = value;
         onChanged();
         return this;
       }
@@ -1374,9 +1374,9 @@ public final class ControlTargetOuterClass {
        * @return This builder for chaining.
        */
       public Builder clearVoltage() {
-        if (outputCase_ == 7) {
-          outputCase_ = 0;
-          output_ = null;
+        if (targetCase_ == 7) {
+          targetCase_ = 0;
+          target_ = null;
           onChanged();
         }
         return this;
@@ -1387,15 +1387,15 @@ public final class ControlTargetOuterClass {
        * @return Whether the current field is set.
        */
       public boolean hasCurrent() {
-        return outputCase_ == 8;
+        return targetCase_ == 8;
       }
       /**
        * <code>double current = 8;</code>
        * @return The current.
        */
       public double getCurrent() {
-        if (outputCase_ == 8) {
-          return (java.lang.Double) output_;
+        if (targetCase_ == 8) {
+          return (java.lang.Double) target_;
         }
         return 0D;
       }
@@ -1406,8 +1406,8 @@ public final class ControlTargetOuterClass {
        */
       public Builder setCurrent(double value) {
 
-        outputCase_ = 8;
-        output_ = value;
+        targetCase_ = 8;
+        target_ = value;
         onChanged();
         return this;
       }
@@ -1416,9 +1416,9 @@ public final class ControlTargetOuterClass {
        * @return This builder for chaining.
        */
       public Builder clearCurrent() {
-        if (outputCase_ == 8) {
-          outputCase_ = 0;
-          output_ = null;
+        if (targetCase_ == 8) {
+          targetCase_ = 0;
+          target_ = null;
           onChanged();
         }
         return this;
@@ -1429,15 +1429,15 @@ public final class ControlTargetOuterClass {
        * @return Whether the position field is set.
        */
       public boolean hasPosition() {
-        return outputCase_ == 9;
+        return targetCase_ == 9;
       }
       /**
        * <code>double position = 9;</code>
        * @return The position.
        */
       public double getPosition() {
-        if (outputCase_ == 9) {
-          return (java.lang.Double) output_;
+        if (targetCase_ == 9) {
+          return (java.lang.Double) target_;
         }
         return 0D;
       }
@@ -1448,8 +1448,8 @@ public final class ControlTargetOuterClass {
        */
       public Builder setPosition(double value) {
 
-        outputCase_ = 9;
-        output_ = value;
+        targetCase_ = 9;
+        target_ = value;
         onChanged();
         return this;
       }
@@ -1458,9 +1458,9 @@ public final class ControlTargetOuterClass {
        * @return This builder for chaining.
        */
       public Builder clearPosition() {
-        if (outputCase_ == 9) {
-          outputCase_ = 0;
-          output_ = null;
+        if (targetCase_ == 9) {
+          targetCase_ = 0;
+          target_ = null;
           onChanged();
         }
         return this;
@@ -1471,15 +1471,15 @@ public final class ControlTargetOuterClass {
        * @return Whether the velocity field is set.
        */
       public boolean hasVelocity() {
-        return outputCase_ == 10;
+        return targetCase_ == 10;
       }
       /**
        * <code>double velocity = 10;</code>
        * @return The velocity.
        */
       public double getVelocity() {
-        if (outputCase_ == 10) {
-          return (java.lang.Double) output_;
+        if (targetCase_ == 10) {
+          return (java.lang.Double) target_;
         }
         return 0D;
       }
@@ -1490,8 +1490,8 @@ public final class ControlTargetOuterClass {
        */
       public Builder setVelocity(double value) {
 
-        outputCase_ = 10;
-        output_ = value;
+        targetCase_ = 10;
+        target_ = value;
         onChanged();
         return this;
       }
@@ -1500,9 +1500,9 @@ public final class ControlTargetOuterClass {
        * @return This builder for chaining.
        */
       public Builder clearVelocity() {
-        if (outputCase_ == 10) {
-          outputCase_ = 0;
-          output_ = null;
+        if (targetCase_ == 10) {
+          targetCase_ = 0;
+          target_ = null;
           onChanged();
         }
         return this;
@@ -1513,15 +1513,15 @@ public final class ControlTargetOuterClass {
        * @return Whether the acceleration field is set.
        */
       public boolean hasAcceleration() {
-        return outputCase_ == 11;
+        return targetCase_ == 11;
       }
       /**
        * <code>double acceleration = 11;</code>
        * @return The acceleration.
        */
       public double getAcceleration() {
-        if (outputCase_ == 11) {
-          return (java.lang.Double) output_;
+        if (targetCase_ == 11) {
+          return (java.lang.Double) target_;
         }
         return 0D;
       }
@@ -1532,8 +1532,8 @@ public final class ControlTargetOuterClass {
        */
       public Builder setAcceleration(double value) {
 
-        outputCase_ = 11;
-        output_ = value;
+        targetCase_ = 11;
+        target_ = value;
         onChanged();
         return this;
       }
@@ -1542,9 +1542,9 @@ public final class ControlTargetOuterClass {
        * @return This builder for chaining.
        */
       public Builder clearAcceleration() {
-        if (outputCase_ == 11) {
-          outputCase_ = 0;
-          output_ = null;
+        if (targetCase_ == 11) {
+          targetCase_ = 0;
+          target_ = null;
           onChanged();
         }
         return this;
@@ -1559,7 +1559,7 @@ public final class ControlTargetOuterClass {
        * @return Whether the active field is set.
        */
       public boolean hasActive() {
-        return outputCase_ == 12;
+        return targetCase_ == 12;
       }
       /**
        * <pre>
@@ -1570,8 +1570,8 @@ public final class ControlTargetOuterClass {
        * @return The active.
        */
       public boolean getActive() {
-        if (outputCase_ == 12) {
-          return (java.lang.Boolean) output_;
+        if (targetCase_ == 12) {
+          return (java.lang.Boolean) target_;
         }
         return false;
       }
@@ -1586,8 +1586,8 @@ public final class ControlTargetOuterClass {
        */
       public Builder setActive(boolean value) {
 
-        outputCase_ = 12;
-        output_ = value;
+        targetCase_ = 12;
+        target_ = value;
         onChanged();
         return this;
       }
@@ -1600,9 +1600,9 @@ public final class ControlTargetOuterClass {
        * @return This builder for chaining.
        */
       public Builder clearActive() {
-        if (outputCase_ == 12) {
-          outputCase_ = 0;
-          output_ = null;
+        if (targetCase_ == 12) {
+          targetCase_ = 0;
+          target_ = null;
           onChanged();
         }
         return this;
@@ -1677,7 +1677,7 @@ public final class ControlTargetOuterClass {
 
     /**
      * <pre>
-     * Timestamp at which this collection of ControlTargets should be processed
+     * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
      * Not the timestamp at which they should all take effect---those are specified by each individual target
      * </pre>
      *
@@ -1687,7 +1687,7 @@ public final class ControlTargetOuterClass {
     boolean hasTimestamp();
     /**
      * <pre>
-     * Timestamp at which this collection of ControlTargets should be processed
+     * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
      * Not the timestamp at which they should all take effect---those are specified by each individual target
      * </pre>
      *
@@ -1697,7 +1697,7 @@ public final class ControlTargetOuterClass {
     com.google.protobuf.Timestamp getTimestamp();
     /**
      * <pre>
-     * Timestamp at which this collection of ControlTargets should be processed
+     * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
      * Not the timestamp at which they should all take effect---those are specified by each individual target
      * </pre>
      *
@@ -1782,7 +1782,7 @@ public final class ControlTargetOuterClass {
     private com.google.protobuf.Timestamp timestamp_;
     /**
      * <pre>
-     * Timestamp at which this collection of ControlTargets should be processed
+     * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
      * Not the timestamp at which they should all take effect---those are specified by each individual target
      * </pre>
      *
@@ -1795,7 +1795,7 @@ public final class ControlTargetOuterClass {
     }
     /**
      * <pre>
-     * Timestamp at which this collection of ControlTargets should be processed
+     * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
      * Not the timestamp at which they should all take effect---those are specified by each individual target
      * </pre>
      *
@@ -1808,7 +1808,7 @@ public final class ControlTargetOuterClass {
     }
     /**
      * <pre>
-     * Timestamp at which this collection of ControlTargets should be processed
+     * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
      * Not the timestamp at which they should all take effect---those are specified by each individual target
      * </pre>
      *
@@ -2325,7 +2325,7 @@ public final class ControlTargetOuterClass {
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> timestampBuilder_;
       /**
        * <pre>
-       * Timestamp at which this collection of ControlTargets should be processed
+       * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
        * Not the timestamp at which they should all take effect---those are specified by each individual target
        * </pre>
        *
@@ -2337,7 +2337,7 @@ public final class ControlTargetOuterClass {
       }
       /**
        * <pre>
-       * Timestamp at which this collection of ControlTargets should be processed
+       * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
        * Not the timestamp at which they should all take effect---those are specified by each individual target
        * </pre>
        *
@@ -2353,7 +2353,7 @@ public final class ControlTargetOuterClass {
       }
       /**
        * <pre>
-       * Timestamp at which this collection of ControlTargets should be processed
+       * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
        * Not the timestamp at which they should all take effect---those are specified by each individual target
        * </pre>
        *
@@ -2374,7 +2374,7 @@ public final class ControlTargetOuterClass {
       }
       /**
        * <pre>
-       * Timestamp at which this collection of ControlTargets should be processed
+       * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
        * Not the timestamp at which they should all take effect---those are specified by each individual target
        * </pre>
        *
@@ -2393,7 +2393,7 @@ public final class ControlTargetOuterClass {
       }
       /**
        * <pre>
-       * Timestamp at which this collection of ControlTargets should be processed
+       * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
        * Not the timestamp at which they should all take effect---those are specified by each individual target
        * </pre>
        *
@@ -2419,7 +2419,7 @@ public final class ControlTargetOuterClass {
       }
       /**
        * <pre>
-       * Timestamp at which this collection of ControlTargets should be processed
+       * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
        * Not the timestamp at which they should all take effect---those are specified by each individual target
        * </pre>
        *
@@ -2437,7 +2437,7 @@ public final class ControlTargetOuterClass {
       }
       /**
        * <pre>
-       * Timestamp at which this collection of ControlTargets should be processed
+       * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
        * Not the timestamp at which they should all take effect---those are specified by each individual target
        * </pre>
        *
@@ -2450,7 +2450,7 @@ public final class ControlTargetOuterClass {
       }
       /**
        * <pre>
-       * Timestamp at which this collection of ControlTargets should be processed
+       * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
        * Not the timestamp at which they should all take effect---those are specified by each individual target
        * </pre>
        *
@@ -2466,7 +2466,7 @@ public final class ControlTargetOuterClass {
       }
       /**
        * <pre>
-       * Timestamp at which this collection of ControlTargets should be processed
+       * Timestamp at which this collection of ControlTargets should be processed. Omit for immediate processing
        * Not the timestamp at which they should all take effect---those are specified by each individual target
        * </pre>
        *
@@ -2869,7 +2869,7 @@ public final class ControlTargetOuterClass {
       "rol.Urgency\022\021\n\007voltage\030\007 \001(\001H\000\022\021\n\007curren" +
       "t\030\010 \001(\001H\000\022\022\n\010position\030\t \001(\001H\000\022\022\n\010velocit" +
       "y\030\n \001(\001H\000\022\026\n\014acceleration\030\013 \001(\001H\000\022\020\n\006act" +
-      "ive\030\014 \001(\010H\000B\010\n\006output\"\243\001\n\030MultiSystemCon" +
+      "ive\030\014 \001(\010H\000B\010\n\006target\"\243\001\n\030MultiSystemCon" +
       "trolTarget\022-\n\ttimestamp\030\001 \001(\0132\032.google.p" +
       "rotobuf.Timestamp\022(\n\007urgency\030\002 \001(\0162\027.CLI" +
       "PPY.control.Urgency\022.\n\007targets\030\003 \003(\0132\035.C" +
@@ -2886,7 +2886,7 @@ public final class ControlTargetOuterClass {
     internal_static_CLIPPY_control_ControlTarget_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CLIPPY_control_ControlTarget_descriptor,
-        new java.lang.String[] { "Timestamp", "SystemId", "Urgency", "Voltage", "Current", "Position", "Velocity", "Acceleration", "Active", "Output", });
+        new java.lang.String[] { "Timestamp", "SystemId", "Urgency", "Voltage", "Current", "Position", "Velocity", "Acceleration", "Active", "Target", });
     internal_static_CLIPPY_control_MultiSystemControlTarget_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_CLIPPY_control_MultiSystemControlTarget_fieldAccessorTable = new

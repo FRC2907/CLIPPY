@@ -16,21 +16,22 @@ class ControlGains
         }
         $pool->internalAddGeneratedFile(
             '
-¿
-ControlGains.protoCLIPPY.control"ë
+Ã
+ControlGains.protoCLIPPY.control"ù
 ControlGains
 	system_id (	
 
-kP (
+kP (
 
-kI (
+kI (
 
-kD	 (
-	kF_static
- (
-	kF_linear (
-	kF_square (
-	kF_cosine (bproto3'
+kD (
+	kF_static (
+	kF_linear (
+	kF_square (
+	kF_cosine (
+
+kU	 (bproto3'
         , true);
 
         static::$is_initialized = true;

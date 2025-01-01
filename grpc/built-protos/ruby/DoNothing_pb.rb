@@ -4,11 +4,11 @@
 
 require 'google/protobuf'
 
-require 'Null_pb'
+require 'Nada_pb'
 require 'google/protobuf/empty_pb'
 
 
-descriptor_data = "\n\x0f\x44oNothing.proto\x12\x0b\x43LIPPY.null\x1a\nNull.proto\x1a\x1bgoogle/protobuf/empty.proto2?\n\tDoNothing\x12\x32\n\x03Nop\x12\x11.CLIPPY.null.Null\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3"
+descriptor_data = "\n\x0f\x44oNothing.proto\x12\x0b\x43LIPPY.nada\x1a\nNada.proto\x1a\x1bgoogle/protobuf/empty.proto2?\n\tDoNothing\x12\x32\n\x03Nop\x12\x11.CLIPPY.nada.Nada\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 
@@ -35,6 +35,6 @@ rescue TypeError => e
 end
 
 module CLIPPY
-  module Null
+  module Nada
   end
 end

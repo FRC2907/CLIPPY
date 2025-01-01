@@ -4,7 +4,12 @@
 
 package frc.robot;
 
+import java.io.IOException;
+
 import edu.wpi.first.wpilibj.TimedRobot;
+import io.grpc.Grpc;
+import io.grpc.InsecureServerCredentials;
+import io.grpc.Server;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -18,7 +23,15 @@ public class Robot extends TimedRobot {
    * initialization code.
    */
   @Override
-  public void robotInit() {}
+  public void robotInit() {
+    // https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java
+    Server server = Grpc.newServerBuilderForPort(50051, InsecureServerCredentials.create())
+      .addService(new DoNothingImpl())
+      .build();
+    try {
+      server.start();
+    } catch (IOException e) {System.out.println(e);}
+  }
 
   @Override
   public void robotPeriodic() {}

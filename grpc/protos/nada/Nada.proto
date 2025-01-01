@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+package CLIPPY.nada;
+
+message Nada {}

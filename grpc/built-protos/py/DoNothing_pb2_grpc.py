@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import Null_pb2 as Null__pb2
+import Nada_pb2 as Nada__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 GRPC_GENERATED_VERSION = '1.68.1'
@@ -36,8 +36,8 @@ class DoNothingStub(object):
             channel: A grpc.Channel.
         """
         self.Nop = channel.unary_unary(
-                '/CLIPPY.null.DoNothing/Nop',
-                request_serializer=Null__pb2.Null.SerializeToString,
+                '/CLIPPY.nada.DoNothing/Nop',
+                request_serializer=Nada__pb2.Nada.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
 
@@ -56,14 +56,14 @@ def add_DoNothingServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Nop': grpc.unary_unary_rpc_method_handler(
                     servicer.Nop,
-                    request_deserializer=Null__pb2.Null.FromString,
+                    request_deserializer=Nada__pb2.Nada.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'CLIPPY.null.DoNothing', rpc_method_handlers)
+            'CLIPPY.nada.DoNothing', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('CLIPPY.null.DoNothing', rpc_method_handlers)
+    server.add_registered_method_handlers('CLIPPY.nada.DoNothing', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -84,8 +84,8 @@ class DoNothing(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/CLIPPY.null.DoNothing/Nop',
-            Null__pb2.Null.SerializeToString,
+            '/CLIPPY.nada.DoNothing/Nop',
+            Nada__pb2.Nada.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
             channel_credentials,

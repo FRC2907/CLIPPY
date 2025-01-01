@@ -33,7 +33,7 @@ PROTOBUF_CONSTEXPR ControlTarget::ControlTarget(::_pbi::ConstantInitialized)
       },
       /*decltype(_impl_.timestamp_)*/ nullptr,
       /*decltype(_impl_.urgency_)*/ 0,
-      /*decltype(_impl_.output_)*/ {},
+      /*decltype(_impl_.target_)*/ {},
       /*decltype(_impl_._oneof_case_)*/ {},
     } {}
 struct ControlTargetDefaultTypeInternal {
@@ -91,7 +91,7 @@ const ::uint32_t TableStruct_ControlTarget_2eproto::offsets[] PROTOBUF_SECTION_V
     ::_pbi::kInvalidFieldOffsetTag,
     ::_pbi::kInvalidFieldOffsetTag,
     ::_pbi::kInvalidFieldOffsetTag,
-    PROTOBUF_FIELD_OFFSET(::CLIPPY::control::ControlTarget, _impl_.output_),
+    PROTOBUF_FIELD_OFFSET(::CLIPPY::control::ControlTarget, _impl_.target_),
     0,
     ~0u,
     ~0u,
@@ -136,7 +136,7 @@ const char descriptor_table_protodef_ControlTarget_2eproto[] PROTOBUF_SECTION_VA
     "rol.Urgency\022\021\n\007voltage\030\007 \001(\001H\000\022\021\n\007curren"
     "t\030\010 \001(\001H\000\022\022\n\010position\030\t \001(\001H\000\022\022\n\010velocit"
     "y\030\n \001(\001H\000\022\026\n\014acceleration\030\013 \001(\001H\000\022\020\n\006act"
-    "ive\030\014 \001(\010H\000B\010\n\006output\"\243\001\n\030MultiSystemCon"
+    "ive\030\014 \001(\010H\000B\010\n\006target\"\243\001\n\030MultiSystemCon"
     "trolTarget\022-\n\ttimestamp\030\001 \001(\0132\032.google.p"
     "rotobuf.Timestamp\022(\n\007urgency\030\002 \001(\0162\027.CLI"
     "PPY.control.Urgency\022.\n\007targets\030\003 \003(\0132\035.C"
@@ -221,7 +221,7 @@ ControlTarget::ControlTarget(const ControlTarget& from) : ::google::protobuf::Me
       decltype(_impl_.system_id_){},
       decltype(_impl_.timestamp_){nullptr},
       decltype(_impl_.urgency_){},
-      decltype(_impl_.output_){},
+      decltype(_impl_.target_){},
       /*decltype(_impl_._oneof_case_)*/ {},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -237,8 +237,8 @@ ControlTarget::ControlTarget(const ControlTarget& from) : ::google::protobuf::Me
     _this->_impl_.timestamp_ = new ::google::protobuf::Timestamp(*from._impl_.timestamp_);
   }
   _this->_impl_.urgency_ = from._impl_.urgency_;
-  clear_has_output();
-  switch (from.output_case()) {
+  clear_has_target();
+  switch (from.target_case()) {
     case kVoltage: {
       _this->_internal_set_voltage(from._internal_voltage());
       break;
@@ -263,7 +263,7 @@ ControlTarget::ControlTarget(const ControlTarget& from) : ::google::protobuf::Me
       _this->_internal_set_active(from._internal_active());
       break;
     }
-    case OUTPUT_NOT_SET: {
+    case TARGET_NOT_SET: {
       break;
     }
   }
@@ -278,14 +278,14 @@ inline void ControlTarget::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.system_id_){},
       decltype(_impl_.timestamp_){nullptr},
       decltype(_impl_.urgency_){0},
-      decltype(_impl_.output_){},
+      decltype(_impl_.target_){},
       /*decltype(_impl_._oneof_case_)*/ {},
   };
   _impl_.system_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
         _impl_.system_id_.Set("", GetArenaForAllocation());
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  clear_has_output();
+  clear_has_target();
 }
 ControlTarget::~ControlTarget() {
   // @@protoc_insertion_point(destructor:CLIPPY.control.ControlTarget)
@@ -296,17 +296,17 @@ inline void ControlTarget::SharedDtor() {
   ABSL_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.system_id_.Destroy();
   if (this != internal_default_instance()) delete _impl_.timestamp_;
-  if (has_output()) {
-    clear_output();
+  if (has_target()) {
+    clear_target();
   }
 }
 void ControlTarget::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void ControlTarget::clear_output() {
+void ControlTarget::clear_target() {
 // @@protoc_insertion_point(one_of_clear_start:CLIPPY.control.ControlTarget)
-  switch (output_case()) {
+  switch (target_case()) {
     case kVoltage: {
       // No need to clear
       break;
@@ -331,11 +331,11 @@ void ControlTarget::clear_output() {
       // No need to clear
       break;
     }
-    case OUTPUT_NOT_SET: {
+    case TARGET_NOT_SET: {
       break;
     }
   }
-  _impl_._oneof_case_[0] = OUTPUT_NOT_SET;
+  _impl_._oneof_case_[0] = TARGET_NOT_SET;
 }
 
 
@@ -352,7 +352,7 @@ PROTOBUF_NOINLINE void ControlTarget::Clear() {
     _impl_.timestamp_->Clear();
   }
   _impl_.urgency_ = 0;
-  clear_output();
+  clear_target();
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -402,22 +402,22 @@ const ::_pbi::TcParseTable<2, 9, 1, 54, 2> ControlTarget::_table_ = {
     {PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.urgency_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
     // double voltage = 7;
-    {PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.output_.voltage_), _Internal::kOneofCaseOffset + 0, 0,
+    {PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.target_.voltage_), _Internal::kOneofCaseOffset + 0, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kDouble)},
     // double current = 8;
-    {PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.output_.current_), _Internal::kOneofCaseOffset + 0, 0,
+    {PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.target_.current_), _Internal::kOneofCaseOffset + 0, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kDouble)},
     // double position = 9;
-    {PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.output_.position_), _Internal::kOneofCaseOffset + 0, 0,
+    {PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.target_.position_), _Internal::kOneofCaseOffset + 0, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kDouble)},
     // double velocity = 10;
-    {PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.output_.velocity_), _Internal::kOneofCaseOffset + 0, 0,
+    {PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.target_.velocity_), _Internal::kOneofCaseOffset + 0, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kDouble)},
     // double acceleration = 11;
-    {PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.output_.acceleration_), _Internal::kOneofCaseOffset + 0, 0,
+    {PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.target_.acceleration_), _Internal::kOneofCaseOffset + 0, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kDouble)},
     // bool active = 12;
-    {PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.output_.active_), _Internal::kOneofCaseOffset + 0, 0,
+    {PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.target_.active_), _Internal::kOneofCaseOffset + 0, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
   }}, {{
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
@@ -458,7 +458,7 @@ const ::_pbi::TcParseTable<2, 9, 1, 54, 2> ControlTarget::_table_ = {
         3, this->_internal_urgency(), target);
   }
 
-  switch (output_case()) {
+  switch (target_case()) {
     case kVoltage: {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteDoubleToArray(
@@ -535,7 +535,7 @@ const ::_pbi::TcParseTable<2, 9, 1, 54, 2> ControlTarget::_table_ = {
                   ::_pbi::WireFormatLite::EnumSize(this->_internal_urgency());
   }
 
-  switch (output_case()) {
+  switch (target_case()) {
     // double voltage = 7;
     case kVoltage: {
       total_size += 9;
@@ -566,7 +566,7 @@ const ::_pbi::TcParseTable<2, 9, 1, 54, 2> ControlTarget::_table_ = {
       total_size += 2;
       break;
     }
-    case OUTPUT_NOT_SET: {
+    case TARGET_NOT_SET: {
       break;
     }
   }
@@ -598,7 +598,7 @@ void ControlTarget::MergeImpl(::google::protobuf::Message& to_msg, const ::googl
   if (from._internal_urgency() != 0) {
     _this->_internal_set_urgency(from._internal_urgency());
   }
-  switch (from.output_case()) {
+  switch (from.target_case()) {
     case kVoltage: {
       _this->_internal_set_voltage(from._internal_voltage());
       break;
@@ -623,7 +623,7 @@ void ControlTarget::MergeImpl(::google::protobuf::Message& to_msg, const ::googl
       _this->_internal_set_active(from._internal_active());
       break;
     }
-    case OUTPUT_NOT_SET: {
+    case TARGET_NOT_SET: {
       break;
     }
   }
@@ -655,7 +655,7 @@ void ControlTarget::InternalSwap(ControlTarget* other) {
       - PROTOBUF_FIELD_OFFSET(ControlTarget, _impl_.timestamp_)>(
           reinterpret_cast<char*>(&_impl_.timestamp_),
           reinterpret_cast<char*>(&other->_impl_.timestamp_));
-  swap(_impl_.output_, other->_impl_.output_);
+  swap(_impl_.target_, other->_impl_.target_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 

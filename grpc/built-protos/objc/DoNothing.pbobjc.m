@@ -22,7 +22,7 @@
 #endif
 
 #import "DoNothing.pbobjc.h"
-#import "Null.pbobjc.h"
+#import "Nada.pbobjc.h"
 // @@protoc_insertion_point(imports)
 
 #pragma clang diagnostic push

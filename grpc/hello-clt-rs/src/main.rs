@@ -1,16 +1,16 @@
 pub mod clippy {
-    pub mod null {
-        include!(concat!(env!("OUT_DIR"), "/clippy.null.rs"));
+    pub mod nada {
+        include!(concat!(env!("OUT_DIR"), "/clippy.nada.rs"));
     }
-    tonic::include_proto!("clippy.null");
+    tonic::include_proto!("clippy.nada");
 }
 
-use clippy::null::{Null, do_nothing_client::DoNothingClient};
+use clippy::nada::{Nada, do_nothing_client::DoNothingClient};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Hello, world!");
-    let x = Null::default();
+    let x = Nada::default();
     let mut client = DoNothingClient::connect("http://127.0.0.1:50051").await?;
     client.nop(x).await?;
     println!("done");

@@ -31,7 +31,6 @@
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
 #include "Waypoint.pb.h"
-#include "ControlGains.pb.h"
 #include "ControlTarget.pb.h"
 #include "google/protobuf/empty.pb.h"
 // @@protoc_insertion_point(includes)

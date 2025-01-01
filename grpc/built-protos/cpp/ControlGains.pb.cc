@@ -36,6 +36,7 @@ PROTOBUF_CONSTEXPR ControlGains::ControlGains(::_pbi::ConstantInitialized)
       /*decltype(_impl_.kf_linear_)*/ 0,
       /*decltype(_impl_.kf_square_)*/ 0,
       /*decltype(_impl_.kf_cosine_)*/ 0,
+      /*decltype(_impl_.ku_)*/ 0,
       /*decltype(_impl_._cached_size_)*/ {},
     } {}
 struct ControlGainsDefaultTypeInternal {
@@ -73,6 +74,7 @@ const ::uint32_t TableStruct_ControlGains_2eproto::offsets[] PROTOBUF_SECTION_VA
     PROTOBUF_FIELD_OFFSET(::CLIPPY::control::ControlGains, _impl_.kf_linear_),
     PROTOBUF_FIELD_OFFSET(::CLIPPY::control::ControlGains, _impl_.kf_square_),
     PROTOBUF_FIELD_OFFSET(::CLIPPY::control::ControlGains, _impl_.kf_cosine_),
+    PROTOBUF_FIELD_OFFSET(::CLIPPY::control::ControlGains, _impl_.ku_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -84,17 +86,18 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::CLIPPY::control::_ControlGains_default_instance_._instance,
 };
 const char descriptor_table_protodef_ControlGains_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\022ControlGains.proto\022\016CLIPPY.control\"\221\001\n"
-    "\014ControlGains\022\021\n\tsystem_id\030\001 \001(\t\022\n\n\002kP\030\007"
-    " \001(\001\022\n\n\002kI\030\010 \001(\001\022\n\n\002kD\030\t \001(\001\022\021\n\tkF_stati"
-    "c\030\n \001(\001\022\021\n\tkF_linear\030\013 \001(\001\022\021\n\tkF_square\030"
-    "\014 \001(\001\022\021\n\tkF_cosine\030\r \001(\001b\006proto3"
+    "\n\022ControlGains.proto\022\016CLIPPY.control\"\235\001\n"
+    "\014ControlGains\022\021\n\tsystem_id\030\001 \001(\t\022\n\n\002kP\030\002"
+    " \001(\001\022\n\n\002kI\030\003 \001(\001\022\n\n\002kD\030\004 \001(\001\022\021\n\tkF_stati"
+    "c\030\005 \001(\001\022\021\n\tkF_linear\030\006 \001(\001\022\021\n\tkF_square\030"
+    "\007 \001(\001\022\021\n\tkF_cosine\030\010 \001(\001\022\n\n\002kU\030\t \001(\001b\006pr"
+    "oto3"
 };
 static ::absl::once_flag descriptor_table_ControlGains_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ControlGains_2eproto = {
     false,
     false,
-    192,
+    204,
     descriptor_table_protodef_ControlGains_2eproto,
     "ControlGains.proto",
     &descriptor_table_ControlGains_2eproto_once,
@@ -151,6 +154,7 @@ ControlGains::ControlGains(const ControlGains& from) : ::google::protobuf::Messa
       decltype(_impl_.kf_linear_){},
       decltype(_impl_.kf_square_){},
       decltype(_impl_.kf_cosine_){},
+      decltype(_impl_.ku_){},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -163,8 +167,8 @@ ControlGains::ControlGains(const ControlGains& from) : ::google::protobuf::Messa
     _this->_impl_.system_id_.Set(from._internal_system_id(), _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.kp_, &from._impl_.kp_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.kf_cosine_) -
-    reinterpret_cast<char*>(&_impl_.kp_)) + sizeof(_impl_.kf_cosine_));
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.ku_) -
+    reinterpret_cast<char*>(&_impl_.kp_)) + sizeof(_impl_.ku_));
 
   // @@protoc_insertion_point(copy_constructor:CLIPPY.control.ControlGains)
 }
@@ -179,6 +183,7 @@ inline void ControlGains::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.kf_linear_){0},
       decltype(_impl_.kf_square_){0},
       decltype(_impl_.kf_cosine_){0},
+      decltype(_impl_.ku_){0},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.system_id_.InitDefault();
@@ -207,8 +212,8 @@ PROTOBUF_NOINLINE void ControlGains::Clear() {
 
   _impl_.system_id_.ClearToEmpty();
   ::memset(&_impl_.kp_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.kf_cosine_) -
-      reinterpret_cast<char*>(&_impl_.kp_)) + sizeof(_impl_.kf_cosine_));
+      reinterpret_cast<char*>(&_impl_.ku_) -
+      reinterpret_cast<char*>(&_impl_.kp_)) + sizeof(_impl_.ku_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -220,15 +225,15 @@ const char* ControlGains::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
+const ::_pbi::TcParseTable<4, 9, 0, 53, 2> ControlGains::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    13, 120,  // max_field_number, fast_idx_mask
+    9, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294959166,  // skipmap
+    4294966784,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    8,  // num_field_entries
+    9,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_ControlGains_default_instance_._instance,
@@ -238,32 +243,34 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
     // string system_id = 1;
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.system_id_)}},
+    // double kP = 2;
+    {::_pbi::TcParser::FastF64S1,
+     {17, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kp_)}},
+    // double kI = 3;
+    {::_pbi::TcParser::FastF64S1,
+     {25, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.ki_)}},
+    // double kD = 4;
+    {::_pbi::TcParser::FastF64S1,
+     {33, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kd_)}},
+    // double kF_static = 5;
+    {::_pbi::TcParser::FastF64S1,
+     {41, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kf_static_)}},
+    // double kF_linear = 6;
+    {::_pbi::TcParser::FastF64S1,
+     {49, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kf_linear_)}},
+    // double kF_square = 7;
+    {::_pbi::TcParser::FastF64S1,
+     {57, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kf_square_)}},
+    // double kF_cosine = 8;
+    {::_pbi::TcParser::FastF64S1,
+     {65, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kf_cosine_)}},
+    // double kU = 9;
+    {::_pbi::TcParser::FastF64S1,
+     {73, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.ku_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-    // double kP = 7;
-    {::_pbi::TcParser::FastF64S1,
-     {57, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kp_)}},
-    // double kI = 8;
-    {::_pbi::TcParser::FastF64S1,
-     {65, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.ki_)}},
-    // double kD = 9;
-    {::_pbi::TcParser::FastF64S1,
-     {73, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kd_)}},
-    // double kF_static = 10;
-    {::_pbi::TcParser::FastF64S1,
-     {81, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kf_static_)}},
-    // double kF_linear = 11;
-    {::_pbi::TcParser::FastF64S1,
-     {89, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kf_linear_)}},
-    // double kF_square = 12;
-    {::_pbi::TcParser::FastF64S1,
-     {97, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kf_square_)}},
-    // double kF_cosine = 13;
-    {::_pbi::TcParser::FastF64S1,
-     {105, 63, 0, PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kf_cosine_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
@@ -272,26 +279,29 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
     // string system_id = 1;
     {PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.system_id_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // double kP = 7;
+    // double kP = 2;
     {PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kp_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
-    // double kI = 8;
+    // double kI = 3;
     {PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.ki_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
-    // double kD = 9;
+    // double kD = 4;
     {PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kd_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
-    // double kF_static = 10;
+    // double kF_static = 5;
     {PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kf_static_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
-    // double kF_linear = 11;
+    // double kF_linear = 6;
     {PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kf_linear_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
-    // double kF_square = 12;
+    // double kF_square = 7;
     {PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kf_square_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
-    // double kF_cosine = 13;
+    // double kF_cosine = 8;
     {PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kf_cosine_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double kU = 9;
+    {PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.ku_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
   }},
   // no aux_entries
@@ -317,7 +327,7 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
-  // double kP = 7;
+  // double kP = 2;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_kp = this->_internal_kp();
@@ -326,10 +336,10 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
   if (raw_kp != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteDoubleToArray(
-        7, this->_internal_kp(), target);
+        2, this->_internal_kp(), target);
   }
 
-  // double kI = 8;
+  // double kI = 3;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_ki = this->_internal_ki();
@@ -338,10 +348,10 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
   if (raw_ki != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteDoubleToArray(
-        8, this->_internal_ki(), target);
+        3, this->_internal_ki(), target);
   }
 
-  // double kD = 9;
+  // double kD = 4;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_kd = this->_internal_kd();
@@ -350,10 +360,10 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
   if (raw_kd != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteDoubleToArray(
-        9, this->_internal_kd(), target);
+        4, this->_internal_kd(), target);
   }
 
-  // double kF_static = 10;
+  // double kF_static = 5;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_kf_static = this->_internal_kf_static();
@@ -362,10 +372,10 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
   if (raw_kf_static != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteDoubleToArray(
-        10, this->_internal_kf_static(), target);
+        5, this->_internal_kf_static(), target);
   }
 
-  // double kF_linear = 11;
+  // double kF_linear = 6;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_kf_linear = this->_internal_kf_linear();
@@ -374,10 +384,10 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
   if (raw_kf_linear != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteDoubleToArray(
-        11, this->_internal_kf_linear(), target);
+        6, this->_internal_kf_linear(), target);
   }
 
-  // double kF_square = 12;
+  // double kF_square = 7;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_kf_square = this->_internal_kf_square();
@@ -386,10 +396,10 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
   if (raw_kf_square != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteDoubleToArray(
-        12, this->_internal_kf_square(), target);
+        7, this->_internal_kf_square(), target);
   }
 
-  // double kF_cosine = 13;
+  // double kF_cosine = 8;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_kf_cosine = this->_internal_kf_cosine();
@@ -398,7 +408,19 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
   if (raw_kf_cosine != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteDoubleToArray(
-        13, this->_internal_kf_cosine(), target);
+        8, this->_internal_kf_cosine(), target);
+  }
+
+  // double kU = 9;
+  static_assert(sizeof(::uint64_t) == sizeof(double),
+                "Code assumes ::uint64_t and double are the same size.");
+  double tmp_ku = this->_internal_ku();
+  ::uint64_t raw_ku;
+  memcpy(&raw_ku, &tmp_ku, sizeof(tmp_ku));
+  if (raw_ku != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+        9, this->_internal_ku(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -424,7 +446,7 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
                                     this->_internal_system_id());
   }
 
-  // double kP = 7;
+  // double kP = 2;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_kp = this->_internal_kp();
@@ -434,7 +456,7 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
     total_size += 9;
   }
 
-  // double kI = 8;
+  // double kI = 3;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_ki = this->_internal_ki();
@@ -444,7 +466,7 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
     total_size += 9;
   }
 
-  // double kD = 9;
+  // double kD = 4;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_kd = this->_internal_kd();
@@ -454,7 +476,7 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
     total_size += 9;
   }
 
-  // double kF_static = 10;
+  // double kF_static = 5;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_kf_static = this->_internal_kf_static();
@@ -464,7 +486,7 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
     total_size += 9;
   }
 
-  // double kF_linear = 11;
+  // double kF_linear = 6;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_kf_linear = this->_internal_kf_linear();
@@ -474,7 +496,7 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
     total_size += 9;
   }
 
-  // double kF_square = 12;
+  // double kF_square = 7;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_kf_square = this->_internal_kf_square();
@@ -484,13 +506,23 @@ const ::_pbi::TcParseTable<4, 8, 0, 53, 2> ControlGains::_table_ = {
     total_size += 9;
   }
 
-  // double kF_cosine = 13;
+  // double kF_cosine = 8;
   static_assert(sizeof(::uint64_t) == sizeof(double),
                 "Code assumes ::uint64_t and double are the same size.");
   double tmp_kf_cosine = this->_internal_kf_cosine();
   ::uint64_t raw_kf_cosine;
   memcpy(&raw_kf_cosine, &tmp_kf_cosine, sizeof(tmp_kf_cosine));
   if (raw_kf_cosine != 0) {
+    total_size += 9;
+  }
+
+  // double kU = 9;
+  static_assert(sizeof(::uint64_t) == sizeof(double),
+                "Code assumes ::uint64_t and double are the same size.");
+  double tmp_ku = this->_internal_ku();
+  ::uint64_t raw_ku;
+  memcpy(&raw_ku, &tmp_ku, sizeof(tmp_ku));
+  if (raw_ku != 0) {
     total_size += 9;
   }
 
@@ -571,6 +603,14 @@ void ControlGains::MergeImpl(::google::protobuf::Message& to_msg, const ::google
   if (raw_kf_cosine != 0) {
     _this->_internal_set_kf_cosine(from._internal_kf_cosine());
   }
+  static_assert(sizeof(::uint64_t) == sizeof(double),
+                "Code assumes ::uint64_t and double are the same size.");
+  double tmp_ku = from._internal_ku();
+  ::uint64_t raw_ku;
+  memcpy(&raw_ku, &tmp_ku, sizeof(tmp_ku));
+  if (raw_ku != 0) {
+    _this->_internal_set_ku(from._internal_ku());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -593,8 +633,8 @@ void ControlGains::InternalSwap(ControlGains* other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.system_id_, lhs_arena,
                                        &other->_impl_.system_id_, rhs_arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kf_cosine_)
-      + sizeof(ControlGains::_impl_.kf_cosine_)
+      PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.ku_)
+      + sizeof(ControlGains::_impl_.ku_)
       - PROTOBUF_FIELD_OFFSET(ControlGains, _impl_.kp_)>(
           reinterpret_cast<char*>(&_impl_.kp_),
           reinterpret_cast<char*>(&other->_impl_.kp_));

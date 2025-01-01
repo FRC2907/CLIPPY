@@ -202,13 +202,14 @@ class ControlGains final :
 
   enum : int {
     kSystemIdFieldNumber = 1,
-    kKPFieldNumber = 7,
-    kKIFieldNumber = 8,
-    kKDFieldNumber = 9,
-    kKFStaticFieldNumber = 10,
-    kKFLinearFieldNumber = 11,
-    kKFSquareFieldNumber = 12,
-    kKFCosineFieldNumber = 13,
+    kKPFieldNumber = 2,
+    kKIFieldNumber = 3,
+    kKDFieldNumber = 4,
+    kKFStaticFieldNumber = 5,
+    kKFLinearFieldNumber = 6,
+    kKFSquareFieldNumber = 7,
+    kKFCosineFieldNumber = 8,
+    kKUFieldNumber = 9,
   };
   // string system_id = 1;
   void clear_system_id() ;
@@ -226,7 +227,7 @@ class ControlGains final :
   std::string* _internal_mutable_system_id();
 
   public:
-  // double kP = 7;
+  // double kP = 2;
   void clear_kp() ;
   double kp() const;
   void set_kp(double value);
@@ -236,7 +237,7 @@ class ControlGains final :
   void _internal_set_kp(double value);
 
   public:
-  // double kI = 8;
+  // double kI = 3;
   void clear_ki() ;
   double ki() const;
   void set_ki(double value);
@@ -246,7 +247,7 @@ class ControlGains final :
   void _internal_set_ki(double value);
 
   public:
-  // double kD = 9;
+  // double kD = 4;
   void clear_kd() ;
   double kd() const;
   void set_kd(double value);
@@ -256,7 +257,7 @@ class ControlGains final :
   void _internal_set_kd(double value);
 
   public:
-  // double kF_static = 10;
+  // double kF_static = 5;
   void clear_kf_static() ;
   double kf_static() const;
   void set_kf_static(double value);
@@ -266,7 +267,7 @@ class ControlGains final :
   void _internal_set_kf_static(double value);
 
   public:
-  // double kF_linear = 11;
+  // double kF_linear = 6;
   void clear_kf_linear() ;
   double kf_linear() const;
   void set_kf_linear(double value);
@@ -276,7 +277,7 @@ class ControlGains final :
   void _internal_set_kf_linear(double value);
 
   public:
-  // double kF_square = 12;
+  // double kF_square = 7;
   void clear_kf_square() ;
   double kf_square() const;
   void set_kf_square(double value);
@@ -286,7 +287,7 @@ class ControlGains final :
   void _internal_set_kf_square(double value);
 
   public:
-  // double kF_cosine = 13;
+  // double kF_cosine = 8;
   void clear_kf_cosine() ;
   double kf_cosine() const;
   void set_kf_cosine(double value);
@@ -296,12 +297,22 @@ class ControlGains final :
   void _internal_set_kf_cosine(double value);
 
   public:
+  // double kU = 9;
+  void clear_ku() ;
+  double ku() const;
+  void set_ku(double value);
+
+  private:
+  double _internal_ku() const;
+  void _internal_set_ku(double value);
+
+  public:
   // @@protoc_insertion_point(class_scope:CLIPPY.control.ControlGains)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<4, 8, 0, 53, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<4, 9, 0, 53, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -314,6 +325,7 @@ class ControlGains final :
     double kf_linear_;
     double kf_square_;
     double kf_cosine_;
+    double ku_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -388,7 +400,7 @@ inline void ControlGains::set_allocated_system_id(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:CLIPPY.control.ControlGains.system_id)
 }
 
-// double kP = 7;
+// double kP = 2;
 inline void ControlGains::clear_kp() {
   _impl_.kp_ = 0;
 }
@@ -410,7 +422,7 @@ inline void ControlGains::_internal_set_kp(double value) {
   _impl_.kp_ = value;
 }
 
-// double kI = 8;
+// double kI = 3;
 inline void ControlGains::clear_ki() {
   _impl_.ki_ = 0;
 }
@@ -432,7 +444,7 @@ inline void ControlGains::_internal_set_ki(double value) {
   _impl_.ki_ = value;
 }
 
-// double kD = 9;
+// double kD = 4;
 inline void ControlGains::clear_kd() {
   _impl_.kd_ = 0;
 }
@@ -454,7 +466,7 @@ inline void ControlGains::_internal_set_kd(double value) {
   _impl_.kd_ = value;
 }
 
-// double kF_static = 10;
+// double kF_static = 5;
 inline void ControlGains::clear_kf_static() {
   _impl_.kf_static_ = 0;
 }
@@ -476,7 +488,7 @@ inline void ControlGains::_internal_set_kf_static(double value) {
   _impl_.kf_static_ = value;
 }
 
-// double kF_linear = 11;
+// double kF_linear = 6;
 inline void ControlGains::clear_kf_linear() {
   _impl_.kf_linear_ = 0;
 }
@@ -498,7 +510,7 @@ inline void ControlGains::_internal_set_kf_linear(double value) {
   _impl_.kf_linear_ = value;
 }
 
-// double kF_square = 12;
+// double kF_square = 7;
 inline void ControlGains::clear_kf_square() {
   _impl_.kf_square_ = 0;
 }
@@ -520,7 +532,7 @@ inline void ControlGains::_internal_set_kf_square(double value) {
   _impl_.kf_square_ = value;
 }
 
-// double kF_cosine = 13;
+// double kF_cosine = 8;
 inline void ControlGains::clear_kf_cosine() {
   _impl_.kf_cosine_ = 0;
 }
@@ -540,6 +552,28 @@ inline void ControlGains::_internal_set_kf_cosine(double value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.kf_cosine_ = value;
+}
+
+// double kU = 9;
+inline void ControlGains::clear_ku() {
+  _impl_.ku_ = 0;
+}
+inline double ControlGains::ku() const {
+  // @@protoc_insertion_point(field_get:CLIPPY.control.ControlGains.kU)
+  return _internal_ku();
+}
+inline void ControlGains::set_ku(double value) {
+  _internal_set_ku(value);
+  // @@protoc_insertion_point(field_set:CLIPPY.control.ControlGains.kU)
+}
+inline double ControlGains::_internal_ku() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.ku_;
+}
+inline void ControlGains::_internal_set_ku(double value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.ku_ = value;
 }
 
 #ifdef __GNUC__

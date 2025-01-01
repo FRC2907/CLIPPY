@@ -25,14 +25,14 @@ namespace CLIPPY.Control {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlNb3Rpb25QbGFubmVyU2VydmVyLnByb3RvEg5DTElQUFkuY29udHJvbBoO",
-            "V2F5cG9pbnQucHJvdG8aEkNvbnRyb2xHYWlucy5wcm90bxoTQ29udHJvbFRh",
-            "cmdldC5wcm90bxobZ29vZ2xlL3Byb3RvYnVmL2VtcHR5LnByb3RvMqsBChNN",
-            "b3Rpb25QbGFubmVyU2VydmVyEkQKDlN1Ym1pdFdheXBvaW50EhguQ0xJUFBZ",
-            "LmNvbnRyb2wuV2F5cG9pbnQaFi5nb29nbGUucHJvdG9idWYuRW1wdHkiABJO",
-            "ChNTdWJtaXRDb250cm9sVGFyZ2V0Eh0uQ0xJUFBZLmNvbnRyb2wuQ29udHJv",
-            "bFRhcmdldBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSIAYgZwcm90bzM="));
+            "V2F5cG9pbnQucHJvdG8aE0NvbnRyb2xUYXJnZXQucHJvdG8aG2dvb2dsZS9w",
+            "cm90b2J1Zi9lbXB0eS5wcm90bzKrAQoTTW90aW9uUGxhbm5lclNlcnZlchJE",
+            "Cg5TdWJtaXRXYXlwb2ludBIYLkNMSVBQWS5jb250cm9sLldheXBvaW50GhYu",
+            "Z29vZ2xlLnByb3RvYnVmLkVtcHR5IgASTgoTU3VibWl0Q29udHJvbFRhcmdl",
+            "dBIdLkNMSVBQWS5jb250cm9sLkNvbnRyb2xUYXJnZXQaFi5nb29nbGUucHJv",
+            "dG9idWYuRW1wdHkiAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::CLIPPY.Control.WaypointReflection.Descriptor, global::CLIPPY.Control.ControlGainsReflection.Descriptor, global::CLIPPY.Control.ControlTargetReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::CLIPPY.Control.WaypointReflection.Descriptor, global::CLIPPY.Control.ControlTargetReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, null));
     }
     #endregion
