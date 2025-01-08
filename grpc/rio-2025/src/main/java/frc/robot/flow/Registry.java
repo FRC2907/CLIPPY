@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.wpi.first.math.Pair;
 import frc.robot.control.ISystem;
 
 public class Registry {
     public final Map<String, ISystem> systems = new HashMap<>();
     public final List<ILooper> loopers = new ArrayList<>();
+    public final List<Pair<Double, Voidinator>> delayedControlTargets = new ArrayList<>();
 
     private Registry() {}
     private static Registry instance;

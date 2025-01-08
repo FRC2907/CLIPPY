@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import frc.robot.constants.Settings;
 import frc.robot.flow.ILooper;
 import frc.robot.flow.Registry;
-import frc.robot.util.Protos;
+import frc.robot.util.Time;
 
 public class PIDFMotorController implements ISystem, ILooper {
 
@@ -23,6 +23,7 @@ public class PIDFMotorController implements ISystem, ILooper {
 
     private double velocity = 0;
     private double voltage = 0;
+    private Double bypassVoltage = null;
 
     public PIDFMotorController(String id, MotorController m, DoubleSupplier feedback) {
         Registry.getInstance().systems.put(id, this);
@@ -32,6 +33,18 @@ public class PIDFMotorController implements ISystem, ILooper {
         this.ff = new ElevatorFeedforward(0, 0, 0, 0);
         this.m = m;
         this.feedback = feedback;
+    }
+
+    @Override
+    public PIDFMotorController setReference(double r) {
+        setVelocity(r);
+        return this;
+    }
+
+    @Override
+    public PIDFMotorController setBypassInput(Double u) {
+        bypassVoltage = u;
+        return this;
     }
 
     @Override
@@ -137,7 +150,9 @@ public class PIDFMotorController implements ISystem, ILooper {
 
     @Override
     public ILooper loop() {
-        voltage = ff.calculate(velocity) + pid.calculate(feedback.getAsDouble(), velocity);
+        if (bypassVoltage == null)
+            voltage = ff.calculate(velocity) + pid.calculate(feedback.getAsDouble(), velocity);
+        else voltage = bypassVoltage;
         m.setVoltage(voltage);
         return this;
     }
@@ -149,7 +164,7 @@ public class PIDFMotorController implements ISystem, ILooper {
             .setVoltage(voltage)
         .build();
         return SystemState.newBuilder()
-            .setTimestamp(Protos.now())
+            .setTimestamp(Time.nowTimestamp())
             .setSystemId(id)
             .setState(x)
             .build();

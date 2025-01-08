@@ -3,6 +3,10 @@ package frc.robot.control;
 import CLIPPY.control.SystemStateOuterClass.SystemState;
 
 public interface ISystem {
+    /** Configure the target value for the system's output. */
+    public ISystem setReference(double r);
+    /** Configure the controller to use this input and bypass calculations. Set to null to resume normal control. */
+    public ISystem setBypassInput(Double u);
     /** Configure the controller's proportional gain. */
     public ISystem setP(double kP);
     /** Configure the controller's integral gain. */

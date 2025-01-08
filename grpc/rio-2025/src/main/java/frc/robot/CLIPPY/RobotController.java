@@ -1,10 +1,14 @@
 package frc.robot.CLIPPY;
 
 import CLIPPY.control.RobotControllerGrpc.RobotControllerImplBase;
+import edu.wpi.first.math.Pair;
 import frc.robot.control.ISystem;
+import frc.robot.flow.ILooper;
 import frc.robot.flow.Registry;
+import frc.robot.flow.Voidinator;
+import frc.robot.util.Time;
 
-public class RobotController extends RobotControllerImplBase {
+public class RobotController extends RobotControllerImplBase implements ILooper {
 
     // Singleton
     private RobotController() {}
@@ -17,11 +21,28 @@ public class RobotController extends RobotControllerImplBase {
 
     private Registry r = Registry.getInstance();
 
-    //@Override
-    //public void submitControlTarget(CLIPPY.control.ControlTargetOuterClass.ControlTarget request,
-    //    io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
-    //  asyncUnimplementedUnaryCall(METHOD_SUBMIT_CONTROL_TARGET, responseObserver);
-    //}
+    @Override
+    public void submitControlTarget(CLIPPY.control.ControlTargetOuterClass.ControlTarget request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+            Voidinator commit = () -> {
+            if (r.systems.containsKey(request.getSystemId())) {
+                ISystem system = r.systems.get(request.getSystemId());
+                if (request.hasVelocity()) system.setReference(request.getVelocity());
+                if (request.hasVoltage()) system.setBypassInput(request.getVoltage());
+                if (request.hasCurrent()) System.err.print("[warn] Attempted to set current " + request.getCurrent() + " on system " + request.getSystemId() + ", but current control is not yet supported.");
+                if (request.hasAcceleration()) System.err.print("[warn] Attempted to set acceleration " + request.getAcceleration() + " on system " + request.getSystemId() + ", but acceleration control is not yet supported.");
+                if (request.hasPosition()) System.err.print("[warn] Attempted to set position " + request.getPosition() + " on system " + request.getSystemId() + ", but position control is not yet supported.");
+            }
+        };
+        if (request.hasTimestamp()) {
+            r.delayedControlTargets.add(new Pair<Double,Voidinator>(Time.timeFromTimestamp(request.getTimestamp()), commit));
+        } else {
+            // no timestamp, apply immediately
+            commit.get();
+        }
+
+        responseObserver.onCompleted();
+    }
 
     @Override
     public void submitControlGains(CLIPPY.control.ControlGainsOuterClass.ControlGains request,
@@ -38,6 +59,7 @@ public class RobotController extends RobotControllerImplBase {
                 // TODO set this up with a logger
                 if (request.hasKU()) System.err.print("[warn] Attempted to set kU = " + request.getKU().getValue() + ", but Ziegler-Nichols via gRPC is not yet supported.");
             }
+            responseObserver.onCompleted();
     }
 
     //@Override
@@ -45,5 +67,21 @@ public class RobotController extends RobotControllerImplBase {
     //    io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
     //  asyncUnimplementedUnaryCall(METHOD_SET_CONTROL_STYLE, responseObserver);
     //}
+
+    @Override
+    public ILooper init() { return this; }
+
+    @Override
+    public ILooper loop() {
+        for (Pair<Double, Voidinator> target : r.delayedControlTargets) {
+            if (target.getFirst() <= Time.now())
+            target.getSecond().get();
+            r.delayedControlTargets.remove(target);
+        }
+        return this;
+    }
+
+    @Override
+    public ILooper stop() { return this; }
 
 }
