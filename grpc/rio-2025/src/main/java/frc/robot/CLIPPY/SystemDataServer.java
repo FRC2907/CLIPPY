@@ -7,6 +7,7 @@ import java.util.List;
 import CLIPPY.control.SystemDataServerGrpc.SystemDataServerImplBase;
 import CLIPPY.control.SystemStateOuterClass.SystemState;
 import frc.robot.flow.ILooper;
+import frc.robot.flow.Registry;
 import io.grpc.stub.StreamObserver;
 import com.google.protobuf.Empty;
 
@@ -19,7 +20,7 @@ import com.google.protobuf.Empty;
 public class SystemDataServer extends SystemDataServerImplBase implements ILooper {
 
     // Singleton
-    private SystemDataServer() {}
+    private SystemDataServer() { Registry.getInstance().loopers.add(this); }
     private static SystemDataServer instance;
     public static SystemDataServer getInstance() {
         if (instance == null)
@@ -48,11 +49,13 @@ public class SystemDataServer extends SystemDataServerImplBase implements ILoope
 
     @Override
     public ILooper loop() {
-        while (!queued_data.isEmpty()) {
-            SystemState state = queued_data.remove(0);
-            for (StreamObserver<SystemState> subscriber : subscribers)
-                subscriber.onNext(state);
-        }
+        Registry.getInstance().systems.forEach((id, system) -> submit(system.buildSystemState()));
+        // this feels less than thread-safe?
+        // the while-not-empty approach might've been better
+        for (SystemState state : queued_data)
+        for (StreamObserver<SystemState> subscriber : subscribers)
+            subscriber.onNext(state);
+        queued_data.clear();
         return this;
     }
 

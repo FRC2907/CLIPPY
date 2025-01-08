@@ -2,6 +2,8 @@ package frc.robot.flow;
 
 public class Watchdog implements ILooper {
 
+    public Watchdog() { Registry.getInstance().loopers.add(this); }
+
     @Override
     public ILooper init() {
         System.out.println("[watchdog]\tinit");

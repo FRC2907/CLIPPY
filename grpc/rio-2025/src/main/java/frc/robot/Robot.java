@@ -27,7 +27,6 @@ import io.grpc.InsecureServerCredentials;
 public class Robot extends TimedRobot {
 
   private Registry r = Registry.getInstance();
-  private SystemDataServer sysDataSvc = SystemDataServer.getInstance();
 
   public Robot() {
     super(Settings.MAIN_LOOP_TIME);
@@ -35,11 +34,10 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    r.loopers.add(new Watchdog());
-
+    // these get added to the registry automatically by their constructors
+    // i have Bad Feelings about this architecture but. well. it looks nice?
+    new Watchdog();
     new SparkMax("dummy", new com.revrobotics.spark.SparkMax(0, MotorType.kBrushless));
-
-    r.loopers.forEach(looper -> looper.init());
 
     try {
       Grpc
@@ -50,16 +48,12 @@ public class Robot extends TimedRobot {
       .start();
     } catch (IOException e) {e.printStackTrace();}
 
+    r.loopers.forEach(looper -> looper.init());
+
   }
 
   @Override
   public void robotPeriodic() {
-    // collect metrics before updating references
-    // this way the inputs are better associated with the outputs they begat
-    r.systems.forEach((id, system) -> {
-      sysDataSvc.submit(system.buildSystemState());
-    });
-
     r.loopers.forEach(looper -> looper.loop());
   }
 

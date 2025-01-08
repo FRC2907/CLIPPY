@@ -13,6 +13,7 @@ public class Registry {
     public final List<ILooper> loopers = new ArrayList<>();
     public final List<Pair<Double, Voidinator>> delayedControlTargets = new ArrayList<>();
 
+    // Singleton
     private Registry() {}
     private static Registry instance;
     public static Registry getInstance() {

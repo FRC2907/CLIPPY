@@ -1,5 +1,7 @@
 package frc.robot.CLIPPY;
 
+import java.util.Iterator;
+
 import CLIPPY.control.RobotControllerGrpc.RobotControllerImplBase;
 import edu.wpi.first.math.Pair;
 import frc.robot.control.ISystem;
@@ -11,7 +13,7 @@ import frc.robot.util.Time;
 public class RobotController extends RobotControllerImplBase implements ILooper {
 
     // Singleton
-    private RobotController() {}
+    private RobotController() { Registry.getInstance().loopers.add(this); }
     private static RobotController instance;
     public static RobotController getInstance() {
         if (instance == null)
@@ -35,7 +37,8 @@ public class RobotController extends RobotControllerImplBase implements ILooper 
             }
         };
         if (request.hasTimestamp()) {
-            r.delayedControlTargets.add(new Pair<Double,Voidinator>(Time.timeFromTimestamp(request.getTimestamp()), commit));
+            double time = Time.timeFromTimestamp(request.getTimestamp());
+            r.delayedControlTargets.add(new Pair<Double,Voidinator>(time, commit));
         } else {
             // no timestamp, apply immediately
             commit.get();
@@ -73,10 +76,14 @@ public class RobotController extends RobotControllerImplBase implements ILooper 
 
     @Override
     public ILooper loop() {
-        for (Pair<Double, Voidinator> target : r.delayedControlTargets) {
-            if (target.getFirst() <= Time.now())
-            target.getSecond().get();
-            r.delayedControlTargets.remove(target);
+        // https://stackoverflow.com/a/1196612/6627273
+        Iterator<Pair<Double, Voidinator>> i = r.delayedControlTargets.iterator();
+        while (i.hasNext()) {
+        Pair<Double, Voidinator> action = i.next();
+            if (action.getFirst() <= Time.now()) {
+            action.getSecond().get();
+            i.remove();
+            }
         }
         return this;
     }
