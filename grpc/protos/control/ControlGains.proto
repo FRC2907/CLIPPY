@@ -2,14 +2,16 @@ syntax = "proto3";
 
 package CLIPPY.control;
 
+import "google/protobuf/wrappers.proto";
+
 message ControlGains {
     string system_id = 1; // recall that all fields are optional
-    double kP = 2;
-    double kI = 3;
-    double kD = 4;
-    double kF_static = 5; // kS for vel ctl
-    double kF_linear = 6; // kV for vel ctl
-    double kF_square = 7; // kA for vel ctl
-    double kF_cosine = 8; // kG for arm pos ctl
-    double kU = 9; // "ultimate gain" for ziegler-nichols
+    google.protobuf.DoubleValue kP = 2;
+    google.protobuf.DoubleValue kI = 3;
+    google.protobuf.DoubleValue kD = 4;
+    google.protobuf.DoubleValue kF_static = 5; // kS for vel ctl
+    google.protobuf.DoubleValue kF_linear = 6; // kV for vel ctl
+    google.protobuf.DoubleValue kF_linear_per_time = 7; // kA for vel ctl
+    google.protobuf.DoubleValue kF_constant = 8; // kG for elevator ctl
+    google.protobuf.DoubleValue kU = 9; // "ultimate gain" for ziegler-nichols
 }

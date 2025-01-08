@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package CLIPPY.control;
 
+// RUNS on-rio
+
 import "ControlTarget.proto";
 import "ControlGains.proto";
 import "ControlStyle.proto";

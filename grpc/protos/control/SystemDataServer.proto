@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package CLIPPY.control;
+
+// RUNS on-rio
+
+import "google/protobuf/empty.proto";
+
+import "SystemState.proto";
+
+service SystemDataServer {
+    rpc GetSystemData(google.protobuf.Empty) returns (stream SystemState) {}
+}

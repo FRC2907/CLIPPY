@@ -2,8 +2,9 @@ syntax = "proto3";
 
 package CLIPPY.control;
 
+// RUNS off-rio
+
 import "Waypoint.proto";
-//import "ControlGains.proto";
 import "ControlTarget.proto";
 import "google/protobuf/empty.proto";
 
