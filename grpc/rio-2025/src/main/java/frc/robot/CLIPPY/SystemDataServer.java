@@ -52,6 +52,9 @@ public class SystemDataServer extends SystemDataServerImplBase implements ILoope
         Registry.getInstance().systems.forEach((id, system) -> submit(system.buildSystemState()));
         // this feels less than thread-safe?
         // the while-not-empty approach might've been better
+        // FIXME: remember we decided to just not do this
+        // wait no this one we still want to do
+        // look at synchronized stuff though
         for (SystemState state : queued_data)
         for (StreamObserver<SystemState> subscriber : subscribers)
             subscriber.onNext(state);

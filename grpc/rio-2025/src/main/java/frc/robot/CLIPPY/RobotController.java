@@ -77,6 +77,10 @@ public class RobotController extends RobotControllerImplBase implements ILooper 
     @Override
     public ILooper loop() {
         // https://stackoverflow.com/a/1196612/6627273
+        // FIXME stop doign this
+        // just say "be here at this time"
+        // don't wait to apply the target later
+        // give the rio all of its instructions asap and let it handle interpolation
         Iterator<Pair<Double, Voidinator>> i = r.delayedControlTargets.iterator();
         while (i.hasNext()) {
         Pair<Double, Voidinator> action = i.next();
