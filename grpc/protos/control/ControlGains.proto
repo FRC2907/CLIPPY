@@ -25,5 +25,6 @@ message ControlGains {
     google.protobuf.DoubleValue kF_linear_per_time = 7; // kA for vel ctl
     google.protobuf.DoubleValue kF_constant = 8; // kG for elevator ctl
     google.protobuf.DoubleValue kU = 9; // "ultimate gain" for ziegler-nichols
-    ZNControlRule znControlRule = 10; // ziegler-nichols meta-gains to derive PID from using kU
+    google.protobuf.DoubleValue tU = 10; // period of oscillation for ziegler-nichols
+    ZNControlRule znControlRule = 11; // ziegler-nichols meta-gains to derive PID from using kU
 }

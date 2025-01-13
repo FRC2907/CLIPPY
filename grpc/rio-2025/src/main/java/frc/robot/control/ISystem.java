@@ -1,6 +1,7 @@
 package frc.robot.control;
 
 import CLIPPY.control.SystemStateOuterClass.SystemState;
+import CLIPPY.control.ControlGainsOuterClass.ZNControlRule;
 
 public interface ISystem {
     /** Configure the target value for the system's output. */
@@ -30,8 +31,4 @@ public interface ISystem {
     public ISystem zieglify(double Ku, double Tu, ZNControlRule style);
 
     public SystemState buildSystemState();
-
-    enum ZNControlRule {
-        P, PI, PD, PID, PESSEN, MILD_OVERSHOOT, NO_OVERSHOOT
-    }
 }

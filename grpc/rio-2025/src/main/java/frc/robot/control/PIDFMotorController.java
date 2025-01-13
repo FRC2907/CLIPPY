@@ -4,6 +4,7 @@ import java.util.function.DoubleSupplier;
 
 import CLIPPY.control.SystemStateOuterClass.SystemState;
 import CLIPPY.control.SystemStateOuterClass.SystemState.Measurement;
+import CLIPPY.control.ControlGainsOuterClass.ZNControlRule;
 import edu.wpi.first.math.controller.ElevatorFeedforward;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
@@ -128,8 +129,10 @@ public class PIDFMotorController implements ISystem, ILooper {
                 kTi = 1/2d;
                 kTd = 1/3d;
                 break;
-            // Add custom rule implementations here. Add the case name to IGenericPIDController
-            default: break;
+            // Add custom rule implementations here. Add case names to ControlGains.proto
+            default:
+                System.err.print("[warn] Attempted to set kU = " + Ku + " and tU = " + Tu + ", but either no Ziegler-Nichols control rule was specified, or it was specified as UNSET.");
+                break;
         }
         double Kp = kKp * Ku;
         double Ti = kTi * Tu;

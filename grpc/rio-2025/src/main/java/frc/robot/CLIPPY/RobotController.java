@@ -5,6 +5,7 @@ import java.util.Iterator;
 import com.google.protobuf.Empty;
 
 import CLIPPY.control.ControlGainsOuterClass.ControlGains;
+import CLIPPY.control.ControlGainsOuterClass.ZNControlRule;
 import CLIPPY.control.ControlTargetOuterClass.ControlTarget;
 import CLIPPY.control.RobotControllerGrpc.RobotControllerImplBase;
 import edu.wpi.first.math.Pair;
@@ -64,7 +65,13 @@ public class RobotController extends RobotControllerImplBase implements ILooper 
             if (request.hasKFLinearPerTime()) system.setF_linear_per_time(request.getKFLinearPerTime().getValue());
             if (request.hasKFConstant()) system.setF_constant(request.getKFConstant().getValue());
             // TODO set this up with a logger
-            if (request.hasKU()) System.err.print("[warn] Attempted to set kU = " + request.getKU().getValue() + ", but Ziegler-Nichols via gRPC is not yet supported.");
+            if (request.hasKU()) {
+                if (request.hasTU()) {
+                    system.zieglify(request.getKU().getValue(), request.getTU().getValue(), request.getZnControlRule());
+                } else {
+                    System.err.print("[warn] Attempted to set kU = " + request.getKU().getValue() + ", but no period tU was specified.");
+                }
+            }
         }
         responseObserver.onNext(Empty.getDefaultInstance());
         responseObserver.onCompleted();
