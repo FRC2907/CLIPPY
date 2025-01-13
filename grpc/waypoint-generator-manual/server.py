@@ -8,11 +8,7 @@ sys.path.append("./protos")
 from concurrent import futures
 
 import grpc
-from protos.Waypoint_pb2 import Waypoint, WaypointType
 from protos.WaypointShufflers_pb2_grpc import WaypointServerServicer as IWaypointServer, add_WaypointServerServicer_to_server as addWaypointServer
-from google.protobuf.empty_pb2 import Empty
-from google.protobuf.timestamp_pb2 import Timestamp
-from random import randint
 
 from gen import gen
 

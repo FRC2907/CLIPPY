@@ -7,16 +7,14 @@ sys.path.append("./protos")
 
 import grpc
 
-from protos.Waypoint_pb2 import Waypoint, WaypointType
-from protos.WaypointShufflers_pb2_grpc import WaypointEaterStub as WaypointSender
-from google.protobuf.empty_pb2 import Empty
+from protos.WaypointShufflers_pb2_grpc import WaypointEaterStub as WaypointEater
 
 from gen import gen
 
 def main():
     print("Hello, world!")
     with grpc.insecure_channel("localhost:5800") as channel:
-        stub = WaypointSender(channel)
+        stub = WaypointEater(channel)
         for pt in gen():
             stub.IngestWaypoint(pt)
 
