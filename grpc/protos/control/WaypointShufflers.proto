@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package CLIPPY.control;
+
+import "Waypoint.proto";
+import "google/protobuf/empty.proto";
+
+service WaypointServer {
+  rpc GetWaypoints(google.protobuf.Empty) returns (stream Waypoint) {}
+}
+
+service WaypointEater {
+  rpc IngestWaypoint(Waypoint) returns (google.protobuf.Empty) {}
+}

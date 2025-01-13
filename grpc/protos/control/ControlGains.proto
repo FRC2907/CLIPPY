@@ -4,6 +4,17 @@ package CLIPPY.control;
 
 import "google/protobuf/wrappers.proto";
 
+enum ZNControlRule {
+  UNSET = 0;
+  P = 1;
+  PI = 2;
+  PD = 3;
+  PID = 4;
+  PESSEN = 5;
+  MILD_OVERSHOOT = 6;
+  NO_OVERSHOOT = 7;
+}
+
 message ControlGains {
     string system_id = 1; // recall that all fields are optional
     google.protobuf.DoubleValue kP = 2;
@@ -14,4 +25,5 @@ message ControlGains {
     google.protobuf.DoubleValue kF_linear_per_time = 7; // kA for vel ctl
     google.protobuf.DoubleValue kF_constant = 8; // kG for elevator ctl
     google.protobuf.DoubleValue kU = 9; // "ultimate gain" for ziegler-nichols
+    ZNControlRule znControlRule = 10; // ziegler-nichols meta-gains to derive PID from using kU
 }

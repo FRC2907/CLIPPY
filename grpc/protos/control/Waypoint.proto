@@ -2,20 +2,24 @@ syntax = "proto3";
 
 package CLIPPY.control;
 
-import "Urgency.proto";
 import "google/protobuf/timestamp.proto";
 
 enum WaypointType {
     // We don't know anything about this waypoint's moral value.
     UNKNOWN = 0;
+
     // We could not care less what's here.
     NEUTRAL = 1;
+
     // The way is shut.
     OBSTACLE = 2;
+
     // This place has been emptied of whatever was there.
     FREE = 3;
+
     // LEROOOOOOY JENKIIIIIIIINS
     TARGET = 4;
+
     // You are here.
     SELF = 5;
 }
@@ -23,7 +27,6 @@ enum WaypointType {
 message Waypoint {
     google.protobuf.Timestamp timestamp = 1;
     WaypointType waypoint_type = 2;
-    Urgency urgency = 3;
 
     // XYZ coordinates of the waypoint
     double x = 7;
