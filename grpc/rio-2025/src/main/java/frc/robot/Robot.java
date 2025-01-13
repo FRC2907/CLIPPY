@@ -11,6 +11,7 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.CLIPPY.RobotController;
 import frc.robot.CLIPPY.SystemDataServer;
+import frc.robot.CLIPPY.WaypointEater;
 import frc.robot.constants.Settings;
 import frc.robot.control.SparkMax;
 import frc.robot.flow.Registry;
@@ -36,7 +37,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // these get added to the registry automatically by their constructors
     // i have Bad Feelings about this architecture but. well. it looks nice?
-    new Watchdog();
+    //new Watchdog();
     new SparkMax("dummy", new com.revrobotics.spark.SparkMax(0, MotorType.kBrushless));
 
     try {
@@ -44,6 +45,7 @@ public class Robot extends TimedRobot {
       .newServerBuilderForPort(5800, InsecureServerCredentials.create())
       .addService(SystemDataServer.getInstance())
       .addService(RobotController.getInstance())
+      .addService(WaypointEater.getInstance())
       .build()
       .start();
     } catch (IOException e) {e.printStackTrace();}

@@ -38,8 +38,7 @@ public class SystemDataServer extends SystemDataServerImplBase implements ILoope
     // Subscribers
     private List<StreamObserver<SystemState>> subscribers = new ArrayList<>();
     @Override
-    public void getSystemData(Empty request,
-        StreamObserver<SystemState> responseObserver) {
+    public void getSystemData(Empty request, StreamObserver<SystemState> responseObserver) {
             subscribers.add(responseObserver);
     }
 

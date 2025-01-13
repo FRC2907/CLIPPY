@@ -2,6 +2,10 @@ package frc.robot.CLIPPY;
 
 import java.util.Iterator;
 
+import com.google.protobuf.Empty;
+
+import CLIPPY.control.ControlGainsOuterClass.ControlGains;
+import CLIPPY.control.ControlTargetOuterClass.ControlTarget;
 import CLIPPY.control.RobotControllerGrpc.RobotControllerImplBase;
 import edu.wpi.first.math.Pair;
 import frc.robot.control.ISystem;
@@ -9,6 +13,7 @@ import frc.robot.flow.ILooper;
 import frc.robot.flow.Registry;
 import frc.robot.flow.Voidinator;
 import frc.robot.util.Time;
+import io.grpc.stub.StreamObserver;
 
 public class RobotController extends RobotControllerImplBase implements ILooper {
 
@@ -24,8 +29,7 @@ public class RobotController extends RobotControllerImplBase implements ILooper 
     private Registry r = Registry.getInstance();
 
     @Override
-    public void submitControlTarget(CLIPPY.control.ControlTargetOuterClass.ControlTarget request,
-        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+    public void submitControlTarget(ControlTarget request, StreamObserver<Empty> responseObserver) {
             Voidinator commit = () -> {
             if (r.systems.containsKey(request.getSystemId())) {
                 ISystem system = r.systems.get(request.getSystemId());
@@ -44,25 +48,26 @@ public class RobotController extends RobotControllerImplBase implements ILooper 
             commit.get();
         }
 
+        responseObserver.onNext(Empty.getDefaultInstance());
         responseObserver.onCompleted();
     }
 
     @Override
-    public void submitControlGains(CLIPPY.control.ControlGainsOuterClass.ControlGains request,
-        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
-            if (r.systems.containsKey(request.getSystemId())) {
-                ISystem system = r.systems.get(request.getSystemId());
-                if (request.hasKP()) system.setP(request.getKP().getValue());
-                if (request.hasKI()) system.setI(request.getKI().getValue());
-                if (request.hasKD()) system.setD(request.getKD().getValue());
-                if (request.hasKFStatic()) system.setF_static(request.getKFStatic().getValue());
-                if (request.hasKFLinear()) system.setF_linear(request.getKFLinear().getValue());
-                if (request.hasKFLinearPerTime()) system.setF_linear_per_time(request.getKFLinearPerTime().getValue());
-                if (request.hasKFConstant()) system.setF_constant(request.getKFConstant().getValue());
-                // TODO set this up with a logger
-                if (request.hasKU()) System.err.print("[warn] Attempted to set kU = " + request.getKU().getValue() + ", but Ziegler-Nichols via gRPC is not yet supported.");
-            }
-            responseObserver.onCompleted();
+    public void submitControlGains(ControlGains request, StreamObserver<Empty> responseObserver) {
+        if (r.systems.containsKey(request.getSystemId())) {
+            ISystem system = r.systems.get(request.getSystemId());
+            if (request.hasKP()) system.setP(request.getKP().getValue());
+            if (request.hasKI()) system.setI(request.getKI().getValue());
+            if (request.hasKD()) system.setD(request.getKD().getValue());
+            if (request.hasKFStatic()) system.setF_static(request.getKFStatic().getValue());
+            if (request.hasKFLinear()) system.setF_linear(request.getKFLinear().getValue());
+            if (request.hasKFLinearPerTime()) system.setF_linear_per_time(request.getKFLinearPerTime().getValue());
+            if (request.hasKFConstant()) system.setF_constant(request.getKFConstant().getValue());
+            // TODO set this up with a logger
+            if (request.hasKU()) System.err.print("[warn] Attempted to set kU = " + request.getKU().getValue() + ", but Ziegler-Nichols via gRPC is not yet supported.");
+        }
+        responseObserver.onNext(Empty.getDefaultInstance());
+        responseObserver.onCompleted();
     }
 
     //@Override
