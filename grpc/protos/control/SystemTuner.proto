@@ -15,6 +15,8 @@ service SystemTuner {
 }
 
 service SystemDataServer {
-    rpc GetSystemIDs(google.protobuf.Empty) returns (SystemIDs) {}
+    // Return all IDs that are tagged with ANY of these tags. Empty set returns all IDs.
+    rpc GetSystemIDs(SystemTags) returns (SystemIDs) {}
+    rpc GetSystemTags(google.protobuf.Empty) returns (SystemTags) {}
     rpc GetSystemData(SystemIDs) returns (stream SystemState) {}
 }

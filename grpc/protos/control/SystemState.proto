@@ -3,15 +3,21 @@ syntax = "proto3";
 package CLIPPY.control;
 
 import "google/protobuf/timestamp.proto";
+import "ControlGains.proto";
 
 message SystemIDs {
   repeated string system_ids = 1;
+}
+
+message SystemTags {
+  repeated string system_tags = 1;
 }
 
 message SystemState {
     google.protobuf.Timestamp timestamp = 1;
     string system_id = 2;
     Measurement state = 3;
+    ControlGains gains = 4;
     
     message Measurement {
         double position     = 1;
@@ -28,5 +34,6 @@ message SystemState {
         double energy       = 9;
         double pressure     = 10;
         double jerk         = 11;
+        double temperature  = 12; // celsius
     }
 }
