@@ -4,12 +4,14 @@
 
 package frc.robot;
 
-import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import java.io.IOException;
+
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandPS4Controller;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.CLIPPY.SystemDataServer;
+import frc.robot.CLIPPY.SystemTunerServer;
 import frc.robot.bodges.GenericSixaxis;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
@@ -18,6 +20,8 @@ import frc.robot.constants.Ports;
 import frc.robot.interfaces.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.MecanumDrive;
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -29,6 +33,15 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final DrivetrainSubsystem m_drivetrain = MecanumDrive.getInstance();
+
+  private final SystemTunerServer m_systuner = SystemTunerServer.getInstance();
+  private final SystemDataServer m_sysdata = SystemDataServer.getInstance();
+
+  private final Server m_grpc_server = ServerBuilder
+    .forPort(5800)
+    .addService(m_systuner)
+    .addService(m_sysdata)
+    .build();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   //private final CommandXboxController m_driverController = new CommandXboxController(Ports.DRIVER_CONTROLLER_PORT);
@@ -42,6 +55,8 @@ public class RobotContainer {
     // Set up default command
     // https://github.com/wpilibsuite/allwpilib/blob/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/mecanumcontrollercommand/RobotContainer.java#L47-L59
     m_drivetrain.setDefaultCommand(new ManualDrive(m_drivetrain, m_driverAxes));
+
+    try { m_grpc_server.start(); } catch (IOException e) { e.printStackTrace(); }
   }
 
   /**
