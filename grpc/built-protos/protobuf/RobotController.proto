@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package CLIPPY.control;
+
+// ENV rio
+
+import "ControlTarget.proto";
+import "ControlStyle.proto";
+import "google/protobuf/empty.proto";
+
+service RobotController {
+    rpc SetControlTarget(ControlTarget) returns (google.protobuf.Empty) {}
+    //rpc SetControlTarget(MultiSystemControlTarget) returns (google.protobuf.Empty) {}
+    rpc SetControlStyle(ControlStyle) returns (google.protobuf.Empty) {}
+}

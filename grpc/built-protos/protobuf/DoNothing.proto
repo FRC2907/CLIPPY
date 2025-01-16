@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package CLIPPY.nada;
+
+import "Nada.proto";
+import "google/protobuf/empty.proto";
+
+service DoNothing {
+  rpc Nop(Nada) returns (google.protobuf.Empty) {}
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+// ENV rio
+
+package CLIPPY.control;
+
+import "ControlTarget.proto";
+import "ControlGains.proto";
+import "ControlStyle.proto";
+import "SystemState.proto";
+import "google/protobuf/empty.proto";
+
+service SystemTuner {
+    rpc SetControlGains(stream ControlGains) returns (google.protobuf.Empty) {}
+}
+
+service SystemDataServer {
+    // Return all IDs that are tagged with ANY of these tags. Empty set returns all IDs.
+    rpc GetSystemIDs(SystemTags) returns (SystemIDs) {}
+    rpc GetSystemTags(google.protobuf.Empty) returns (SystemTags) {}
+    rpc GetSystemData(SystemIDs) returns (stream SystemState) {}
+}

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package CLIPPY.control;
+
+import "google/protobuf/wrappers.proto";
+
+// TODO design
+// this is for things like describing parameters to linear or nonlinear regression models and letting the robot handle computation
+message ComplexFeedforwardModel {}

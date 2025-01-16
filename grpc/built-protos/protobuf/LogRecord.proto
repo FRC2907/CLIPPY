@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package CLIPPY.log;
+
+import "google/protobuf/timestamp.proto";
+
+enum LogSeverity {
+	UNKNOWN = 0;
+	TRACE = 1;
+	DEBUG = 2;
+	INFO = 3;
+	OK = 4;
+	WARN = 5;
+	ERROR = 6;
+	//FATAL = 7;
+}
+
+message LogRecord {
+	// When did this happen
+	google.protobuf.Timestamp timestamp = 1;
+	// Who wants to record this event
+	string reporter = 2;
+	LogSeverity severity = 3;
+	string value = 4;
+}
