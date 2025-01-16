@@ -4,6 +4,10 @@ package CLIPPY.control;
 
 import "google/protobuf/timestamp.proto";
 
+message SystemIDs {
+  repeated string system_ids = 1;
+}
+
 message SystemState {
     google.protobuf.Timestamp timestamp = 1;
     string system_id = 2;

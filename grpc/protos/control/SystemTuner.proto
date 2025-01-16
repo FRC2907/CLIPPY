@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+// ENV rio
+
+package CLIPPY.control;
+
+import "ControlTarget.proto";
+import "ControlGains.proto";
+import "ControlStyle.proto";
+import "SystemState.proto";
+import "google/protobuf/empty.proto";
+
+service SystemTuner {
+    rpc SetControlGains(stream ControlGains) returns (google.protobuf.Empty) {}
+}
+
+service SystemDataServer {
+    rpc GetSystemIDs(google.protobuf.Empty) returns (SystemIDs) {}
+    rpc GetSystemData(SystemIDs) returns (stream SystemState) {}
+}
