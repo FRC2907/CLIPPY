@@ -84,6 +84,12 @@ public class SparkMaxTuner extends AbstractTuner {
             .setVoltage(m.getAppliedOutput() * m.getBusVoltage())
             .setCurrent(m.getOutputCurrent())
             .setTemperature(m.getMotorTemperature())
+
+            // remove before flight
+            //.setVelocity(5600*Math.random())
+            //.setVoltage(12*Math.random())
+            //
+
             .build();
         ControlGains k = ControlGains.newBuilder()
             // these methods are synchronous and should be called infrequently
