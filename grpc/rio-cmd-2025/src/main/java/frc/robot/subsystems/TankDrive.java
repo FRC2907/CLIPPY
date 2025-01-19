@@ -19,20 +19,17 @@ import frc.robot.constants.Ports.CAN;
 import frc.robot.interfaces.DrivetrainSubsystem;
 
 public class TankDrive extends DrivetrainSubsystem {
-    //private SparkMax left_a, left_b, right_a, right_b;
     private DifferentialDrive drive;
 
+    public TankDrive(SparkMax left, SparkMax right) {
+        this.drive = new DifferentialDrive(left, right);
+        new SmaxTuner(left, "tank left", "drivetrain", "drive", "tank");
+        new SmaxTuner(right, "tank right", "drivetrain", "drive", "tank");
+    }
     public TankDrive(SparkMax left_a, SparkMax left_b, SparkMax right_a, SparkMax right_b) {
-        //this.left_a = left_a;
-        //this.left_b = left_b;
-        //this.right_a = right_a;
-        //this.right_b = right_b;
+        this(left_a, right_a);
         left_b.configure(new SparkMaxConfig().follow(left_a), ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
         right_b.configure(new SparkMaxConfig().follow(right_a), ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
-        this.drive = new DifferentialDrive(left_a, right_a);
-
-        new SmaxTuner(left_a, "tank left", "drivetrain", "drive", "tank");
-        new SmaxTuner(right_a, "tank right", "drivetrain", "drive", "tank");
     }
     private TankDrive() {
         this(

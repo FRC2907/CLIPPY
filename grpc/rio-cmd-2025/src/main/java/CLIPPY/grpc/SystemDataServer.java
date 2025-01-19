@@ -1,4 +1,4 @@
-package CLIPPY.control;
+package CLIPPY.grpc;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,6 +7,8 @@ import java.util.Map;
 
 import com.google.protobuf.Empty;
 
+import CLIPPY.control.ITunableSystem;
+import CLIPPY.control.Registry;
 import CLIPPY.control.SystemDataServerGrpc.SystemDataServerImplBase;
 import CLIPPY.control.SystemStateOuterClass.SystemIDs;
 import CLIPPY.control.SystemStateOuterClass.SystemState;

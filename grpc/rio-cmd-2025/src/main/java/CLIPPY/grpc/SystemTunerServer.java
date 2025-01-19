@@ -1,6 +1,8 @@
-package CLIPPY.control;
+package CLIPPY.grpc;
 
 import CLIPPY.control.SystemTunerGrpc.SystemTunerImplBase;
+import CLIPPY.control.ITunableSystem;
+import CLIPPY.control.Registry;
 import CLIPPY.control.ControlGainsOuterClass.ControlGains;
 import io.grpc.stub.StreamObserver;
 import com.google.protobuf.Empty;

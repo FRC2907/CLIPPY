@@ -6,10 +6,10 @@ package frc.robot;
 
 import java.io.IOException;
 
+import CLIPPY.grpc.SystemDataServer;
+import CLIPPY.grpc.SystemTunerServer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.*;
-import CLIPPY.control.SystemDataServer;
-import CLIPPY.control.SystemTunerServer;
 import frc.robot.bodges.GenericSixaxis;
 import frc.robot.commands.*;
 import frc.robot.constants.Ports;
