@@ -1,7 +1,6 @@
-package frc.robot.CLIPPY;
+package CLIPPY.control;
 
 import CLIPPY.control.SystemTunerGrpc.SystemTunerImplBase;
-import frc.robot.flow.Registry;
 import CLIPPY.control.ControlGainsOuterClass.ControlGains;
 import io.grpc.stub.StreamObserver;
 import com.google.protobuf.Empty;

@@ -7,19 +7,14 @@ package frc.robot;
 import java.io.IOException;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandPS4Controller;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.CLIPPY.SystemDataServer;
-import frc.robot.CLIPPY.SystemTunerServer;
+import edu.wpi.first.wpilibj2.command.button.*;
+import CLIPPY.control.SystemDataServer;
+import CLIPPY.control.SystemTunerServer;
 import frc.robot.bodges.GenericSixaxis;
-import frc.robot.commands.Autos;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.ManualDrive;
+import frc.robot.commands.*;
 import frc.robot.constants.Ports;
 import frc.robot.interfaces.DrivetrainSubsystem;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.MecanumDrive;
+import frc.robot.subsystems.*;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
@@ -44,7 +39,6 @@ public class RobotContainer {
     .build();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  //private final CommandXboxController m_driverController = new CommandXboxController(Ports.DRIVER_CONTROLLER_PORT);
   private final CommandPS4Controller m_driver = new CommandPS4Controller(Ports.DRIVER_CONTROLLER_PORT);
   private final GenericSixaxis m_driverAxes = new GenericSixaxis(m_driver.getHID());
 

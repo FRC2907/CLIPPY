@@ -9,12 +9,6 @@ import frc.robot.interfaces.DrivetrainSubsystem;
 public class SwerveDrive extends DrivetrainSubsystem {
 
     @Override
-    public Command driveTo(Pose2d waypoint) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'driveTo'");
-    }
-
-    @Override
     public Command drive(Transform2d vector) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'drive'");

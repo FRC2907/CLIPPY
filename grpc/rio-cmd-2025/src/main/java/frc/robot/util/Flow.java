@@ -1,6 +1,6 @@
-package frc.robot.flow;
+package frc.robot.util;
 
-public class Util {
+public class Flow {
     /** Stop execution immediately via null pointer exception. */
     @SuppressWarnings("null")
     public static void perish() {

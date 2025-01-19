@@ -6,6 +6,10 @@ import frc.robot.util.Geometry;
 
 public abstract class DrivetrainSubsystem extends SubsystemBase implements IDrivetrain {
     protected Pose2d position;
+
+    @Override
+    public Pose2d getPose() { return position; }
+
     @Override
     public void forcePoseUpdate(Pose2d position) {
         this.position = position;
@@ -13,6 +17,11 @@ public abstract class DrivetrainSubsystem extends SubsystemBase implements IDriv
 
     @Override
     public boolean arrivedAt(Pose2d waypoint) {
-        return Geometry.CloseEnough(waypoint, position);
+        return Geometry.closeEnough(position, waypoint);
+    }
+
+    @Override
+    public boolean passed(Pose2d waypoint) {
+        return Geometry.downstreamOf(position, waypoint);
     }
 }

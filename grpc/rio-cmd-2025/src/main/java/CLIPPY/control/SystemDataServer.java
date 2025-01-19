@@ -1,4 +1,4 @@
-package frc.robot.CLIPPY;
+package CLIPPY.control;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +13,6 @@ import CLIPPY.control.SystemStateOuterClass.SystemState;
 import CLIPPY.control.SystemStateOuterClass.SystemTags;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.Subsystem;
-import frc.robot.flow.Registry;
 import io.grpc.stub.ServerCallStreamObserver;
 import io.grpc.stub.StreamObserver;
 
@@ -80,6 +79,5 @@ public class SystemDataServer extends SystemDataServerImplBase implements Subsys
             for (StreamObserver<SystemState> client : clients.get(id))
                 client.onNext(state);
         }
-        // FIXME does not account for clients closing their connections
     }
 }

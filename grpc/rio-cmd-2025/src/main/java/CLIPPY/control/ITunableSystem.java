@@ -1,4 +1,4 @@
-package frc.robot.CLIPPY;
+package CLIPPY.control;
 
 import CLIPPY.control.SystemStateOuterClass.SystemState;
 

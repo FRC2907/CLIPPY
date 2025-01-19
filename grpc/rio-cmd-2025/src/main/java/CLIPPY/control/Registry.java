@@ -1,11 +1,9 @@
-package frc.robot.flow;
+package CLIPPY.control;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import frc.robot.CLIPPY.ITunableSystem;
 
 public class Registry {
     public final Map<String, ITunableSystem> systems = new HashMap<>();

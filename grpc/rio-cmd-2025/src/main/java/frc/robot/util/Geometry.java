@@ -7,7 +7,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.units.measure.Distance;
 
 public class Geometry {
-    public static boolean CloseEnough(Pose2d a, Pose2d b) {
+    public static boolean closeEnough(Pose2d a, Pose2d b) {
         Distance dx = a.getMeasureX().minus(b.getMeasureX());
         Distance dy = a.getMeasureY().minus(b.getMeasureY());
         Rotation2d dt = a.getRotation().minus(b.getRotation());
@@ -15,5 +15,9 @@ public class Geometry {
                dx.lte(Centimeter.of(5))
             && dy.lte(Centimeter.of(5))
             && Math.abs(dt.getDegrees()) < 5;
+    }
+
+    public static boolean downstreamOf(Pose2d test, Pose2d landmark) {
+        return test.relativeTo(landmark).getY() >= 0; // waow
     }
 }
