@@ -11,14 +11,17 @@ public class Time {
     }
 
     public static Timestamp nowTimestamp() {
-        double now = Timer.getFPGATimestamp();
-        int seconds = (int)Math.floor( now );
-        int nanos   = (int)Math.floor((now - seconds) * 1e9);
-        return Timestamp.newBuilder().setSeconds(seconds).setNanos(nanos).build();
+        return timestampFromTime(Timer.getFPGATimestamp());
     }
 
     public static double timeFromTimestamp(Timestamp ts) {
         return (double)(ts.getSeconds()) + ((double)(ts.getNanos()) * 1e-9);
+    }
+
+    public static Timestamp timestampFromTime(double ts) {
+        int seconds = (int)Math.floor( ts );
+        int nanos   = (int)Math.floor((ts - seconds) * 1e9);
+        return Timestamp.newBuilder().setSeconds(seconds).setNanos(nanos).build();
     }
     
 }

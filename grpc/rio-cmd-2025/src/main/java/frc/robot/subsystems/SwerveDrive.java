@@ -1,6 +1,5 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Transform2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -21,18 +20,8 @@ public class SwerveDrive extends DrivetrainSubsystem {
     }
 
     @Override
-    public boolean arrivedAt(Pose2d waypoint) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'arrivedAt'");
-    }
+    public void periodic() { }
 
     @Override
-    public void periodic() {
-        // This method will be called once per scheduler run
-    }
-
-    @Override
-    public void simulationPeriodic() {
-        // This method will be called once per scheduler run during simulation
-    }
+    public void simulationPeriodic() { }
 }
