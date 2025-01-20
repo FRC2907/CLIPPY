@@ -37,10 +37,13 @@ def main():
         state = next(state_generator)
         velocities.append(state.state.velocity)
         voltages.append(state.state.voltage)
-        coefficients = np.polyfit(velocities, voltages, 1)
-        fit = np.poly1d(coefficients)
         scatter.set_data(velocities, voltages)
-        line.set_data(velocities, fit(velocities))
+        try:
+            coefficients = np.polyfit(velocities, voltages, 1)
+            fit = np.poly1d(coefficients)
+            line.set_data(velocities, fit(velocities))
+        except:
+            pass
         fig.gca().relim()
         fig.gca().autoscale_view()
         return line
