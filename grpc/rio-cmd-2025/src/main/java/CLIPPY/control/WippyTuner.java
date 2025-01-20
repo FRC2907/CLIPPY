@@ -1,4 +1,8 @@
 package CLIPPY.control;
+import static edu.wpi.first.units.Units.MetersPerSecond;
+import static edu.wpi.first.units.Units.RPM;
+import static edu.wpi.first.units.Units.Volts;
+
 import com.google.protobuf.DoubleValue;
 
 import CLIPPY.control.ControlGainsOuterClass.ControlGains;
@@ -6,6 +10,9 @@ import CLIPPY.control.SystemStateOuterClass.SystemState;
 import edu.wpi.first.math.controller.ElevatorFeedforward;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
+import edu.wpi.first.units.measure.AngularVelocity;
+import edu.wpi.first.units.measure.LinearVelocity;
+import edu.wpi.first.units.measure.Voltage;
 import frc.robot.constants.Config;
 
 public abstract class WippyTuner extends AbstractTuner {
@@ -80,6 +87,20 @@ public abstract class WippyTuner extends AbstractTuner {
         return out.toBuilder()
             .setGains(k)
             .build();
+    }
+
+    @Override
+    public Voltage calculate(LinearVelocity velocity) {
+        double ff = this.ff.calculate(velocity.in(MetersPerSecond));
+        double fb = this.pid.calculate(getVelocity(), velocity.in(MetersPerSecond));
+        return Volts.of(ff + fb);
+    }
+
+    @Override
+    public Voltage calculate(AngularVelocity velocity) {
+        double ff = this.ff.calculate(velocity.in(RPM));
+        double fb = this.pid.calculate(getVelocity(), velocity.in(RPM));
+        return Volts.of(ff + fb);
     }
 
 }

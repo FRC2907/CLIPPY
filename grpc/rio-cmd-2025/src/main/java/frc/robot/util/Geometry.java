@@ -13,14 +13,11 @@ import edu.wpi.first.units.measure.LinearVelocity;
 import edu.wpi.first.units.measure.Time;
 
 public class Geometry {
+    public static boolean closeEnough(Pose2d a, Pose2d b, Distance tolerance, Rotation2d rotolerance) {
+        return a.minus(b).getTranslation().getNorm() <= tolerance.in(Meters) && Math.abs(a.minus(b).getRotation().getDegrees()) <= Math.abs(rotolerance.getDegrees());
+    }
     public static boolean closeEnough(Pose2d a, Pose2d b) {
-        Distance dx = a.getMeasureX().minus(b.getMeasureX());
-        Distance dy = a.getMeasureY().minus(b.getMeasureY());
-        Rotation2d dt = a.getRotation().minus(b.getRotation());
-        return
-               dx.lte(Centimeter.of(5))
-            && dy.lte(Centimeter.of(5))
-            && Math.abs(dt.getDegrees()) < 5;
+        return closeEnough(a, b, Centimeters.of(5), Rotation2d.fromDegrees(10));
     }
 
     public static boolean downstreamOf(Pose2d test, Pose2d landmark) {

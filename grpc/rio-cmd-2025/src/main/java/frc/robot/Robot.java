@@ -4,10 +4,18 @@
 
 package frc.robot;
 
+import static edu.wpi.first.units.Units.Meters;
+import static edu.wpi.first.units.Units.MetersPerSecond;
+import static edu.wpi.first.units.Units.RPM;
+import static edu.wpi.first.units.Units.RevolutionsPerSecond;
+import static edu.wpi.first.units.Units.Value;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.constants.Config;
+import frc.robot.constants.Physics;
+import frc.robot.util.Algebra;
 
 /**
  * The methods in this class are called automatically corresponding to each mode, as described in
@@ -95,7 +103,14 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when the robot is first started up. */
   @Override
-  public void simulationInit() {}
+  public void simulationInit() {
+    Algebra.sanityCheck(Meters.of(0.5), Physics.Drivetrain.WHEEL_CIRCUMFERENCE);
+    Algebra.sanityCheck(Value.of(1/6d), Physics.Drivetrain.WHEEL_RPM_PER_MOTOR_RPM);
+    Algebra.sanityCheck(RPM.of(1/6d), Physics.Drivetrain.WheelRPMfromMotorRPM(RPM.one()));
+    Algebra.sanityCheck(Physics.Drivetrain.WheelSpeedFromWheelRPM(RevolutionsPerSecond.of(2)), MetersPerSecond.one());
+    Algebra.sanityCheck(Physics.Drivetrain.WheelSpeedFromMotorRPM(RPM.of(720)), MetersPerSecond.one());
+    //Flow.perish();
+  }
 
   /** This function is called periodically whilst in simulation. */
   @Override

@@ -8,7 +8,7 @@ import java.util.Map;
 import com.google.protobuf.Empty;
 
 import CLIPPY.control.ITunableSystem;
-import CLIPPY.control.Registry;
+import CLIPPY.control.SystemRegistry;
 import CLIPPY.control.SystemDataServerGrpc.SystemDataServerImplBase;
 import CLIPPY.control.SystemStateOuterClass.SystemIDs;
 import CLIPPY.control.SystemStateOuterClass.SystemState;
@@ -40,7 +40,7 @@ public class SystemDataServer extends SystemDataServerImplBase implements Subsys
     public void getSystemIDs(SystemTags request, StreamObserver<SystemIDs> responseObserver) {
         System.out.println("[info] Fetching system IDs for tags: " + request.toString());
         SystemIDs out = SystemIDs.newBuilder().build();
-        for (ITunableSystem sys : Registry.getInstance().systems.values()) {
+        for (ITunableSystem sys : SystemRegistry.getInstance().systems.values()) {
             if (request.getSystemTagsCount() == 0) out = out.toBuilder().addSystemIds(sys.getID()).build();
             else {
                 for (String tag : request.getSystemTagsList())
@@ -56,7 +56,7 @@ public class SystemDataServer extends SystemDataServerImplBase implements Subsys
      */
     @Override
     public void getSystemTags(Empty request, StreamObserver<SystemTags> responseObserver) {
-        responseObserver.onNext(SystemTags.newBuilder().addAllSystemTags(Registry.getInstance().systemTags).build());
+        responseObserver.onNext(SystemTags.newBuilder().addAllSystemTags(SystemRegistry.getInstance().systemTags).build());
         responseObserver.onCompleted();
     }
 
@@ -77,7 +77,7 @@ public class SystemDataServer extends SystemDataServerImplBase implements Subsys
 
     public void periodic() {
         for (String id : clients.keySet()) {
-            SystemState state = Registry.getInstance().systems.get(id).buildSystemState();
+            SystemState state = SystemRegistry.getInstance().systems.get(id).buildSystemState();
             for (StreamObserver<SystemState> client : clients.get(id))
                 client.onNext(state);
         }

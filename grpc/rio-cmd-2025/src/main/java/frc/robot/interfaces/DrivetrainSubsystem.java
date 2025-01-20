@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.util.Geometry;
 
 public abstract class DrivetrainSubsystem extends SubsystemBase implements IDrivetrain {
-    protected Pose2d position;
+    protected Pose2d position = new Pose2d();
 
     @Override
     public Pose2d getPose() { return position; }

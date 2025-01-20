@@ -4,14 +4,16 @@ import edu.wpi.first.wpilibj.PS4Controller;
 import edu.wpi.first.wpilibj.PS5Controller;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.StadiaController;
+import edu.wpi.first.wpilibj.Joystick;
 
 public class GenericSixaxis {
-    private enum Type { PS4, PS5, XBOX, STADIA };
+    private enum Type { PS4, PS5, XBOX, STADIA, JOYSTICK };
     private final Type type;
     private final PS4Controller ps4;
     private final PS5Controller ps5;
     private final XboxController xbox;
     private final StadiaController stadia;
+    private final Joystick joystick;
     @SuppressWarnings("unused")
     private GenericSixaxis() {
         this.type = null;
@@ -19,6 +21,7 @@ public class GenericSixaxis {
         this.ps5 = null;
         this.xbox = null;
         this.stadia = null;
+        this.joystick = null;
     }
     public GenericSixaxis(PS4Controller ctlr) {
         this.type = Type.PS4;
@@ -26,6 +29,7 @@ public class GenericSixaxis {
         this.ps5 = null;
         this.xbox = null;
         this.stadia = null;
+        this.joystick = null;
     }
     public GenericSixaxis(PS5Controller ctlr) {
         this.type = Type.PS5;
@@ -33,6 +37,7 @@ public class GenericSixaxis {
         this.ps5 = ctlr;
         this.xbox = null;
         this.stadia = null;
+        this.joystick = null;
     }
     public GenericSixaxis(XboxController ctlr) {
         this.type = Type.XBOX;
@@ -40,25 +45,36 @@ public class GenericSixaxis {
         this.ps5 = null;
         this.xbox = ctlr;
         this.stadia = null;
+        this.joystick = null;
     }
     public GenericSixaxis(StadiaController ctlr) {
-        this.type = Type.PS4;
+        this.type = Type.STADIA;
         this.ps4 = null;
         this.ps5 = null;
         this.xbox = null;
         this.stadia = ctlr;
+        this.joystick = null;
+    }
+    public GenericSixaxis(Joystick ctlr) {
+        this.type = Type.JOYSTICK;
+        this.ps4 = null;
+        this.ps5 = null;
+        this.xbox = null;
+        this.stadia = null;
+        this.joystick = ctlr;
     }
 
     // apparently everything is *scribbled out* not great
     // https://docs.wpilib.org/en/stable/docs/software/basic-programming/coordinate-system.html
-    // here we will use west-north, which aligns with a regular cartesian coordinate grid superimposed on each joystick
+    // here we will use east-north, which aligns with a regular cartesian coordinate grid superimposed on each joystick
     public double getLeftX() {
         switch (type) {
-            case PS4:    return ps4   .getLeftY();
-            case PS5:    return ps5   .getLeftY();
-            case XBOX:   return xbox  .getLeftY();
-            case STADIA: return stadia.getLeftY();
-            default:     return 0;
+            case PS4:      return ps4   .getLeftY();
+            case PS5:      return ps5   .getLeftY();
+            case XBOX:     return xbox  .getLeftY();
+            case STADIA:   return stadia.getLeftY();
+            case JOYSTICK: return joystick.getY();
+            default:       return 0;
         }
     }
 
@@ -74,11 +90,12 @@ public class GenericSixaxis {
 
     public double getLeftY() {
         switch (type) {
-            case PS4:    return ps4   .getLeftX();
-            case PS5:    return ps5   .getLeftX();
-            case XBOX:   return xbox  .getLeftX();
-            case STADIA: return stadia.getLeftX();
-            default:     return 0;
+            case PS4:      return ps4   .getLeftX();
+            case PS5:      return ps5   .getLeftX();
+            case XBOX:     return xbox  .getLeftX();
+            case STADIA:   return stadia.getLeftX();
+            case JOYSTICK: return joystick.getX();
+            default:       return 0;
         }
     }
 

@@ -2,7 +2,7 @@ package CLIPPY.grpc;
 
 import CLIPPY.control.SystemTunerGrpc.SystemTunerImplBase;
 import CLIPPY.control.ITunableSystem;
-import CLIPPY.control.Registry;
+import CLIPPY.control.SystemRegistry;
 import CLIPPY.control.ControlGainsOuterClass.ControlGains;
 import io.grpc.stub.StreamObserver;
 import com.google.protobuf.Empty;
@@ -24,7 +24,7 @@ public class SystemTunerServer extends SystemTunerImplBase {
 
             @Override
             public void onNext(ControlGains gains) {
-                ITunableSystem sys = Registry.getInstance().systems.get(gains.getSystemId());
+                ITunableSystem sys = SystemRegistry.getInstance().systems.get(gains.getSystemId());
                 if (sys != null) {
                     if (gains.hasKP()) sys.setP(gains.getKP().getValue());
                     if (gains.hasKI()) sys.setI(gains.getKI().getValue());

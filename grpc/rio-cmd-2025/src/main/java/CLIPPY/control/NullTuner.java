@@ -1,18 +1,17 @@
 package CLIPPY.control;
 
-import com.revrobotics.spark.SparkMax;
-
 import CLIPPY.control.SystemStateOuterClass.SystemState;
 import CLIPPY.control.SystemStateOuterClass.SystemState.Measurement;
+import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
-public class SmaxTuner extends WippyTuner {
+public class NullTuner extends WippyTuner {
 
-    private final SparkMax m;
-
-    public SmaxTuner(SparkMax m, String id, String ...tags) {
+    public NullTuner(MotorController m, String id, String ...tags) {
+        this(id, tags);
+    }
+    public NullTuner(String id, String ...tags) {
         super(id, tags);
-        this.m = m;
         CommandScheduler.getInstance().registerSubsystem(this);
     }
 
@@ -23,11 +22,6 @@ public class SmaxTuner extends WippyTuner {
         //double simVoltage = 12*Math.random();
         //double simVelocity = (5600/12d) * simVoltage + (100*Math.random() - 50);
         Measurement x = Measurement.newBuilder()
-            .setPosition(m.getEncoder().getPosition())
-            .setVelocity(m.getEncoder().getVelocity())
-            .setVoltage(m.getAppliedOutput() * m.getBusVoltage())
-            .setCurrent(m.getOutputCurrent())
-            .setTemperature(m.getMotorTemperature())
 
             // remove before flight
             //.setVelocity(simVelocity)
@@ -41,18 +35,12 @@ public class SmaxTuner extends WippyTuner {
     }
 
     @Override
-    public void setVoltage(double voltage) {
-        m.setVoltage(voltage);
-    }
+    public void setVoltage(double voltage) { }
 
     @Override
-    public double getPosition() {
-        return m.getEncoder().getPosition();
-    }
+    public double getPosition() { return 0; }
 
     @Override
-    public double getVelocity() {
-        return m.getEncoder().getVelocity();
-    }
+    public double getVelocity() { return 0; }
 
 }

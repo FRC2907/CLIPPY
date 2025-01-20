@@ -1,19 +1,24 @@
 package frc.robot.subsystems;
 
-import static edu.wpi.first.units.Units.RadiansPerSecond;
-import static edu.wpi.first.units.Units.Seconds;
+import static edu.wpi.first.units.Units.MetersPerSecond;
 
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.config.SparkBaseConfig;
+import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Transform2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.MecanumDriveKinematics;
 import edu.wpi.first.math.kinematics.MecanumDriveOdometry;
 import edu.wpi.first.math.kinematics.MecanumDriveWheelPositions;
-import edu.wpi.first.wpilibj.drive.MecanumDrive.WheelSpeeds;
+import edu.wpi.first.math.kinematics.MecanumDriveWheelSpeeds;
+import edu.wpi.first.units.measure.Voltage;
 import edu.wpi.first.wpilibj2.command.Command;
+import CLIPPY.control.ITunableSystem;
+import CLIPPY.control.NullTuner;
 import CLIPPY.control.SmaxTuner;
 import frc.robot.constants.Physics;
 import frc.robot.constants.Ports.CAN;
@@ -21,15 +26,13 @@ import frc.robot.interfaces.DrivetrainSubsystem;
 import frc.robot.interfaces.IPositionProvider;
 
 public class MecanumDrive extends DrivetrainSubsystem {
-    private final SparkMax front_left, rear_left, front_right, rear_right;
-    private final edu.wpi.first.wpilibj.drive.MecanumDrive drive;
+    private final ITunableSystem front_left, rear_left, front_right, rear_right;
+    private final MecanumDriveKinematics kinematics;
     public final Odometer odometer;
 
     protected class Odometer implements IPositionProvider {
-        private final MecanumDriveKinematics kinematics;
         private MecanumDriveOdometry odometer;
-        public Odometer(MecanumDriveKinematics kinematics, Pose2d position) {
-            this.kinematics = kinematics;
+        public Odometer(Pose2d position) {
             forcePoseUpdate(position);
         }
         @Override
@@ -42,18 +45,22 @@ public class MecanumDrive extends DrivetrainSubsystem {
         }
     }
 
-    public MecanumDrive(SparkMax front_left, SparkMax rear_left, SparkMax front_right, SparkMax rear_right, MecanumDriveKinematics kinematics) {
-        this.front_left = front_left;
-        this.rear_left = rear_left;
-        this.front_right = front_right;
-        this.rear_right = rear_right;
-        this.drive = new edu.wpi.first.wpilibj.drive.MecanumDrive(front_left, rear_left, front_right, rear_right);
-        this.odometer = new Odometer(kinematics, position);
+    private MecanumDrive(SparkMax front_left, SparkMax rear_left, SparkMax front_right, SparkMax rear_right, MecanumDriveKinematics kinematics) {
+        this.front_left  = new SmaxTuner(front_left , "front left" , "drivetrain", "drive", "mecanum");
+        this.rear_left   = new NullTuner(rear_left  , "rear left"  , "drivetrain", "drive", "mecanum");
+        this.front_right = new NullTuner(front_right, "front right", "drivetrain", "drive", "mecanum");
+        this.rear_right  = new NullTuner(rear_right , "rear right" , "drivetrain", "drive", "mecanum");
+        ITunableSystem.setF_linear(Physics.Drivetrain.DefaultGains.kF_linear, this.front_left, this.front_right, this.rear_left, this.rear_right);
 
-        new SmaxTuner(front_left, "front left", "drivetrain", "drive", "mecanum");
-        new SmaxTuner(rear_left, "rear left", "drivetrain", "drive", "mecanum");
-        new SmaxTuner(front_right, "front right", "drivetrain", "drive", "mecanum");
-        new SmaxTuner(rear_right, "rear right", "drivetrain", "drive", "mecanum");
+        SparkBaseConfig lefts = new SparkMaxConfig().apply(Physics.Drivetrain.ENCODER_SCALE);
+        SparkBaseConfig rights = new SparkMaxConfig().apply(Physics.Drivetrain.ENCODER_SCALE).apply(Physics.Drivetrain.INVERT);
+        front_left.configure(lefts, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+        rear_left.configure(lefts, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+        front_right.configure(rights, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+        rear_right.configure(rights, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+
+        this.kinematics = kinematics;
+        this.odometer = new Odometer(position);
     }
     private MecanumDrive() {
         this(
@@ -61,7 +68,7 @@ public class MecanumDrive extends DrivetrainSubsystem {
             , new SparkMax(CAN.DT_REAR_LEFT, MotorType.kBrushless)
             , new SparkMax(CAN.DT_FRONT_RIGHT, MotorType.kBrushless)
             , new SparkMax(CAN.DT_REAR_RIGHT, MotorType.kBrushless)
-            , Physics.DRIVETRAIN.DT_KINEMATICS
+            , Physics.Drivetrain.DT_KINEMATICS_MECANUM
         );
     }
 
@@ -78,30 +85,25 @@ public class MecanumDrive extends DrivetrainSubsystem {
     }
 
     @Override
-    public Command drive(Transform2d vector) {
-        return drive(new ChassisSpeeds(
-              vector.getMeasureX().div(Seconds.one())
-            , vector.getMeasureY().div(Seconds.one())
-            , RadiansPerSecond.of(vector.getRotation().getRadians())
-        ));
+    public Command drive(ChassisSpeeds velocities) {
+        MecanumDriveWheelSpeeds ws = kinematics.toWheelSpeeds(velocities);
+        Voltage fl = front_left.calculate(MetersPerSecond.of(ws.frontLeftMetersPerSecond));
+        Voltage rl = rear_left.calculate(MetersPerSecond.of(ws.rearLeftMetersPerSecond));
+        Voltage fr = front_right.calculate(MetersPerSecond.of(ws.frontRightMetersPerSecond));
+        Voltage rr = rear_right.calculate(MetersPerSecond.of(ws.rearRightMetersPerSecond));
+        return drive(fl, rl, fr, rr);
     }
 
     /**
-     * FIXME reimplement this to actually use the real-speeds of ChassisSpeeds
+     * Front left, rear left, front right, rear right
      */
     @Override
-    public Command drive(ChassisSpeeds velocities) {
+    public Command drive(Double ...voltages) {
         return runOnce(() -> {
-            drive.driveCartesian(velocities.vxMetersPerSecond, velocities.vyMetersPerSecond, velocities.omegaRadiansPerSecond, this.position.getRotation());
-        });
-    }
-
-    public Command drive(WheelSpeeds velocities) {
-        return runOnce(() -> {
-            front_left.set(velocities.frontLeft);
-            rear_left.set(velocities.rearLeft);
-            front_right.set(velocities.frontRight);
-            rear_right.set(velocities.rearRight);
+            front_left.setVoltage(voltages[0]);
+            rear_left.setVoltage(voltages[1]);
+            front_right.setVoltage(voltages[2]);
+            rear_right.setVoltage(voltages[3]);
         });
     }
 

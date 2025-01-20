@@ -39,7 +39,8 @@ public class RobotContainer {
     .build();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandPS4Controller m_driver = new CommandPS4Controller(Ports.DRIVER_CONTROLLER_PORT);
+  //private final CommandPS4Controller m_driver = new CommandPS4Controller(Ports.DRIVER_CONTROLLER_PORT);
+  private final CommandJoystick m_driver = new CommandJoystick(Ports.DRIVER_CONTROLLER_PORT);
   private final GenericSixaxis m_driverAxes = new GenericSixaxis(m_driver.getHID());
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -48,7 +49,7 @@ public class RobotContainer {
     configureBindings();
     // Set up default command
     // https://github.com/wpilibsuite/allwpilib/blob/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/mecanumcontrollercommand/RobotContainer.java#L47-L59
-    m_drivetrain.setDefaultCommand(new ManualDrive(m_drivetrain, m_driverAxes));
+    m_drivetrain.setDefaultCommand(new ManualDrive(m_drivetrain, m_driverAxes::getLeftY, () -> -m_driverAxes.getLeftX(), m_driverAxes::getRightX));
 
     try { m_grpc_server.start(); } catch (IOException e) { e.printStackTrace(); }
   }
