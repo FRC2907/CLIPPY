@@ -12,10 +12,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.*;
 import frc.robot.bodges.GenericSixaxis;
 import frc.robot.commands.*;
+import frc.robot.constants.Config;
 import frc.robot.constants.Ports;
 import frc.robot.interfaces.DrivetrainSubsystem;
 import frc.robot.subsystems.*;
-import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
 /**
@@ -32,12 +32,6 @@ public class RobotContainer {
   private final SystemTunerServer m_systuner = SystemTunerServer.getInstance();
   private final SystemDataServer m_sysdata = SystemDataServer.getInstance();
 
-  private final Server m_grpc_server = ServerBuilder
-    .forPort(5800)
-    .addService(m_systuner)
-    .addService(m_sysdata)
-    .build();
-
   // Replace with CommandPS4Controller or CommandJoystick if needed
   //private final CommandPS4Controller m_driver = new CommandPS4Controller(Ports.DRIVER_CONTROLLER_PORT);
   private final CommandJoystick m_driver = new CommandJoystick(Ports.DRIVER_CONTROLLER_PORT);
@@ -51,7 +45,14 @@ public class RobotContainer {
     // https://github.com/wpilibsuite/allwpilib/blob/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/mecanumcontrollercommand/RobotContainer.java#L47-L59
     m_drivetrain.setDefaultCommand(new ManualDrive(m_drivetrain, m_driverAxes::getLeftY, () -> -m_driverAxes.getLeftX(), m_driverAxes::getRightX));
 
-    try { m_grpc_server.start(); } catch (IOException e) { e.printStackTrace(); }
+    if (!Config.CLIPPY.DISABLE_ALL) {
+      var grpcd = ServerBuilder.forPort(5800);
+      if (Config.CLIPPY.ENABLE_SYSDATA)
+        grpcd.addService(m_sysdata);
+      if (Config.CLIPPY.ENABLE_TUNER)
+        grpcd.addService(m_systuner);
+      try { grpcd.build().start(); } catch (IOException e) { e.printStackTrace(); }
+    }
   }
 
   /**

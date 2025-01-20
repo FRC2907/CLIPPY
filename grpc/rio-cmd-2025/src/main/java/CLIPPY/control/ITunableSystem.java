@@ -2,10 +2,14 @@ package CLIPPY.control;
 
 import CLIPPY.control.SystemStateOuterClass.SystemState;
 import edu.wpi.first.units.measure.AngularVelocity;
+import edu.wpi.first.units.measure.Distance;
+import edu.wpi.first.units.measure.LinearAcceleration;
 import edu.wpi.first.units.measure.LinearVelocity;
 import edu.wpi.first.units.measure.Voltage;
 import frc.robot.util.Time;
 
+import static edu.wpi.first.units.Units.MetersPerSecond;
+import static edu.wpi.first.units.Units.MetersPerSecondPerSecond;
 import static edu.wpi.first.units.Units.Volts;
 
 import java.util.Set;
@@ -37,11 +41,24 @@ public interface ITunableSystem {
     /** Configure the controller's constant gravity gain. In an elevator, think of this as the midpoint voltage between "moving up" and "moving down", and kS is the distance from this midpoint to the threshold of motion. */
     public ITunableSystem setF_constant(double kF_constant);
 
+
+    public ITunableSystem setMaxVelocity(double max_mps);
+    public ITunableSystem setMaxAcceleration(double max_mpsps);
+    public ITunableSystem setMaxJerk(double max_mpspsps);
+
+    default public ITunableSystem setMaxVelocity(LinearVelocity max) {
+        return setMaxVelocity(max.in(MetersPerSecond));
+    }
+    default public ITunableSystem setMaxAcceleration(LinearAcceleration max) {
+        return setMaxAcceleration(max.in(MetersPerSecondPerSecond));
+    }
+
     public double getPosition();
     public double getVelocity();
     public void setVoltage(double voltage);
     public default void setVoltage(Voltage voltage) { setVoltage(voltage.in(Volts)); }
 
+    public Voltage calculate(Distance position);
     public Voltage calculate(LinearVelocity velocity);
     public Voltage calculate(AngularVelocity velocity);
 
@@ -132,12 +149,15 @@ public interface ITunableSystem {
         return this;
     }
 
-    public static void setP(double k, ITunableSystem ...systems) { for (ITunableSystem sys : systems) sys.setP(k); }
-    public static void setI(double k, ITunableSystem ...systems) { for (ITunableSystem sys : systems) sys.setI(k); }
-    public static void setD(double k, ITunableSystem ...systems) { for (ITunableSystem sys : systems) sys.setD(k); }
-    public static void setF_static(double k, ITunableSystem ...systems) { for (ITunableSystem sys : systems) sys.setF_static(k); }
-    public static void setF_linear(double k, ITunableSystem ...systems) { for (ITunableSystem sys : systems) sys.setF_linear(k); }
-    public static void setF_linear_per_time(double k, ITunableSystem ...systems) { for (ITunableSystem sys : systems) sys.setF_linear_per_time(k); }
-    public static void setF_constant(double k, ITunableSystem ...systems) { for (ITunableSystem sys : systems) sys.setF_constant(k); }
+    public static void setP(double k, ITunableSystem ...systems)                       { for (ITunableSystem sys : systems) sys.setP(k); }
+    public static void setI(double k, ITunableSystem ...systems)                       { for (ITunableSystem sys : systems) sys.setI(k); }
+    public static void setD(double k, ITunableSystem ...systems)                       { for (ITunableSystem sys : systems) sys.setD(k); }
+    public static void setF_static(double k, ITunableSystem ...systems)                { for (ITunableSystem sys : systems) sys.setF_static(k); }
+    public static void setF_linear(double k, ITunableSystem ...systems)                { for (ITunableSystem sys : systems) sys.setF_linear(k); }
+    public static void setF_linear_per_time(double k, ITunableSystem ...systems)       { for (ITunableSystem sys : systems) sys.setF_linear_per_time(k); }
+    public static void setF_constant(double k, ITunableSystem ...systems)              { for (ITunableSystem sys : systems) sys.setF_constant(k); }
+    public static void setMaxVelocity(double k, ITunableSystem ...systems)             { for (ITunableSystem sys : systems) sys.setMaxVelocity(k); }
+    public static void setMaxAcceleration(double k, ITunableSystem ...systems)         { for (ITunableSystem sys : systems) sys.setMaxAcceleration(k); }
+    public static void setMaxJerk(double k, ITunableSystem ...systems)                 { for (ITunableSystem sys : systems) sys.setMaxJerk(k); }
 
 }

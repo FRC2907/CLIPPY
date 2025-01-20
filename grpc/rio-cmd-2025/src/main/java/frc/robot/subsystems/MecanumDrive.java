@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import static edu.wpi.first.units.Units.MetersPerSecond;
+import static edu.wpi.first.units.Units.MetersPerSecondPerSecond;
 
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkBase.PersistMode;
@@ -18,8 +19,8 @@ import edu.wpi.first.math.kinematics.MecanumDriveWheelSpeeds;
 import edu.wpi.first.units.measure.Voltage;
 import edu.wpi.first.wpilibj2.command.Command;
 import CLIPPY.control.ITunableSystem;
-import CLIPPY.control.NullTuner;
 import CLIPPY.control.SmaxTuner;
+import frc.robot.constants.Config;
 import frc.robot.constants.Physics;
 import frc.robot.constants.Ports.CAN;
 import frc.robot.interfaces.DrivetrainSubsystem;
@@ -47,10 +48,13 @@ public class MecanumDrive extends DrivetrainSubsystem {
 
     private MecanumDrive(SparkMax front_left, SparkMax rear_left, SparkMax front_right, SparkMax rear_right, MecanumDriveKinematics kinematics) {
         this.front_left  = new SmaxTuner(front_left , "front left" , "drivetrain", "drive", "mecanum");
-        this.rear_left   = new NullTuner(rear_left  , "rear left"  , "drivetrain", "drive", "mecanum");
-        this.front_right = new NullTuner(front_right, "front right", "drivetrain", "drive", "mecanum");
-        this.rear_right  = new NullTuner(rear_right , "rear right" , "drivetrain", "drive", "mecanum");
+        this.rear_left   = new SmaxTuner(rear_left  , "rear left"  , "drivetrain", "drive", "mecanum");
+        this.front_right = new SmaxTuner(front_right, "front right", "drivetrain", "drive", "mecanum");
+        this.rear_right  = new SmaxTuner(rear_right , "rear right" , "drivetrain", "drive", "mecanum");
         ITunableSystem.setF_linear(Physics.Drivetrain.DefaultGains.kF_linear, this.front_left, this.front_right, this.rear_left, this.rear_right);
+        ITunableSystem.setMaxVelocity(Config.MAX_WHEEL_VELOCITY.in(MetersPerSecond), this.front_left, this.front_right, this.rear_left, this.rear_right);
+        ITunableSystem.setMaxAcceleration(Config.MAX_WHEEL_ACCEL.in(MetersPerSecondPerSecond), this.front_left, this.front_right, this.rear_left, this.rear_right);
+        ITunableSystem.setMaxJerk(Config.MAX_WHEEL_JERK, this.front_left, this.front_right, this.rear_left, this.rear_right);
 
         SparkBaseConfig lefts = new SparkMaxConfig().apply(Physics.Drivetrain.ENCODER_SCALE);
         SparkBaseConfig rights = new SparkMaxConfig().apply(Physics.Drivetrain.ENCODER_SCALE).apply(Physics.Drivetrain.INVERT);
